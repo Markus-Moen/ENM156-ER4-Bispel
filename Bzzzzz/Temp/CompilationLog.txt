@@ -1,0 +1,78 @@
+# Starting compiling UnityEngine.TestRunner.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-878ec3382ce06c360834f1baecf08363
+# Starting compiling UnityEngine.UI.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-95e532251caf0c10abab29059998226a
+# Starting compiling UnityEditor.TestRunner.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-29adbbee6732ba8e3b71d2d2e4d31ff9
+# Starting compiling UnityEditor.UI.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-86b0eafa87d3fae11952e7b5d78737d4
+# Starting compiling Unity.InternalAPIEngineBridge.001.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-0ffc9529e346a75fda1868f503aa0e98
+# Starting compiling Unity.VSCode.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-3b2da95daa707e3f29f73089807fe341
+# Starting compiling Unity.2D.PixelPerfect.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-670b2371d6f332cd4903b5f504a0e3cb
+# Starting compiling Unity.2D.Tilemap.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-1bcad0e3a44201bfca07d4d7f491d613
+# Starting compiling PsdPlugin.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-7f3565263891e181cb2c0ce0ac50e375
+# Starting compiling Unity.VisualStudio.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-13d2727875eed1f6aa014c76dc95370c
+# Starting compiling Unity.Timeline.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-75aa38e768c9c6ef1a28a69b0791d83e
+# Starting compiling Unity.TextMeshPro.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-446cf308962fd2a17840fb7f915c27c7
+# Starting compiling Unity.2D.Path.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-531210206a52ac774a88a587b70dae29
+# Starting compiling Unity.2D.Sprite.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-a9349e99412a82fbdb40d931d376037d
+# Starting compiling Unity.PlasticSCM.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-2db1614064124defd8e63950d48eec15
+# Starting compiling Unity.Rider.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-d21a2b5ecc2733ab1828c44258a86e20
+# Starting compiling Unity.Notifications.iOS.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-d38fd2276a149a3589b93b319c987352
+# Starting compiling Unity.Mathematics.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-24176c83d83ab7121a39b9eaabe3b773
+# Starting compiling Unity.2D.IK.Runtime.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-6751c3c37beb7a0c99d35d2b75b45bc5
+# Starting compiling Unity.Services.Core.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-2127ef08cb6315d7ab3f57660d3ec609
+# Starting compiling Unity.2D.Animation.Triangle.Runtime.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-d2d7173e92351671c9a904ed72095c92
+# Starting compiling Unity.InternalAPIEditorBridge.001.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-72815314333f0dc5f80189683dce9d38
+# Starting compiling Unity.2D.PixelPerfect.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-fa824ca6fa70651b2a56c07f420bffbb
+# Starting compiling Unity.TextMeshPro.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-4a67530f27c7f51fe803ce56742d4d32
+# Starting compiling Unity.Mobile.AndroidLogcat.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-fc00f08705f59b2798f73d67e7dd013f
+# Starting compiling Unity.Timeline.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-ba2b913f74032eb45852426a297eaa3d
+# Starting compiling Unity.2D.Common.Runtime.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-6ab981dea4ee227b6a9f9a0365e1bb4b
+# Starting compiling Unity.Notifications.Android.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-cc6675d929b97ad39813cb246eed99e2
+# Starting compiling Unity.CollabProxy.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-ffcbed80d7dc4a909b3813aa7361fba4
+# Starting compiling Unity.2D.Common.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-bd26b77bc6e9b989d8ce79eb60b5b2c0
+# Starting compiling Unity.Notifications.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-2ed8a20657716042cb262f52feef7537
+# Starting compiling Unity.2D.Animation.Runtime.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-af8262744d22f835b994ad5e9c376b92
+# Starting compiling Unity.Mathematics.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-dffe1af5f5ff21577b2f7b243d9e508d
+# Starting compiling Unity.2D.SpriteShape.Runtime.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-92b2b888065d18a6d86b857944e94e06
+# Starting compiling Unity.2D.Animation.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-21327e1bb9ac9a5ddb6e31785ee5143c
+# Starting compiling Unity.2D.SpriteShape.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-c2a063b43cce050dabcdc68c4a503110
+# Starting compiling Unity.2D.IK.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-0c80f8af6a5deedada14dc305da5a6a9
+# Starting compiling Unity.2D.Psdimporter.Editor.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-0588128171d29b3c4a8d41aa10380626
+# Starting compiling Assembly-CSharp.dll
+/home/trooja/Unity/2020.3.22f1/Editor/Data/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-514e716755eaccc709e871078d379061
