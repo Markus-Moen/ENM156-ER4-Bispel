@@ -39,7 +39,6 @@ public class hiveScript : MonoBehaviour
      void TaskOnClick()
     {
         //Fill out for increasing the honey in the "bank"
-        Debug.Log(honeyAmount.ToString());
         honeyAmount = 0;
     }
     //Increasing the honey in the hive
