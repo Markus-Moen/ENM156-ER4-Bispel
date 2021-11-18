@@ -26,7 +26,13 @@ public class GameManager : MonoBehaviour
 
     // GameManager singleton
     private static GameManager _instance;
-    public static GameManager instance { get { return _instance; } }
+    public static GameManager instance { get { 
+        if(_instance == null){
+            GameObject go = new GameObject("GameManager");
+            go.AddComponent<GameManager>();
+        }
+        return _instance; }             
+    }
 
 
     // make sure there are no other instances of GameManager
@@ -141,6 +147,7 @@ public class GameManager : MonoBehaviour
             //TODO
         }
     }
+
 
     // subtracts n from numOfFood
     // - returns false if numOfFood <= 0 (and sets it to 0 at the lowest)
