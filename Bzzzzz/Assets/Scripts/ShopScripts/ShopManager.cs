@@ -6,6 +6,7 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
+	public GameObject shop;
     public int ownedHoney;		        // The players owned honey. This is just a placeholder value.
     public TMP_Text honeyText;          // Dispayed honey in-game.
     public ShopItemSO[] shopItemsSO;    // Array of all scriptable objects.
@@ -71,6 +72,7 @@ public class ShopManager : MonoBehaviour
             CheckPurchaseable();
         }
     }
-
-
+    public void closeShop(){
+    	shop.SetActive(false);
+    }
 }
