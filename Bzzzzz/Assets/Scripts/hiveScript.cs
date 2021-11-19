@@ -14,9 +14,7 @@ public class hiveScript : MonoBehaviour
     private int maxHoneyPerHive = 20;
     //The delay until the honey is increased
     public float delay = 0;
-
     int beeApproximation = 0;
-
     int tmp = 0;
     //I used Awake because when I gave the value to beeAmount outside Awake it did not get the right value when changed
     void Awake(){
@@ -31,7 +29,6 @@ public class hiveScript : MonoBehaviour
         //Sets the delay based on the number of bees
         tmp = GameManager.instance.getPlayerBees();
         setDelay(tmp);   
-        Debug.Log("The delay is now" + delay.ToString());
     }
 
     // Update is called once per frame
