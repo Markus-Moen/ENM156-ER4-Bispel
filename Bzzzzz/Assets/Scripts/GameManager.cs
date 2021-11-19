@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     private const int startFood = 100;
     private const int startBees = 100;
     private const int startHives = 1;
-    private const int startHoney = 0;
+    private const int startHoney = 100;
 
     // Constants - max values
     private const int max = 10000;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private const int maxHives = max;
 
     // Variables
-    private int numOfHoney;
+    private int numOfHoney = startHoney;
     private int numOfFood;
     private int numOfBees;
     private int numOfHives;
