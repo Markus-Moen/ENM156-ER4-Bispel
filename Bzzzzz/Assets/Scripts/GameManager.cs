@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
 
     // Variables
     private int numOfHoney = startHoney;
-    private int numOfFood;
-    private int numOfBees;
-    private int numOfHives;
+    private int numOfFood = startFood;
+    private int numOfBees = startBees;
+    private int numOfHives = startHives;
 
 
     // GameManager singleton
@@ -49,11 +49,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set variables to start values
-        numOfFood = startFood;
-        numOfBees = startBees;
-        numOfHoney = startHoney;
-        numOfHives = startHives;
+        
         
     }
 
