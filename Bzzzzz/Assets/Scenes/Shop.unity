@@ -2115,6 +2115,7 @@ MonoBehaviour:
   shopItemsSO:
   - {fileID: 11400000, guid: 6d78de01b5709bf4bb6afda8407d52c2, type: 2}
   - {fileID: 11400000, guid: 27948f5bfdcef0a43a604638a57a8650, type: 2}
+  - {fileID: 11400000, guid: b85cde18dbde3fb67ac7acdd90ebe42b, type: 2}
   shopPanels:
   - {fileID: 91244445}
   - {fileID: 1751654242}
@@ -2531,7 +2532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100.70996}
+  m_AnchoredPosition: {x: 0, y: -100.709946}
   m_SizeDelta: {x: 0, y: -201.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1777700706
