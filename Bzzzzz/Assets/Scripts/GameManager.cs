@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class GameManager : MonoBehaviour
     private int numOfFood = startFood;
     private int numOfBees = startBees;
     private int numOfHives = startHives;
+
+    // Text fields
+    Text foodText;
+    Text honeyText;
+    Text hivesText;
+    Text beesText;
 
 
     // GameManager singleton
@@ -49,7 +56,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Initialize text fields
+        foodText = GameObject.Find("Food Text").GetComponent<Text>();
+        honeyText = GameObject.Find("Honey Text").GetComponent<Text>();
+        hivesText = GameObject.Find("Hives Text").GetComponent<Text>();
+        beesText = GameObject.Find("Bees Text").GetComponent<Text>();
+
+        // Set text field texts
+        foodText.text = "Food: " + numOfFood;
+        honeyText.text = "Honey: " + numOfHoney;
+        hivesText.text = "Hives: " + numOfHives;
+        beesText.text = "Bees: " + numOfBees;
         
     }
 
@@ -57,6 +74,23 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    //-----------------------------------------------------------------------------------------------//
+
+
+    private void updateFoodTxt(){
+        foodText.text = "Food: " + numOfFood;
+    }
+    private void updateHoneyTxt(){
+        honeyText.text = "Honey: " + numOfHoney;
+    }
+    private void updateHivesTxt(){
+        hivesText.text = "Hives: " + numOfHives;
+    }
+    private void updateBeesTxt(){
+        beesText.text = "Bees: " + numOfBees;
     }
 
 
@@ -74,7 +108,7 @@ public class GameManager : MonoBehaviour
             leftovers = numOfHoney - maxHoney;
             numOfHoney = maxHoney;
         }
-
+        updateHoneyTxt();
         return leftovers;
     }
 
@@ -87,6 +121,7 @@ public class GameManager : MonoBehaviour
             leftovers = numOfBees - maxBees;
             numOfBees = maxBees;
         }
+        updateBeesTxt();
         return leftovers;
     }
 
@@ -99,6 +134,7 @@ public class GameManager : MonoBehaviour
             leftovers = numOfFood - maxFood;
             numOfFood = maxFood;
         }
+        updateFoodTxt();
         return leftovers;
     }
 
@@ -111,6 +147,7 @@ public class GameManager : MonoBehaviour
             leftovers = numOfHives - maxHives;
             numOfHives = maxHives;
         }
+        updateHivesTxt();
         return leftovers;
     }
 
@@ -128,9 +165,11 @@ public class GameManager : MonoBehaviour
     //   numOfHoney
     public bool decPlayerHoney(int n){
         if(numOfHoney - n < 0){
+            updateHoneyTxt();
             return false;
         }
         numOfHoney -= n;
+        updateHoneyTxt();
         return true;
     }
 
@@ -142,6 +181,7 @@ public class GameManager : MonoBehaviour
             numOfBees = 0;
             //TODO
         }
+        updateBeesTxt();
     }
 
 
@@ -152,8 +192,10 @@ public class GameManager : MonoBehaviour
         numOfFood -= n;
         if(numOfFood <= 0){
             numOfFood = 0;
+            updateFoodTxt();
             return false;
         }
+        updateFoodTxt();
         return true;
     }
 
@@ -164,8 +206,10 @@ public class GameManager : MonoBehaviour
         numOfHives -= n;                       // and/or if hives start dissapearing?
         if(numOfHives <= 0){
             numOfHives = 0;                    // don't know if the player can loose hives, and if they can reach 0
+            updateHivesTxt();
             return false;
         }
+        updateHivesTxt();
         return true;
     } 
 
