@@ -213,6 +213,13 @@ public class GameManager : MonoBehaviour
         return true;
     } 
 
+    // multiplies numOfHoney by the argument f
+    // effectively changing the amount of honey by a percentage
+    public void changeHoneyPercent(float f){
+        numOfHoney = (int) Mathf.Floor(numOfHoney*f);  
+        updateHoneyTxt();      
+    }
+
 
     //-----------------------------------------------------------------------------------------------//
 

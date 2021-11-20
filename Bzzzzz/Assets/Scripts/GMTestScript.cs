@@ -68,6 +68,9 @@ public class GMTestScript : MonoBehaviour
     public void testincPlayerHoney(int n){
             GameManager.instance.incPlayerHoney(n);
     }
+    public void testchangeHoneyPercent(float f){
+            GameManager.instance.changeHoneyPercent(f);
+    }
 
 
     
