@@ -1,0 +1,69 @@
+
+Access GameManager functions:
+
+GameManager.instance.*function name*
+
+
+
+- Getters:
+// returns variable
+
+getPlayerFood()
+getPlayerBees()
+getPlayerHives()
+getPlayerHoney()
+
+
+
+
+- inc functions:
+// adds argument n to variable
+// returns max*Variable*-numOf*Variable* if max amount of the variable is reached
+// otherwise 0
+
+// increments food variable with argument n
+incPlayerFood(int n)					// returns int
+
+// increment bees variable with argument n
+incPlayerBees(int n)					// returns int
+
+// increment hives variable with argument n
+incPlayerHives(int n)					// returns int
+
+// increment honey variable with argument n
+incPlayerHoney(int n)					// returns int
+
+
+
+
+- dec functions:
+// subtracts argument n from variable
+
+// subtracts n from numOfFood (lowest value possible is 0)
+// returns false if the result of the subtraction is <0
+// returns true otherwise
+decPlayerFood(int n)					// returns bool
+
+// subtracts n from numOfBees
+// does not return anything
+// probably does something if numOfBees <= 0
+decPlayerBees(int n)					// returns nothing
+
+// subtracts n from numOfHives (lowest value possible is 0)
+// returns false if the result of the subtraction is <0
+// returns true otherwise
+decPlayerHives(int n)					// returns bool
+
+// subtracts n from numOfHoney IF numOfHoney-n !< 0
+// Returns true if subtraction is successful
+// returns false if not enough honey
+decPlayerHoney(int n)					// returns bool
+
+
+
+
+- Others:
+
+// multiplies numOfHoney by f and performs
+// floor function on the result
+changeHoneyPercent(float f)				// returns nothing

@@ -12,10 +12,6 @@ public class GMTestScript : MonoBehaviour
     //public GMTestTxts honeyTxt;
     //public GMTestTxts hivesTxt;
     //public GMTestTxts beesTxt;
-    Text foodText;
-    Text honeyText;
-    Text hivesText;
-    Text beesText;
     int food;
     int honey;
     int hives;
@@ -31,18 +27,6 @@ public class GMTestScript : MonoBehaviour
         hives = GameManager.instance.getPlayerHives();
         bees = GameManager.instance.getPlayerBees();
 
-        // Initialize text fields
-        foodText = GameObject.Find("Food Text").GetComponent<Text>();
-        honeyText = GameObject.Find("Honey Text").GetComponent<Text>();
-        hivesText = GameObject.Find("Hives Text").GetComponent<Text>();
-        beesText = GameObject.Find("Bees Text").GetComponent<Text>();
-
-        // Set text field texts
-        foodText.text = "Food: " + food;
-        honeyText.text = "Honey: " + honey;
-        hivesText.text = "Hives: " + hives;
-        beesText.text = "Bees: " + bees;
-
         //foodTxt.changeTxt("Food: " + food);
         //honeyTxt.changeTxt("Honey: " + honey);
         //hivesTxt.changeTxt("Hives: " + hives);
@@ -53,28 +37,6 @@ public class GMTestScript : MonoBehaviour
     void Update()
     {
         // Only update if something has changed
-
-
-        if(food != GameManager.instance.getPlayerFood()){
-            food = GameManager.instance.getPlayerFood();
-            //foodTxt.changeTxt("Food: " + food);
-            foodText.text = "Food: " + food;
-        }
-        if(honey != GameManager.instance.getPlayerHoney()){
-            honey = GameManager.instance.getPlayerHoney();
-            //honeyTxt.changeTxt("Honey: " + honey);
-            honeyText.text = "Honey: " + honey;
-        }
-        if(hives != GameManager.instance.getPlayerHives()){
-            hives = GameManager.instance.getPlayerHives();
-            //hivesTxt.changeTxt("Hives: " + hives);
-            hivesText.text = "Hives: " + hives;
-        }
-        if(bees != GameManager.instance.getPlayerBees()){
-            bees = GameManager.instance.getPlayerBees();
-            //beesTxt.changeTxt("Bees: " + bees);
-            beesText.text = "Bees: " + bees;
-        }
 
     }
 
@@ -105,6 +67,9 @@ public class GMTestScript : MonoBehaviour
     }
     public void testincPlayerHoney(int n){
             GameManager.instance.incPlayerHoney(n);
+    }
+    public void testchangeHoneyPercent(float f){
+            GameManager.instance.changeHoneyPercent(f);
     }
 
 

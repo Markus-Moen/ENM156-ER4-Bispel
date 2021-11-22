@@ -6,7 +6,8 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
-    public int ownedHoney = 10;         // The players owned honey. This is just a placeholder value.
+	public GameObject shop;
+    public int ownedHoney;		        // The players owned honey. This is just a placeholder value.
     public TMP_Text honeyText;          // Dispayed honey in-game.
     public ShopItemSO[] shopItemsSO;    // Array of all scriptable objects.
     public ShopTemplate[] shopPanels;   // Array of the used shop panels.
@@ -16,6 +17,7 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    	ownedHoney = GameManager.instance.getPlayerHoney();
         // Only activates the shop panels that are being used  
         // since there can be more scriptable objects than panels.
         for (int i = 0; i < shopItemsSO.Length; i++)
@@ -62,12 +64,15 @@ public class ShopManager : MonoBehaviour
          if (ownedHoney >= shopItemsSO[btn].baseCost)
         {
             ownedHoney = ownedHoney - shopItemsSO[btn].baseCost;
+            GameManager.instance.decPlayerHoney(shopItemsSO[btn].baseCost);
+
             honeyText.text = "Honey: " + ownedHoney.ToString();
             shopItemsSO[btn].owned += 1;
             shopPanels[btn].quantityTxt.text = "Owned: " + shopItemsSO[btn].owned.ToString();
             CheckPurchaseable();
         }
     }
-
-
+    public void closeShop(){
+    	shop.SetActive(false);
+    }
 }
