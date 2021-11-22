@@ -26,11 +26,21 @@ public class GameManager : MonoBehaviour
     private int numOfBees = startBees;
     private int numOfHives = startHives;
 
+    private int beeKillingRate = 10;   // how many bees die per time unit when starving / parasites
+
     // Text fields
     Text foodText;
     Text honeyText;
     Text hivesText;
     Text beesText;
+
+
+    private float timer = 0;
+    private float delay = 10;   // the time (seconds) before the timer event and timer resets 
+
+    private bool beeDeathFood = false;      // true if bees start to die because no food
+    private bool beeDeathTermites = false;  // true if bees start to die because of termites
+    
 
 
     // GameManager singleton
@@ -75,7 +85,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(beeDeathFood || beeDeathTermites){
+            timer += Time.deltaTime;
+            if(timer >= delay){
+                // kill a number of bees
+                decPlayerBees(beeKillingRate);
+                // reset timer
+                timer = 0;
+            }
+        }
+             
     }
 
 
@@ -100,6 +119,17 @@ public class GameManager : MonoBehaviour
     }
 
 
+    // Start killing bees
+    private void startKill(){
+        beeDeathFood = true;
+    }
+
+    // stop killing bees
+    private void stopKill(){
+        beeDeathFood = false;
+    }
+
+
     //-----------------------------------------------------------------------------------------------//
 
 
@@ -109,7 +139,7 @@ public class GameManager : MonoBehaviour
     public int incPlayerHoney(int n){
         numOfHoney += n;
         int leftovers = 0;
-
+        // cannot have more than the max amount of honey
         if(numOfHoney > maxHoney){
             leftovers = numOfHoney - maxHoney;
             numOfHoney = maxHoney;
@@ -123,6 +153,7 @@ public class GameManager : MonoBehaviour
     public int incPlayerBees(int n){
         numOfBees += n;
         int leftovers = 0;
+        // cannot have more than the max amount of bees
         if(numOfBees > maxBees){
             leftovers = numOfBees - maxBees;
             numOfBees = maxBees;
@@ -136,9 +167,14 @@ public class GameManager : MonoBehaviour
     public int incPlayerFood(int n){
         numOfFood += n;
         int leftovers = 0;
+        // cannot have more than the max amount of food
         if(numOfFood > maxFood){
             leftovers = numOfFood - maxFood;
             numOfFood = maxFood;
+        }
+        // No bees die if there is food
+        if(numOfFood > 0 && !beeDeathTermites){             // only stop the killing if there is food an there are no termites
+            stopKill();
         }
         updateFoodTxt();
         return leftovers;
@@ -149,6 +185,7 @@ public class GameManager : MonoBehaviour
     public int incPlayerHives(int n){
         numOfHives += n;
         int leftovers = 0;
+        // cannot have more than the max amount of hives
         if(numOfHives > maxHives){
             leftovers = numOfHives - maxHives;
             numOfHives = maxHives;
@@ -201,6 +238,7 @@ public class GameManager : MonoBehaviour
         if(numOfFood <= 0){
             numOfFood = 0;
             updateFoodTxt();
+            startKill();        // no food => bees start to die
             return false;
         }
         updateFoodTxt();
@@ -256,6 +294,10 @@ public class GameManager : MonoBehaviour
 
     public void setMaxHoney(int n){
         maxHoney = n;
+    }
+
+    public void setDelay(float n){
+        delay = n;
     }
 
     

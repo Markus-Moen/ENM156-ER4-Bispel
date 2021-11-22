@@ -60,7 +60,8 @@ public class GMTestScript : MonoBehaviour
             GameManager.instance.incPlayerBees(n);
     }
     public void testincPlayerFood(int n){
-            GameManager.instance.incPlayerFood(n);
+            int m = GameManager.instance.incPlayerFood(n);
+            Debug.Log(m);
     }
     public void testincPlayerHives(int n){
             GameManager.instance.incPlayerHives(n);
@@ -70,6 +71,9 @@ public class GMTestScript : MonoBehaviour
     }
     public void testchangeHoneyPercent(float f){
             GameManager.instance.changeHoneyPercent(f);
+    }
+    public void testSetFood(){
+            GameManager.instance.setMaxFood(200);
     }
 
 
