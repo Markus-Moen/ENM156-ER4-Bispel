@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour
     private const int startHives = 1;
     private const int startHoney = 100;
 
-    // Constants - max values
+    // max values
     private const int max = 10000;
-    private const int maxHoney = max;
-    private const int maxFood = max;
-    private const int maxBees = max;
-    private const int maxHives = max;
+    private const int maxBeesPerHive = max;
+    private int maxHives = max;
+    private int maxBees = maxBeesPerHive*startHives;
+    private int maxHoney = max;
+    private int maxFood = max;
 
     // Variables
     private int numOfHoney = startHoney;
@@ -64,10 +65,10 @@ public class GameManager : MonoBehaviour
         beesText = GameObject.Find("Bees Text").GetComponent<Text>();
 
         // Set text field texts
-        foodText.text = "Food: " + numOfFood;
-        honeyText.text = "Honey: " + numOfHoney;
+        foodText.text = "Food: " + numOfFood + " / " + maxFood;
+        honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
         hivesText.text = "Hives: " + numOfHives;
-        beesText.text = "Bees: " + numOfBees;
+        beesText.text = "Bees: " + numOfBees + " / " + maxBees;
         
     }
 
@@ -82,16 +83,16 @@ public class GameManager : MonoBehaviour
 
 
     private void updateFoodTxt(){
-        foodText.text = "Food: " + numOfFood;
+        foodText.text = "Food: " + numOfFood + " / " + maxFood;
     }
     private void updateHoneyTxt(){
-        honeyText.text = "Honey: " + numOfHoney;
+        honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
     }
     private void updateHivesTxt(){
         hivesText.text = "Hives: " + numOfHives;
     }
     private void updateBeesTxt(){
-        beesText.text = "Bees: " + numOfBees;
+        beesText.text = "Bees: " + numOfBees + " / " + maxBees;
     }
 
     private void gameOver(){
@@ -152,6 +153,7 @@ public class GameManager : MonoBehaviour
             leftovers = numOfHives - maxHives;
             numOfHives = maxHives;
         }
+        maxBees = maxBeesPerHive * numOfHives;  // the max number of bees increases with every added hive
         updateHivesTxt();
         return leftovers;
     }
@@ -247,4 +249,14 @@ public class GameManager : MonoBehaviour
     public int getPlayerFood(){
         return numOfFood;
     }
+
+    public void setMaxFood(int n){
+        maxFood = n;
+    }
+
+    public void setMaxHoney(int n){
+        maxHoney = n;
+    }
+
+    
 }
