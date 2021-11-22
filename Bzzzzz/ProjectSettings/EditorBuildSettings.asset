@@ -4,32 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-<<<<<<< HEAD
-  - enabled: 0
-    path: Assets/Scenes/Shop.unity
-    guid: d93ae47d8f0e9474f8fa617a0114ad5d
-  - enabled: 0
-    path: Assets/Scenes/GameView.unity
-    guid: 5a5a71b59ed27224391c0c9e42f93c60
-=======
-  - enabled: 1
-    path: Assets/Scenes/GameView.unity
-    guid: 5a5a71b59ed27224391c0c9e42f93c60
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: bebcef8be0aab59428dbfc57f0460de3
-  - enabled: 1
-    path: Assets/Scenes/Shop.unity
-    guid: d93ae47d8f0e9474f8fa617a0114ad5d
-  - enabled: 1
-    path: Assets/Scenes/ChanceCards/ChanceCard#1.unity
-    guid: c77c701c048a1e84785342498d87b798
-  - enabled: 1
-    path: Assets/Scenes/ChanceCards/Chancecard#2.unity
-    guid: 7dbfb93d654a0434f910657aff9c8c30
->>>>>>> main
+  m_Scenes: []
   m_configObjects: {}

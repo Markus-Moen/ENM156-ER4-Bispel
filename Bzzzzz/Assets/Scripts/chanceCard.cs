@@ -20,9 +20,9 @@ public class chanceCard : MonoBehaviour
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(0, 2); //currently only randomizes between cards that we have created scenes for
+        int card = Random.Range(1, 4); //currently only randomizes between cards that we have created scenes for
         
-        //for debugging purpuces
+        //for debugging purposes
         Debug.Log("card " + card);
 
         //loads new scene with chosen card
@@ -34,17 +34,67 @@ public class chanceCard : MonoBehaviour
     {
         switch (card)
         {
-            case 0:
+            case 1:
                 //todo: add concequences eg +honey
 
                 //load scene with chance card 1
                 SceneManager.LoadScene("ChanceCard#1");
                 break;
-            case 1:
+            case 2:
                 //todo: add concequences eg +honey
 
                 //load scene with chance card 2
                 SceneManager.LoadScene("ChanceCard#2");
+                break;
+
+            case 3:
+                //todo: add concequences eg +honey
+
+                //load scene with chance card 2
+                SceneManager.LoadScene("ChanceCard#3");
+                break;
+
+            case 4:
+                //todo: add concequences eg +honey
+
+                //load scene with chance card 2
+                SceneManager.LoadScene("ChanceCard#4");
+                break;
+            case 5:
+                //todo: add concequences eg +honey
+
+                //load scene with chance card 2
+                SceneManager.LoadScene("ChanceCard#5");
+                break;
+            case 6:
+                //todo: add concequences eg +honey
+
+                //load scene with chance card 2
+                SceneManager.LoadScene("ChanceCard#6");
+                break;
+            case 7:
+                //todo: add concequences eg +honey
+
+                //load scene with chance card 2
+                SceneManager.LoadScene("ChanceCard#7");
+                break;
+            case 8:
+                //todo: add concequences eg +honey
+
+                //load scene with chance card 2
+                SceneManager.LoadScene("ChanceCard#8");
+                break;
+            case 9:
+                //todo: add concequences eg +honey
+
+                //load scene with chance card 2
+                SceneManager.LoadScene("ChanceCard#9");
+                break;
+            case 10:
+                //todo: add concequences eg +honey
+
+                //load scene with chance card 2
+                SceneManager.LoadScene("ChanceCard#10");
                 break;
         }
     }
