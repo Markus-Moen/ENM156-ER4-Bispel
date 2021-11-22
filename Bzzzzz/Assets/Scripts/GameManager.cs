@@ -120,12 +120,12 @@ public class GameManager : MonoBehaviour
 
 
     // Start killing bees
-    private void startKill(){
+    private void startKillFood(){
         beeDeathFood = true;
     }
 
     // stop killing bees
-    private void stopKill(){
+    private void stopKillFood(){
         beeDeathFood = false;
     }
 
@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
         }
         // No bees die if there is food
         if(numOfFood > 0 && !beeDeathTermites){             // only stop the killing if there is food an there are no termites
-            stopKill();
+            stopKillFood();
         }
         updateFoodTxt();
         return leftovers;
@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
         if(numOfFood <= 0){
             numOfFood = 0;
             updateFoodTxt();
-            startKill();        // no food => bees start to die
+            startKillFood();        // no food => bees start to die
             return false;
         }
         updateFoodTxt();
