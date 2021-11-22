@@ -5,21 +5,18 @@ using UnityEngine;
 public class BeeToBe : MonoBehaviour
 {
     private Rigidbody2D bee;
-    private int rightEdgeX = 5; //The edges of the screen. Temporary values.
-    private int leftEdgeX = -5;
+    private int rightEdgeX = 3; //The edges of the screen.
+    private int leftEdgeX = -3;
     private int topEdgeY = 5;
     private int downEdgeY = -5;
     private float width;
     private float height;
     private bool buzzing = false; //If buzzing, the bee will move in a circle around current position
     private float buzzRounds = 0;
-    private float rotateSpeed = 2f;
-    private float buzzRadius = 1f;
-    private Vector2 beeSpeed = new Vector2(2f, 1f);
-    private float angle;
-    private Vector2 center;
+    private Vector2 beeSpeed = new Vector2(1f, 1f);
     private Vector2 currentPos;
-    private int updates = 0;
+    private float updates = 0;
+    private float maxBuzzSpeed = 1f;
     
     // Start is called before the first frame update
     void Start()
@@ -29,69 +26,66 @@ public class BeeToBe : MonoBehaviour
         
         var renderer = bee.GetComponent<Renderer>(); //Get the dimensions of the object.
         width = renderer.bounds.size.x;
-        height = renderer.bounds.size.y;        
+        height = renderer.bounds.size.y; 
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        //Randomly change directions with low probability to "buzz"
-        if(!buzzing || 5001 <= buzzRounds) {
-            buzzRounds = Random.Range(1, 5001); //Number between 1-5000.
-            if(beeSpeed[1] < 0)
-                center = new Vector2(bee.position[0], bee.position[1] - buzzRadius); //Choose where the circle to buzz is.
-            else
-                center = new Vector2(bee.position[0], bee.position[1] + buzzRadius); //Choose direction to buzz. These two may be changed, little jumpy now.
-            if(beeSpeed[0] < 0)
-                rotateSpeed = -rotateSpeed;
-            else
-                rotateSpeed = Mathf.Abs(rotateSpeed);
-        }
-        if(buzzRounds <= 10) { //probability to buzz 10/5000
-            if(bee.velocity[0] != 0) {                
-                beeSpeed = bee.velocity; //Save to restart.
-                currentPos = bee.position;
-            }
-            bee.velocity = new Vector2(0f, 0f);
-            buzzing = true;
-            //Turn in a circle
-            angle += rotateSpeed * Time.deltaTime;
-            var offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * buzzRadius;
-            var newPosition = center + offset;                          
+    {
+        
+      if(!buzzing || 100000 <= buzzRounds) {
+          buzzRounds = Random.Range(1, 100001); //Random 1-100 000 (integer)
+      }      
+      if(buzzRounds <= 500) {
+        Debug.Log("Buzzing");
+        if(updates == 0) {
+            float xSpeed = Random.Range(-maxBuzzSpeed, maxBuzzSpeed); //-maxBuzzSpeed <= speed <= maxBuzzSpeed (float)
+            float ySpeed = Random.Range(-maxBuzzSpeed, maxBuzzSpeed);
             
-            //Check so that new position is not outside of screen.
-            if(newPosition[0] <= leftEdgeX + width/2)
-                bee.position = new Vector2(leftEdgeX + width/2, newPosition[1]);
-            else if(rightEdgeX - width/2 <= newPosition[0])
-                bee.position = new Vector2(rightEdgeX - width/2, newPosition[1]);
-            else if(newPosition[1] <= downEdgeY + height/2)
-                bee.position = new Vector2(newPosition[0], downEdgeY + height/2);
-            else if(topEdgeY - height/2 <= newPosition[1])
-                bee.position = new Vector2(newPosition[0], topEdgeY - height/2);
-            else
-                bee.position = newPosition; 
+            //Set speed if close to edge
+            if(bee.position.x <= leftEdgeX + width)
+                xSpeed = maxBuzzSpeed;
+            else if(rightEdgeX - width <= bee.position.x)
+                xSpeed = -maxBuzzSpeed;
+            else if(bee.position.y <= downEdgeY + height)
+                ySpeed = maxBuzzSpeed;
+            else if(topEdgeY - height <= bee.position.y)
+                ySpeed = -maxBuzzSpeed;
             
-            updates += 1;
-            if(updates >= 350){ //One circle
-                buzzing = false;
-                buzzRounds = 4000; //Go straight a little after a circle.
-                updates = 0;
-            }
-        }
-        else {    
-            buzzing = false;
-            bee.velocity = beeSpeed;
-            //Check if you do hit edge.
-            if(bee.position.x <= leftEdgeX + width/2 || rightEdgeX - width/2 <= bee.position.x) {              
-                bee.velocity = new Vector2(-bee.velocity[0], bee.velocity[1]);
+            //Check if new direction x-axis, if so flip the bee.
+            if(Mathf.Sign(bee.velocity.x) != Mathf.Sign(xSpeed)) {
                 var sprite = bee.GetComponent<SpriteRenderer>();
                 sprite.flipX = !sprite.flipX;
-            }
-            if(bee.position.y <= downEdgeY + height/2 || topEdgeY - height/2 <= bee.position.y)
-                bee.velocity = new Vector2(bee.velocity[0], -bee.velocity[1]);
-            buzzRounds += 1;
-            //Change saved velocity if direction changed at an edge.
-            beeSpeed = bee.velocity;
+            }                          
+            bee.velocity = new Vector2(xSpeed, ySpeed);
         }
+        else { //Go in the same direction a little while
+            if(updates >= 100)
+                updates = 0; //Change direction
+            else
+                updates = updates + 0.01f;
+        }
+        buzzRounds--;
+        if(buzzRounds == 0) { //Stop buzzing?
+            buzzing = false;
+            buzzRounds = 5000; //Go straight for a bit
+        }           
+      }
+      else {    
+            buzzRounds = buzzRounds + 0.1f;
+            bee.velocity = beeSpeed; //Change to inital speed in current direction
+        }
+    
+    //Turn at edges and flip picture if necessary.
+    if(bee.position.x <= leftEdgeX + width/2 || rightEdgeX - width/2 <= bee.position.x) {              
+        bee.velocity = new Vector2(-bee.velocity[0], bee.velocity[1]);
+        var sprite = bee.GetComponent<SpriteRenderer>();
+        sprite.flipX = !sprite.flipX;
+    }
+    if(bee.position.y <= downEdgeY + height/2 || topEdgeY - height/2 <= bee.position.y)
+        bee.velocity = new Vector2(bee.velocity[0], -bee.velocity[1]);
+    
+    //Change saved velocity if direction changed at an edge.
+    beeSpeed = bee.velocity;     
     }
 }
