@@ -7,7 +7,6 @@ using TMPro;
 public class ShopManager : MonoBehaviour
 {
 	public GameObject shop;
-    public int ownedHoney;		        // The players owned honey. This is just a placeholder value.
     public TMP_Text honeyText;          // Dispayed honey in-game.
     public ShopItemSO[] shopItemsSO;    // Array of all scriptable objects.
     public ShopTemplate[] shopPanels;   // Array of the used shop panels.
@@ -17,12 +16,11 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    	ownedHoney = GameManager.instance.getPlayerHoney();
         // Only activates the shop panels that are being used  
         // since there can be more scriptable objects than panels.
         for (int i = 0; i < shopItemsSO.Length; i++)
             shopPanelsGO[i].SetActive(true);        
-        honeyText.text = "Honey: " + ownedHoney.ToString(); 
+        honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney().ToString(); 
         LoadItems();
         CheckPurchaseable();
     }
@@ -30,6 +28,9 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        shopPanels[0].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerBees();
+        shopPanels[1].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerFood();
+        //LoadItems();
         //Currently not used.  
     }
 
@@ -42,6 +43,7 @@ public class ShopManager : MonoBehaviour
             shopPanels[i].costTxt.text = "Price: " + shopItemsSO[i].baseCost.ToString();
             shopPanels[i].quantityTxt.text = "Owned: " + shopItemsSO[i].owned.ToString();
         }
+        
     }
 
     //Updates whether wach button should be enabled or not. 
@@ -49,30 +51,57 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            if (ownedHoney >= shopItemsSO[i].baseCost)
+            if (GameManager.instance.getPlayerHoney() >= shopItemsSO[i].baseCost)
                 myPurchaseBtns[i].interactable = true;
             else
                 myPurchaseBtns[i].interactable = false;
+            honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney().ToString();
+
         }
     }
 
     // Checks if the player's current honey is enough to buy an item. 
     // It it is, the player's owned honey is updated aswell as the 
     // number of owned quantity of the purchased item. 
-    public void buyItem(int btn)
+   /* public void buyItem(int btn)
     {
          if (ownedHoney >= shopItemsSO[btn].baseCost)
         {
             ownedHoney = ownedHoney - shopItemsSO[btn].baseCost;
             GameManager.instance.decPlayerHoney(shopItemsSO[btn].baseCost);
-
-            honeyText.text = "Honey: " + ownedHoney.ToString();
             shopItemsSO[btn].owned += 1;
             shopPanels[btn].quantityTxt.text = "Owned: " + shopItemsSO[btn].owned.ToString();
             CheckPurchaseable();
         }
     }
+   */
     public void closeShop(){
     	shop.SetActive(false);
+    }
+    public void openShop()
+    {
+        shop.SetActive(true);
+        honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney();
+    }
+
+    public void buyBee()
+    {
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[0].baseCost)
+        {
+            GameManager.instance.incPlayerBees(1);
+            GameManager.instance.decPlayerHoney(shopItemsSO[0].baseCost);
+            shopItemsSO[0].owned = GameManager.instance.getPlayerBees();    
+            CheckPurchaseable();
+        }
+    }
+    public void buyFood()
+    {
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[1].baseCost)
+        {
+            GameManager.instance.incPlayerFood(1);
+            GameManager.instance.decPlayerHoney(shopItemsSO[1].baseCost);
+            shopItemsSO[1].owned = GameManager.instance.getPlayerFood();
+            CheckPurchaseable();
+        }
     }
 }
