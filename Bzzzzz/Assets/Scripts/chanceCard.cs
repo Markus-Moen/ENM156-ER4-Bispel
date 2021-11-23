@@ -12,6 +12,7 @@ public class chanceCard : MonoBehaviour
     //public SpriteRenderer chancecard;
 
     public GameObject[] cards;
+    public GameObject hive;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class chanceCard : MonoBehaviour
 
         
         //for debugging purposes
-        Debug.Log("card " + card);
+        //Debug.Log("card " + card);
 
         //loads new scene with chosen card
          CardManager(card);
@@ -40,60 +41,34 @@ public class chanceCard : MonoBehaviour
         switch (card)
         {
             case 0:
-                GameManager.instance.changeBeePercent(1.1f);
+                GameManager.instance.changeBeePercent(1.1f); // 10% More Bees
                 break;
             case 1:
-                
+                GameManager.instance.changeBeePercent(1.5f); // 50% More bees
                 break;
-
             case 3:
-                //todo: add concequences eg +honey
-
-                //load scene with chance card 2
-                SceneManager.LoadScene("ChanceCard#3");
+                // Increase honey production by 10%
                 break;
-
             case 4:
-                //todo: add concequences eg +honey
-
-                //load scene with chance card 2
-                SceneManager.LoadScene("ChanceCard#4");
+               // +1 Flower
                 break;
             case 5:
-                //todo: add concequences eg +honey
-
-                //load scene with chance card 2
-                SceneManager.LoadScene("ChanceCard#5");
+               //  20 % honeyproduction increase    
                 break;
             case 6:
-                //todo: add concequences eg +honey
-
-                //load scene with chance card 2
-                SceneManager.LoadScene("ChanceCard#6");
+                GameManager.instance.changeHoneyPercent(1.25f); // 25% More Honey
                 break;
             case 7:
-                //todo: add concequences eg +honey
-
-                //load scene with chance card 2
-                SceneManager.LoadScene("ChanceCard#7");
+                GameManager.instance.setTermites(true);     // Termites now set to true
                 break;
             case 8:
-                //todo: add concequences eg +honey
-
-                //load scene with chance card 2
-                SceneManager.LoadScene("ChanceCard#8");
+                GameManager.instance.changeBeePercent(0.75f);   // 25% of bees die
                 break;
             case 9:
-                //todo: add concequences eg +honey
-
-                //load scene with chance card 2
-                SceneManager.LoadScene("ChanceCard#9");
+                // For one minute honeyproduction reduced by 90%
                 break;
             case 10:
-                //todo: add concequences eg +honey
-
-                //load scene with chance card 2
-                SceneManager.LoadScene("ChanceCard#10");
+                // +2 Flowers
                 break;
         }
     }

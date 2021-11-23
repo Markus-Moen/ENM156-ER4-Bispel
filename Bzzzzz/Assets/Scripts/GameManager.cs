@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
     private int maxFood = max;
 
     // Variables
-    private  static int numOfHoney = startHoney;
+    private int numOfHoney = startHoney;
     private int numOfFood = startFood;
     private int numOfBees = startBees;
     private int numOfHives = startHives;
-
+    private float beeProductivity = 1f;     // hov much honey one bee produce per time unit
     private float beeKillingRate = 0.95f;   // how many bees die per time unit when starving / parasites
 
     // Text fields
@@ -282,6 +282,11 @@ public class GameManager : MonoBehaviour
         // TODO if bees = 0
     }
 
+
+    public void setTermites(bool b)
+    {
+        beeDeathTermites = b;
+    }
 
     //-----------------------------------------------------------------------------------------------//
 
