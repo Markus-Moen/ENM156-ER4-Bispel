@@ -101,6 +101,14 @@ public class GameManager : MonoBehaviour
     //-----------------------------------------------------------------------------------------------//
 
 
+
+    public void reload(){
+        foodText.text = "Food: " + numOfFood + " / " + maxFood;
+        honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
+        hivesText.text = "Hives: " + numOfHives;
+        beesText.text = "Bees: " + numOfBees + " / " + maxBees;
+    }
+
     private void updateFoodTxt(){
         foodText.text = "Food: " + numOfFood + " / " + maxFood;
     }
@@ -132,12 +140,6 @@ public class GameManager : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------//
 
-    public void reload(){
-        foodText.text = "Food: " + numOfFood + " / " + maxFood;
-        honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
-        hivesText.text = "Hives: " + numOfHives;
-        beesText.text = "Bees: " + numOfBees + " / " + maxBees;
-    }
 
     // Adds n to the players stored honey
     // and returns any leftovers (if the max limit is hit)
