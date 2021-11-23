@@ -11,6 +11,8 @@ public class chanceCard : MonoBehaviour
 
     //public SpriteRenderer chancecard;
 
+    public GameObject shop;
+
     void Start()
     {
       
@@ -103,7 +105,8 @@ public class chanceCard : MonoBehaviour
     public void ReturnToStore()
     {
         Debug.Log("in return to store");
-        SceneManager.LoadScene("Shop");
+        SceneManager.LoadScene("GameView");
+        GameManager.instance.reload();
     }
 
 }
