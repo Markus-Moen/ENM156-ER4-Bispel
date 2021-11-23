@@ -402,7 +402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fffe8c2854f3d447962cb0e5880592c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardTest2: {fileID: 961496882}
+  cards:
+  - {fileID: 961496882}
 --- !u!114 &232159068 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
@@ -844,6 +845,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429007169}
   m_CullTransparentMesh: 1
+--- !u!1 &430054853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 430054854}
+  m_Layer: 0
+  m_Name: ChanceCards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &430054854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430054853}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 961496886}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &580257621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,7 +1249,7 @@ MonoBehaviour:
       - m_Target: {fileID: 232159067}
         m_TargetAssemblyTypeName: chanceCard, Assembly-CSharp
         m_MethodName: ReturnToStore
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1705,7 +1737,7 @@ GameObject:
   - component: {fileID: 961496883}
   - component: {fileID: 961496887}
   m_Layer: 5
-  m_Name: ChanceCardTest
+  m_Name: ChanceCard#1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1779,14 +1811,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961496882}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 580257622}
   - {fileID: 769037155}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 430054854}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1805,7 +1837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fffe8c2854f3d447962cb0e5880592c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardTest2: {fileID: 580257621}
+  cards: []
 --- !u!1 &1048078022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2629,7 +2661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fffe8c2854f3d447962cb0e5880592c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardTest2: {fileID: 0}
+  cards: []
 --- !u!1 &2053617491
 GameObject:
   m_ObjectHideFlags: 0
