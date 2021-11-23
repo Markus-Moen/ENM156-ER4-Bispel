@@ -42,6 +42,7 @@ public class chanceCard : MonoBehaviour
 
                 //load scene with chance card 1
                 cards[card].SetActive(true);
+                GameManager.instance.changeBeePercent(1.1f);
                 //SceneManager.LoadScene("ChanceCard#1");
                 break;
             case 2:
