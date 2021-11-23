@@ -1,0 +1,26 @@
+<annotation>
+	<folder>s3_imgs</folder>
+	<filename>ID_0_2021-08-04_13-06-08.jpeg</filename>
+	<path>C:\Users\eemrapt\Desktop\s3_imgs\ID_0_2021-08-04_13-06-08.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>590</width>
+		<height>460</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>pollen</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>442</xmin>
+			<ymin>155</ymin>
+			<xmax>491</xmax>
+			<ymax>216</ymax>
+		</bndbox>
+	</object>
+</annotation>

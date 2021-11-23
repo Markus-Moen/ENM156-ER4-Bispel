@@ -1,0 +1,8 @@
+QCard1:
+2. Worker Bee
+
+QCard2:
+False. Bees live longer during the winter.
+
+QCard3:
+1. Worker bees are shorter and more slender.

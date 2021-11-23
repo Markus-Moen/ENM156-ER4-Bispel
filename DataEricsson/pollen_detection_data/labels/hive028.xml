@@ -1,0 +1,26 @@
+<annotation>
+	<folder>our_images</folder>
+	<filename>hive028.jpg</filename>
+	<path>C:\Users\eemrapt\Desktop\our_images\hive028.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>590</width>
+		<height>460</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>no_pollen</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>430</xmin>
+			<ymin>200</ymin>
+			<xmax>497</xmax>
+			<ymax>300</ymax>
+		</bndbox>
+	</object>
+</annotation>
