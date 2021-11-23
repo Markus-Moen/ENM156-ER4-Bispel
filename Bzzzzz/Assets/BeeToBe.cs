@@ -82,8 +82,10 @@ public class BeeToBe : MonoBehaviour
         var sprite = bee.GetComponent<SpriteRenderer>();
         sprite.flipX = !sprite.flipX;
     }
-    if(bee.position.y <= downEdgeY + height/2 || topEdgeY - height/2 <= bee.position.y)
-        bee.velocity = new Vector2(bee.velocity[0], -bee.velocity[1]);
+    if(bee.position.y <= downEdgeY + height)
+        bee.velocity = new Vector2(bee.velocity[0], Mathf.Abs(bee.velocity[1]));
+    else if(topEdgeY - height <= bee.position.y)
+        bee.velocity = new Vector2(bee.velocity[0], -Mathf.Abs(bee.velocity[1]));
     
     //Change saved velocity if direction changed at an edge.
     beeSpeed = bee.velocity;     
