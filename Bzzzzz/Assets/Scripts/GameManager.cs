@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     private int numOfBees = startBees;
     private int numOfHives = startHives;
 
-    private int beeKillingRate = 10;   // how many bees die per time unit when starving / parasites
+    private float beeKillingRate = 0.95f;   // how many bees die per time unit when starving / parasites
 
     // Text fields
     Text foodText;
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             if(timer >= delay){
                 // kill a number of bees
-                decPlayerBees(beeKillingRate);
+                changeBeePercent(beeKillingRate);
                 // reset timer
                 timer = 0;
             }
@@ -266,6 +266,14 @@ public class GameManager : MonoBehaviour
         updateHoneyTxt();      
     }
 
+    // multiplies numOfHoney by the argument f
+    // effectively changing the amount of honey by a percentage
+    public void changeBeePercent(float f){
+        numOfBees = (int) Mathf.Floor(numOfBees*f);  
+        updateBeesTxt();
+        // TODO if bees = 0
+    }
+
 
     //-----------------------------------------------------------------------------------------------//
 
@@ -296,8 +304,8 @@ public class GameManager : MonoBehaviour
         maxHoney = n;
     }
 
-    public void setDelay(float n){
-        delay = n;
+    public void setDelay(float f){
+        delay = f;
     }
 
     
