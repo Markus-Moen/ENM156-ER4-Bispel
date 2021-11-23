@@ -22,13 +22,13 @@ public class chanceCard : MonoBehaviour
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(0, 2); //currently only randomizes between cards that we have created scenes for
-    
+        int card = Random.Range(0, 1); //currently only randomizes between cards that we have created scenes for
+        
         //for debugging purposes
         Debug.Log("card " + card);
 
         //loads new scene with chosen card
-        CardManager(card);
+         CardManager(card);
         //cardTest2.SetActive(true);
     }
 
@@ -42,14 +42,13 @@ public class chanceCard : MonoBehaviour
 
                 //load scene with chance card 1
                 cards[card].SetActive(true);
-                GameManager.instance.changeBeePercent(1.1f);
                 //SceneManager.LoadScene("ChanceCard#1");
                 break;
-            case 1:
+            case 2:
                 //todo: add concequences eg +honey
 
                 //load scene with chance card 2
-                cards[card].SetActive(true);
+                SceneManager.LoadScene("ChanceCard#2");
                 break;
 
             case 3:
