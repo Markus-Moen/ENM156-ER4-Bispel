@@ -22,6 +22,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopItemsSO.Length; i++)
             shopPanelsGO[i].SetActive(true);        
         honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney().ToString(); 
+        shopItemsSO[3].baseCost = 20;
         LoadItems();
         CheckPurchaseable();
     }
@@ -31,6 +32,7 @@ public class ShopManager : MonoBehaviour
     {
         shopPanels[0].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerBees();
         shopPanels[1].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerFood();
+        shopPanels[3].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerHives();
         if (GameManager.instance.getPlayerFood()>= GameManager.instance.getMaxFood()){
     		myPurchaseBtns[1].interactable = false;
     	}
@@ -121,5 +123,15 @@ public class ShopManager : MonoBehaviour
             shopItemsSO[2].owned += shopItemsSO[2].owned;
             CheckPurchaseable();
         }
+    }
+    public void buyNewHive(){
+    	if (GameManager.instance.getPlayerHoney() >= shopItemsSO[3].baseCost)
+    	{
+    		GameManager.instance.decPlayerHoney(shopItemsSO[3].baseCost);
+            GameManager.instance.incPlayerHives(1);
+            shopItemsSO[3].baseCost = shopItemsSO[3].baseCost * 5;
+            shopPanels[3].costTxt.text = "Owned: " + shopItemsSO[3].baseCost.ToString();
+            CheckPurchaseable();
+    	}
     }
 }
