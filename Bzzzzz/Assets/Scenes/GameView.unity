@@ -1497,7 +1497,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 879407943}
         m_TargetAssemblyTypeName: GMTestScript, Assembly-CSharp
-        m_MethodName: testincPlayerFood
+        m_MethodName: testDecPlayerFood
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
