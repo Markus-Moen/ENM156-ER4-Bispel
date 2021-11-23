@@ -43,6 +43,7 @@ public class ShopManager : MonoBehaviour
             shopPanels[i].costTxt.text = "Price: " + shopItemsSO[i].baseCost.ToString();
             shopPanels[i].quantityTxt.text = "Owned: " + shopItemsSO[i].owned.ToString();
         }
+        shopPanels[2].quantityTxt.text = "";
         
     }
 
@@ -101,6 +102,15 @@ public class ShopManager : MonoBehaviour
             GameManager.instance.incPlayerFood(1);
             GameManager.instance.decPlayerHoney(shopItemsSO[1].baseCost);
             shopItemsSO[1].owned = GameManager.instance.getPlayerFood();
+            CheckPurchaseable();
+        }
+    }
+
+    public void buyChanceCard(){
+    if (GameManager.instance.getPlayerHoney() >= shopItemsSO[2].baseCost)
+        {
+            GameManager.instance.decPlayerHoney(shopItemsSO[2].baseCost);
+            shopItemsSO[2].owned += shopItemsSO[2].owned;
             CheckPurchaseable();
         }
     }
