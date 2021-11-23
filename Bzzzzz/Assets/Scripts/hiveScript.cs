@@ -13,11 +13,12 @@ public class hiveScript : MonoBehaviour
     //Max amount of honey per hive
     private int maxHoneyPerHive = 2000;
     //The delay until the honey is increased
-    public int delay = 5;
+    public int delay = 3;
     int beeApproximation = 0;
     int tmp = 0;
     int honeyIncrease = 0;
     int temporaryHoney = 0;
+    private int leftovers = 0;
     //I used Awake because when I gave the value to beeAmount outside Awake it did not get the right value when changed
     void Awake(){
         //beeAmount = 100;
@@ -47,9 +48,10 @@ public class hiveScript : MonoBehaviour
 
      void TaskOnClick()
     {
-        //Fill out for increasing the honey in the "bank"
-        GameManager.instance.incPlayerHoney(honeyAmount);
-        honeyAmount = 0;
+        //Moves honey to the "cellar", if the "cellar" is full, the leftovers are stored in the hive
+        leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
+        honeyAmount = leftovers;
+
     }
     //Increasing the honey in the hive
     void incHoney(){
