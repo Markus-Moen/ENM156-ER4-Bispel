@@ -130,7 +130,7 @@ public class ShopManager : MonoBehaviour
     		GameManager.instance.decPlayerHoney(shopItemsSO[3].baseCost);
             GameManager.instance.incPlayerHives(1);
             shopItemsSO[3].baseCost = shopItemsSO[3].baseCost * 5;
-            shopPanels[3].costTxt.text = "Owned: " + shopItemsSO[3].baseCost.ToString();
+            shopPanels[3].costTxt.text = "Price: " + shopItemsSO[3].baseCost.ToString();
             CheckPurchaseable();
     	}
     }
