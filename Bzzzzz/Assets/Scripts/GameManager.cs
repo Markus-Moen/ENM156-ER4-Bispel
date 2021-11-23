@@ -305,10 +305,12 @@ public class GameManager : MonoBehaviour
 
     public void setMaxFood(int n){
         maxFood = n;
+        updateFoodTxt();
     }
 
     public void setMaxHoney(int n){
         maxHoney = n;
+        updateHoneyTxt();
     }
 
     public void setDelay(float f){
