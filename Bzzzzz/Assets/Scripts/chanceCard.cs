@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class chanceCard : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject testCard;
+
+    //public SpriteRenderer chancecard;
 
     public GameObject shop;
 
@@ -27,9 +28,7 @@ public class chanceCard : MonoBehaviour
         Debug.Log("card " + card);
 
         //loads new scene with chosen card
-        //CardManager(card);
-        testCard.SetActive(true);
-        
+        CardManager(card);
     }
 
     //Handles each individual card
