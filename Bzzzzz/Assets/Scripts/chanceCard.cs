@@ -105,9 +105,7 @@ public class chanceCard : MonoBehaviour
     //returns from card scene to store, to be used with button on card scene
     public void ReturnToStore()
     {
-        Debug.Log("in return to store");
-        SceneManager.LoadScene("GameView");
-        GameManager.instance.reload();
+        cardTest2.SetActive(false);
     }
 
 }
