@@ -11,7 +11,7 @@ public class chanceCard : MonoBehaviour
 
     //public SpriteRenderer chancecard;
 
-    public GameObject shop;
+    public GameObject[] cards;
 
     void Start()
     {
@@ -22,13 +22,14 @@ public class chanceCard : MonoBehaviour
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(1, 3); //currently only randomizes between cards that we have created scenes for
+        int card = Random.Range(0, 1); //currently only randomizes between cards that we have created scenes for
         
         //for debugging purposes
         Debug.Log("card " + card);
 
         //loads new scene with chosen card
-        CardManager(card);
+         CardManager(card);
+        //cardTest2.SetActive(true);
     }
 
     //Handles each individual card
@@ -36,11 +37,12 @@ public class chanceCard : MonoBehaviour
     {
         switch (card)
         {
-            case 1:
+            case 0:
                 //todo: add concequences eg +honey
 
                 //load scene with chance card 1
-                SceneManager.LoadScene("ChanceCard#1");
+                cards[card].SetActive(true);
+                //SceneManager.LoadScene("ChanceCard#1");
                 break;
             case 2:
                 //todo: add concequences eg +honey
@@ -102,11 +104,9 @@ public class chanceCard : MonoBehaviour
     }
 
     //returns from card scene to store, to be used with button on card scene
-    public void ReturnToStore()
+    public void ReturnToStore(int card)
     {
-        Debug.Log("in return to store");
-        SceneManager.LoadScene("GameView");
-        GameManager.instance.reload();
+        cards[card].SetActive(false);
     }
 
 }

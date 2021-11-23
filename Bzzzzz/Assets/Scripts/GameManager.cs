@@ -199,6 +199,7 @@ public class GameManager : MonoBehaviour
         }
         maxBees = maxBeesPerHive * numOfHives;  // the max number of bees increases with every added hive
         updateHivesTxt();
+        updateBeesTxt();
         return leftovers;
     }
 
@@ -305,10 +306,12 @@ public class GameManager : MonoBehaviour
 
     public void setMaxFood(int n){
         maxFood = n;
+        updateFoodTxt();
     }
 
     public void setMaxHoney(int n){
         maxHoney = n;
+        updateHoneyTxt();
     }
 
     public void setDelay(float f){

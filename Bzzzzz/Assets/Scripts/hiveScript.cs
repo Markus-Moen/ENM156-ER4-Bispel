@@ -6,18 +6,21 @@ using UnityEngine.UI;
 public class hiveScript : MonoBehaviour
 {
     public Button yourButton;
-    //Timer keeps time of the time
-    private float timer = 0;
-    //Should it be public or private? It keeps track of how much honey there is in the hive
-    public int honeyAmount = 0;
-    //Max amount of honey per hive
-    private int maxHoneyPerHive = 2000;
-    //The delay until the honey is increased
-    public int delay = 5;
-    int beeApproximation = 0;
-    int tmp = 0;
-    int honeyIncrease = 0;
-    int temporaryHoney = 0;
+    private float timer = 0;                //Timer, used for increasing honey
+    //Setting increase of honey
+    int beeApproximation = 0;               //Used for setting honey increase
+    int tmp = 0;                            //Used for setting honey increase
+    int honeyIncrease = 0;                  //Dependent on # of bees
+    //Increasing the honey
+    public int delay = 3;                   //Used for increasing honey
+    public int honeyAmount = 0;             //The amount of honey in the hive
+    //Giving away honey
+    int temporaryHoney = 0;                 //Used when moving honey to the cellar
+    private int leftovers = 0;
+    //Hives
+    private int maxHoneyPerHive = 2000;     //Max amount of honey per hive
+    private int maxHoney = 0;               //Total max honey across all hives
+
     //I used Awake because when I gave the value to beeAmount outside Awake it did not get the right value when changed
     void Awake(){
         //beeAmount = 100;
@@ -47,9 +50,10 @@ public class hiveScript : MonoBehaviour
 
      void TaskOnClick()
     {
-        //Fill out for increasing the honey in the "bank"
-        GameManager.instance.incPlayerHoney(honeyAmount);
-        honeyAmount = 0;
+        //Moves honey to the "cellar", if the "cellar" is full, the leftovers are stored in the hive
+        leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
+        honeyAmount = leftovers;
+
     }
     //Increasing the honey in the hive
     void incHoney(){
@@ -70,6 +74,13 @@ public class hiveScript : MonoBehaviour
             }
         }
     }
+    //Function that sets how much honey we get per unit of time
+    void setHoneyInc(int numberOfBees){
+        honeyIncrease = numberOfBees*2;
+        beeApproximation = numberOfBees;
+        return;
+    }
+
     /*
     //The delay is set based on the number of bees (more bees => quicker honey)
     //static 
@@ -79,10 +90,4 @@ public class hiveScript : MonoBehaviour
         return;
     }
     */
-    //Function that sets how much honey we get per unit of time
-    void setHoneyInc(int numberOfBees){
-        honeyIncrease = numberOfBees*2;
-        beeApproximation = numberOfBees;
-        return;
-    }
 }
