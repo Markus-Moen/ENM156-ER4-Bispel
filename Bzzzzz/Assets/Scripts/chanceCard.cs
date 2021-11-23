@@ -11,7 +11,7 @@ public class chanceCard : MonoBehaviour
 
     //public SpriteRenderer chancecard;
 
-    public GameObject shop;
+    public GameObject cardTest2;
 
     void Start()
     {
@@ -28,7 +28,8 @@ public class chanceCard : MonoBehaviour
         Debug.Log("card " + card);
 
         //loads new scene with chosen card
-        CardManager(card);
+        // CardManager(card);
+        cardTest2.SetActive(true);
     }
 
     //Handles each individual card
