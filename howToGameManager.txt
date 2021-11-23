@@ -14,6 +14,17 @@ getPlayerHives()
 getPlayerHoney()
 
 
+- Setters:
+// changes variable
+
+// sets max possible amount of player food to n
+setMaxFood(int n)
+//sets max possible amount of player honey to n
+setMaxHoney(int n)
+// sets the time between bee deaths to f (seconds)
+setDelay(float f)
+
+
 
 
 - inc functions:
@@ -40,6 +51,7 @@ incPlayerHoney(int n)					// returns int
 // subtracts argument n from variable
 
 // subtracts n from numOfFood (lowest value possible is 0)
+// starts killing bees if numOfFood reaches 0
 // returns false if the result of the subtraction is <0
 // returns true otherwise
 decPlayerFood(int n)					// returns bool
