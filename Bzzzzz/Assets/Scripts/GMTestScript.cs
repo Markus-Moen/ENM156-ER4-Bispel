@@ -27,6 +27,7 @@ public class GMTestScript : MonoBehaviour
         hives = GameManager.instance.getPlayerHives();
         bees = GameManager.instance.getPlayerBees();
 
+
         //foodTxt.changeTxt("Food: " + food);
         //honeyTxt.changeTxt("Honey: " + honey);
         //hivesTxt.changeTxt("Hives: " + hives);
@@ -74,6 +75,12 @@ public class GMTestScript : MonoBehaviour
     }
     public void testSetFood(){
             GameManager.instance.setMaxFood(200);
+    }
+    public void testStartParasites(){
+            Parasites.instance.startParasites();
+    }
+    public void testStopParasites(){
+            Parasites.instance.stopParasites();
     }
 
 

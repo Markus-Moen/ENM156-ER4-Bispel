@@ -12,6 +12,7 @@ public class chanceCard : MonoBehaviour
     //public SpriteRenderer chancecard;
 
     public GameObject[] cards;
+    
 
     void Start()
     {
@@ -58,7 +59,7 @@ public class chanceCard : MonoBehaviour
                 GameManager.instance.changeHoneyPercent(1.25f); // 25% More Honey
                 break;
             case 7:
-                GameManager.instance.setTermites(true);     // Termites now set to true
+                Parasites.instance.startParasites();     // parasites now set to true
                 break;
             case 8:
                 GameManager.instance.changeBeePercent(0.75f);   // 25% of bees die

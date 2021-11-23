@@ -38,8 +38,10 @@ public class GameManager : MonoBehaviour
     private float timer = 0;
     private float delay = 10;   // the time (seconds) before the timer event and timer resets 
 
-    private bool beeDeathFood = false;      // true if bees start to die because no food
-    private bool beeDeathTermites = false;  // true if bees start to die because of termites
+
+    // should probably be in hiveScript
+    private bool deathByStarvation = false;      // true if bees start to die because no food
+    
     
 
 
@@ -85,7 +87,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(beeDeathFood || beeDeathTermites){
+        // start killing bees if there is no food
+        if(deathByStarvation){
             timer += Time.deltaTime;
             if(timer >= delay){
                 // kill a number of bees
@@ -101,13 +104,16 @@ public class GameManager : MonoBehaviour
     //-----------------------------------------------------------------------------------------------//
 
 
-
+    // updates all text fields
     public void reload(){
         foodText.text = "Food: " + numOfFood + " / " + maxFood;
         honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
         hivesText.text = "Hives: " + numOfHives;
         beesText.text = "Bees: " + numOfBees + " / " + maxBees;
     }
+
+
+    // updating one text field
 
     private void updateFoodTxt(){
         foodText.text = "Food: " + numOfFood + " / " + maxFood;
@@ -129,12 +135,12 @@ public class GameManager : MonoBehaviour
 
     // Start killing bees
     private void startKillFood(){
-        beeDeathFood = true;
+        deathByStarvation = true;
     }
 
     // stop killing bees
     private void stopKillFood(){
-        beeDeathFood = false;
+        deathByStarvation = false;
     }
 
 
@@ -180,7 +186,7 @@ public class GameManager : MonoBehaviour
             numOfFood = maxFood;
         }
         // No bees die if there is food
-        if(numOfFood > 0 && !beeDeathTermites){             // only stop the killing if there is food an there are no termites
+        if(numOfFood > 0){             // only stop the killing if there is food an there are no termites
             stopKillFood();
         }
         updateFoodTxt();
@@ -283,10 +289,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void setTermites(bool b)
-    {
-        beeDeathTermites = b;
-    }
+    
 
     //-----------------------------------------------------------------------------------------------//
 
@@ -309,6 +312,20 @@ public class GameManager : MonoBehaviour
         return numOfFood;
     }
 
+
+    public int getMaxFood(){
+        return maxFood;
+    }
+    
+    public int getMaxBees(){
+        return maxBees;
+    }
+
+
+
+
+    // Setters
+
     public void setMaxFood(int n){
         maxFood = n;
         updateFoodTxt();
@@ -322,12 +339,8 @@ public class GameManager : MonoBehaviour
     public void setDelay(float f){
         delay = f;
     }
-    public int getMaxFood(){
-        return maxFood;
-    }
-    public int getMaxBees(){
-        return maxBees;
-    }
+
+    
 
     
 }

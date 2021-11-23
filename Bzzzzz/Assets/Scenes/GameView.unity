@@ -1677,7 +1677,7 @@ Transform:
   - {fileID: 1371711598}
   - {fileID: 487833774}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &487833773
 GameObject:
@@ -3387,8 +3387,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 879407943}
         m_TargetAssemblyTypeName: GMTestScript, Assembly-CSharp
-        m_MethodName: testDecPlayerFood
-        m_Mode: 3
+        m_MethodName: testStopParasites
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3608,8 +3608,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 925183627}
         m_TargetAssemblyTypeName: GMTestScript, Assembly-CSharp
-        m_MethodName: testDecPlayerBees
-        m_Mode: 3
+        m_MethodName: testStartParasites
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4196,6 +4196,7 @@ MonoBehaviour:
   yourButton: {fileID: 0}
   delay: 5
   honeyAmount: 0
+  productivityApproximation: 1
 --- !u!1 &1051380172
 GameObject:
   m_ObjectHideFlags: 0
@@ -6674,7 +6675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7665373996957966797, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7665373996957966797, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6788,6 +6789,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards: []
+--- !u!1 &2003179431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003179433}
+  - component: {fileID: 2003179432}
+  m_Layer: 0
+  m_Name: Parasites
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2003179432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003179431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40850f27be8066a4caa2d097ad06f591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2003179433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003179431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.2182755, y: 0.084621355, z: -11.520021}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2053617491
 GameObject:
   m_ObjectHideFlags: 0
@@ -7474,7 +7518,7 @@ RectTransform:
   - {fileID: 1139191291}
   - {fileID: 1243202213}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
