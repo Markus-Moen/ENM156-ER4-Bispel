@@ -48,3 +48,6 @@ TagManager:
   - name: Shop
     uniqueID: 1711380159
     locked: 0
+  - name: chancecard
+    uniqueID: 4175000345
+    locked: 0
