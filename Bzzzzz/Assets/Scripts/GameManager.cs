@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private int maxFood = max;
 
     // Variables
-    private int numOfHoney = startHoney;
+    private  static int numOfHoney = startHoney;
     private int numOfFood = startFood;
     private int numOfBees = startBees;
     private int numOfHives = startHives;
@@ -132,7 +132,12 @@ public class GameManager : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------//
 
-
+    public void reload(){
+        foodText.text = "Food: " + numOfFood + " / " + maxFood;
+        honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
+        hivesText.text = "Hives: " + numOfHives;
+        beesText.text = "Bees: " + numOfBees + " / " + maxBees;
+    }
 
     // Adds n to the players stored honey
     // and returns any leftovers (if the max limit is hit)
