@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fffe8c2854f3d447962cb0e5880592c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardTest: {fileID: 0}
+  cardTest2: {fileID: 961496882}
 --- !u!114 &232159068 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
@@ -414,6 +414,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3dd821ca363db46ad75c125e9894f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &232159072 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7665373996957966797, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+  m_PrefabInstance: {fileID: 1953213127}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &244920586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,6 +1491,7 @@ GameObject:
   - component: {fileID: 961496885}
   - component: {fileID: 961496884}
   - component: {fileID: 961496883}
+  - component: {fileID: 961496887}
   m_Layer: 5
   m_Name: ChanceCardTest
   m_TagString: Untagged
@@ -1567,13 +1573,26 @@ RectTransform:
   m_Children:
   - {fileID: 580257622}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &961496887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961496882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fffe8c2854f3d447962cb0e5880592c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardTest2: {fileID: 580257621}
 --- !u!1 &1048078022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,8 +1728,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yourButton: {fileID: 0}
-  honeyAmount: 0
   delay: 5
+  honeyAmount: 0
 --- !u!1 &1124776447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,8 +2162,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1460012811}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 232159072}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2397,7 +2416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fffe8c2854f3d447962cb0e5880592c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardTest: {fileID: 961496882}
+  cardTest2: {fileID: 0}
 --- !u!1 &2045055313 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6135636524101557705, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
@@ -2415,7 +2434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fffe8c2854f3d447962cb0e5880592c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardTest: {fileID: 961496882}
+  cardTest2: {fileID: 0}
 --- !u!1 &2053617491
 GameObject:
   m_ObjectHideFlags: 0
