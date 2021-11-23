@@ -9,22 +9,27 @@ public class hiveScript : MonoBehaviour
     private float timer = 0;                //Timer, used for increasing honey
     //Setting increase of honey
     int beeApproximation = 0;               //Used for setting honey increase
-    int tmp = 0;                            //Used for setting honey increase
+    int tmpBees = 0;                            //Used for setting honey increase
     int honeyIncrease = 0;                  //Dependent on # of bees
     //Increasing the honey
     public int delay = 3;                   //Used for increasing honey
     public int honeyAmount = 0;             //The amount of honey in the hive
+    public float productivityApproximation = 1;
     //Giving away honey
     int temporaryHoney = 0;                 //Used when moving honey to the cellar
     private int leftovers = 0;
     //Hives
     private int maxHoneyPerHive = 2000;     //Max amount of honey per hive
     private int maxHoney = 0;               //Total max honey across all hives
+    private int tmpHives;
+    private int hiveApproximation = 0;
 
     //I used Awake because when I gave the value to beeAmount outside Awake it did not get the right value when changed
     void Awake(){
-        //beeAmount = 100;
-        int tmp = GameManager.instance.getPlayerBees();
+        tmpBees = GameManager.instance.getPlayerBees();
+        setHoneyInc(tmpBees);
+        tmpHives = GameManager.instance.getPlayerHives();
+        setMaxHoney(tmpHives);
     }
     // Start is called before the first frame update
     void Start()
@@ -32,18 +37,24 @@ public class hiveScript : MonoBehaviour
         yourButton = GetComponent<Button>();
         yourButton.onClick.AddListener(TaskOnClick);
         //Sets the delay based on the number of bees
-        tmp = GameManager.instance.getPlayerBees();
-        //setDelay(tmp);   
+        tmpBees = GameManager.instance.getPlayerBees();
+        setHoneyInc(tmpBees);
+        //maxHoney = maxHoneyPerHive;
+        
     }
 
     // Update is called once per frame
     void Update()
     { 
         timer += Time.deltaTime;
-        tmp = GameManager.instance.getPlayerBees();
-        if(tmp != beeApproximation){
-            //setDelay(tmp);
-            setHoneyInc(tmp);
+        tmpBees = GameManager.instance.getPlayerBees();
+        //Debug.Log("Honey amount is :" + honeyAmount.ToString());
+        if(tmpBees != beeApproximation){
+            setHoneyInc(tmpBees);
+        }
+        tmpHives = GameManager.instance.getPlayerHives();
+        if(tmpHives != hiveApproximation){
+            setMaxHoney(tmpHives);
         }
         incHoney();
     }
@@ -62,13 +73,13 @@ public class hiveScript : MonoBehaviour
             //Reset the timer
             timer = 0;
             //If the bee hive is full we return without increasing
-            if(honeyAmount>=maxHoneyPerHive){
+            if(honeyAmount>=maxHoney){
                 return;
             }
             //If the increse in honey exceeds max honey per bee hive we set the value to max
             temporaryHoney = honeyIncrease + honeyAmount;
-            if(temporaryHoney > maxHoneyPerHive){
-                honeyAmount = maxHoneyPerHive;
+            if(temporaryHoney > maxHoney){
+                honeyAmount = maxHoney;
             }else{
                 honeyAmount += honeyIncrease;
             }
@@ -76,9 +87,14 @@ public class hiveScript : MonoBehaviour
     }
     //Function that sets how much honey we get per unit of time
     public void setHoneyInc(int numberOfBees){
-        honeyIncrease = numberOfBees*2;
+        honeyIncrease = (int) productivityApproximation*numberOfBees*2;
         beeApproximation = numberOfBees;
         return;
+    }
+    //Sets the max honey in the beehives
+    void setMaxHoney(int hives){
+        maxHoney = hives * maxHoneyPerHive;
+        hiveApproximation = hives;
     }
 
     /*
