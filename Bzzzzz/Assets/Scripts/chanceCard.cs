@@ -12,7 +12,6 @@ public class chanceCard : MonoBehaviour
     //public SpriteRenderer chancecard;
 
     public GameObject[] cards;
-    public GameObject hive;
 
     void Start()
     {
@@ -23,7 +22,7 @@ public class chanceCard : MonoBehaviour
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(0, cards.Length+1); //currently only randomizes between cards that we have created scenes for
+        int card = Random.Range(0, 10); //currently only randomizes between cards that we have created scenes for
 
         
         //for debugging purposes
