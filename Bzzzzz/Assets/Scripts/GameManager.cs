@@ -307,6 +307,12 @@ public class GameManager : MonoBehaviour
     public void setDelay(float f){
         delay = f;
     }
+    public int getMaxFood(){
+        return maxFood;
+    }
+    public int getMaxBees(){
+        return maxBees;
+    }
 
     
 }

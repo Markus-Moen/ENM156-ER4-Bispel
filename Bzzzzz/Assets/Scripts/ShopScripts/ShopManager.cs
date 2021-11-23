@@ -13,6 +13,7 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopPanelsGO;   // Array used to handle which of the items in the SO-array that should be active.
     public Button[] myPurchaseBtns;     // Array of all purchase buttons.
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,13 @@ public class ShopManager : MonoBehaviour
     {
         shopPanels[0].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerBees();
         shopPanels[1].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerFood();
+        if (GameManager.instance.getPlayerFood()>= GameManager.instance.getMaxFood()){
+    		myPurchaseBtns[1].interactable = false;
+    	}
+    	if (GameManager.instance.getPlayerBees()>= GameManager.instance.getMaxBees()){
+    		myPurchaseBtns[0].interactable = false;
+        }
+        CheckPurchaseable();
         //LoadItems();
         //Currently not used.  
     }
