@@ -199,6 +199,7 @@ public class GameManager : MonoBehaviour
         }
         maxBees = maxBeesPerHive * numOfHives;  // the max number of bees increases with every added hive
         updateHivesTxt();
+        updateBeesTxt();
         return leftovers;
     }
 
