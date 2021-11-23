@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LogManager : MonoBehaviour
 {
+    public GameObject log;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,14 @@ public class LogManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void closeLog()
+    {
+        log.SetActive(false);
+    }
+    public void openLog()
+    {
+        log.SetActive(true);
     }
 }
