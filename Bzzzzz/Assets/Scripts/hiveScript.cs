@@ -49,7 +49,6 @@ public class hiveScript : MonoBehaviour
     {
         //Fill out for increasing the honey in the "bank"
         GameManager.instance.incPlayerHoney(honeyAmount);
-        GameManager.instance.incPlayerBees(beeApproximation);
         honeyAmount = 0;
     }
     //Increasing the honey in the hive
