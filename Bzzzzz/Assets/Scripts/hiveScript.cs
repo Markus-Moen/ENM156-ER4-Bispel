@@ -62,13 +62,13 @@ public class hiveScript : MonoBehaviour
             if(honeyAmount>=maxHoneyPerHive){
                 return;
             }
+            //If the increse in honey exceeds max honey per bee hive we set the value to max
             temporaryHoney = honeyIncrease + honeyAmount;
             if(temporaryHoney > maxHoneyPerHive){
                 honeyAmount = maxHoneyPerHive;
             }else{
                 honeyAmount += honeyIncrease;
             }
-            Debug.Log("The honeyAmount is: " + honeyAmount.ToString());
         }
     }
     /*
@@ -80,7 +80,7 @@ public class hiveScript : MonoBehaviour
         return;
     }
     */
-
+    //Function that sets how much honey we get per unit of time
     void setHoneyInc(int numberOfBees){
         honeyIncrease = numberOfBees*2;
         beeApproximation = numberOfBees;
