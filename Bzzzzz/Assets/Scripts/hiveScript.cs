@@ -88,7 +88,7 @@ public class hiveScript : MonoBehaviour
     }
     //Function that sets how much honey we get per unit of time
     public void setHoneyInc(int numberOfBees){
-        honeyIncrease = (int) productivityApproximation*numberOfBees*2;
+        honeyIncrease = (int) productivityApproximation*numberOfBees*2; // DOES NOT WORK! ProductivityApprox is not updated somehow!!!
         beeApproximation = numberOfBees;
         return;
     }
