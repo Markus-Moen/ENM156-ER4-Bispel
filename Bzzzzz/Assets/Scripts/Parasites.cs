@@ -13,6 +13,10 @@ public class Parasites : MonoBehaviour
     private float timer = 0;
     private float delay = 5;        // the time (seconds) before the timer event and timer resets 
 
+    private float randomEventTimer = 0;     // timer for random parasites
+    private float randomEventDelay = 60;    // every 60 seconds there is a risk of parasites
+    private int parasiteRisk = 0;           // is set to a random number. if == 1 => parasites
+
 
 
     //private static Parasites _instance;
@@ -55,6 +59,17 @@ public class Parasites : MonoBehaviour
                 timer = 0;
             }
         }
+
+        // every randomEventDelay seconds there is a 10% chance of parasites
+        //randomEventTimer += Time.deltaTime;           // uncomment to unleash hell (start the random parasites)
+        if(randomEventTimer >= randomEventDelay){
+            parasiteRisk = Random.Range(0, 10);
+            if(parasiteRisk == 1){                  // if parasiteRisk == 1, the parasites start
+                deathByParasites = true;
+            }
+        }
+
+        
     }
 
 
