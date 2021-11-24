@@ -23,7 +23,7 @@ public class chanceCard : MonoBehaviour
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(4, 5); //currently only randomizes between cards that we have created scenes for
+        int card = Random.Range(0, 9); //Add last card when it works
 
         
         //for debugging purposes
