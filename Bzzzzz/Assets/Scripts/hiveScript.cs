@@ -80,6 +80,7 @@ public class hiveScript : MonoBehaviour
             temporaryHoney = honeyIncrease + honeyAmount;
             if(temporaryHoney > maxHoney){
                 honeyAmount = maxHoney;
+                Debug.Log(productivityApproximation);
             }else{
                 honeyAmount += honeyIncrease;
             }

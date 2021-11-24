@@ -23,7 +23,7 @@ public class chanceCard : MonoBehaviour
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(0, 10); //currently only randomizes between cards that we have created scenes for
+        int card = Random.Range(4, 5); //currently only randomizes between cards that we have created scenes for
 
         
         //for debugging purposes
@@ -46,34 +46,42 @@ public class chanceCard : MonoBehaviour
             case 1:
                 GameManager.instance.changeBeePercent(1.5f); // 50% More bees
                 break;
-            case 3:
+            case 2:
+                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 1.1f;
+                Debug.Log(GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation);
                 // Increase honey production by 10%
                 break;
-            case 4:
+            case 3:
                // +1 Flower
                 break;
-            case 5:
-               //  20 % honeyproduction increase    
+            case 4:
+                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 1.2f;
+                Debug.Log(GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation);
+                //  20 % honeyproduction increase    
                 break;
-            case 6:
+            case 5:
                 GameManager.instance.changeHoneyPercent(1.25f); // 25% More Honey
                 break;
-            case 7:
+            case 6:
                 Parasites.instance.startParasites();     // parasites now set to true
                 break;
-            case 8:
+            case 7:
                 GameManager.instance.changeBeePercent(0.75f);   // 25% of bees die
                 break;
+            case 8:
+                // For one minute honeyproduction reduced by 90% Waiting NOT WORKING!
+                float tmp = GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation;
+                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 0.1f;
+                new WaitForSeconds(6);
+                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = tmp;
+                break;
             case 9:
-                // For one minute honeyproduction reduced by 90%
-                break;
-            case 10:
                 // +2 Flowers
-                break;
+                break; 
         }
     }
 
-    //returns from card scene to store, to be used with button on card scene
+    //Hides card again and now Store object is on top. 
     public void ReturnToStore(int card)
     {
         cards[card].SetActive(false);
