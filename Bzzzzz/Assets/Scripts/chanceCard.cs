@@ -12,6 +12,12 @@ public class chanceCard : MonoBehaviour
     //public SpriteRenderer chancecard;
 
     public GameObject[] cards;
+
+    //for card 8
+    private float timer = 0;
+    private float timerStop = 10;
+    private bool timerActive = false;
+    private float hiveTmp;
     
 
     void Start()
@@ -20,14 +26,35 @@ public class chanceCard : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        //for card 9 (8 in switch statment)
+        if (timerActive)
+        {
+            //Debug.Log("Timer active");
+            if (timer < timerStop) //until stoptime is reached, keep counting up
+            {
+                timer += Time.deltaTime;
+            }
+            else 
+            {
+                timer = 0;
+                timerActive = false;
+                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = hiveTmp; //restore hive productivity
+                //Debug.Log("Timer done");
+            }
+            
+        }
+    }
+
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(0, 9); //Add last card when it works
+        int card = Random.Range(0, 10); //Add last card when it works
 
         
         //for debugging purposes
-        //Debug.Log("card " + card);
+        Debug.Log("card " + card);
 
         //loads new scene with chosen card
          CardManager(card);
@@ -70,10 +97,13 @@ public class chanceCard : MonoBehaviour
                 break;
             case 8:
                 // For one minute honeyproduction reduced by 90% Waiting NOT WORKING!
-                float tmp = GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation;
+                hiveTmp = GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation;
                 GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 0.1f;
-                new WaitForSeconds(6);
-                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = tmp;
+                //new WaitForSeconds(6);
+
+                timerActive = true; //starts process in update
+
+                //GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = tmp;
                 break;
             case 9:
                 // +2 Flowers
