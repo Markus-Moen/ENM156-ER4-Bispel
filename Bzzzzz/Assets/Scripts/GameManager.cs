@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private const int startHives = 1;
     private const int startHoney = 100;
     private const int startFlowers = 0;
+    private const int startFlowHives = 0;
 
     // max values
     private const int max = 10000;
@@ -21,13 +22,16 @@ public class GameManager : MonoBehaviour
     private int maxHoney = max;
     private int maxFood = max;
     private int maxFlowers = 100;
+    private int maxFlowHives = max;
 
     // Variables
     private int numOfHoney = startHoney;
     private int numOfFood = startFood;
     private int numOfBees = startBees;
     private int numOfHives = startHives;
+
     private int numOfFlowers = startFlowers;
+    private int numOfFlowHives = startFlowHives;
 
     private float beeProductivity = 1f;     // hov much honey one bee produce per time unit
     private float beeKillingRate = 0.95f;   // how many bees die per time unit when starving / parasites
@@ -126,7 +130,8 @@ public class GameManager : MonoBehaviour
         honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
     }
     private void updateHivesTxt(){
-        hivesText.text = "Hives: " + numOfHives;
+        int hives = numOfHives + numOfFlowHives;
+        hivesText.text = "Hives: " + hives + " (Flow: " + numOfFlowHives + ")";
     }
     private void updateBeesTxt(){
         beesText.text = "Bees: " + numOfBees + " / " + maxBees;
@@ -224,6 +229,21 @@ public class GameManager : MonoBehaviour
             numOfFlowers = maxFlowers;
         }
         return leftovers;
+    }
+
+    // When upgrading a hive to a flow hive, it is 
+    //no longer considered a normal hive
+    // Returns true if upgrade was succesful
+    // false otherwise
+    public bool upgradeHive(){
+        if(numOfHives > 0){
+            numOfHives -= 1;
+            numOfFlowHives += 1;
+            updateHivesTxt();
+            return true;
+        }
+        return false;
+        
     }
 
 
@@ -326,6 +346,10 @@ public class GameManager : MonoBehaviour
 
     public int getPlayerFood(){
         return numOfFood;
+    }
+
+    public int getPlayerFlowHives(){
+        return numOfFlowHives;
     }
 
 
