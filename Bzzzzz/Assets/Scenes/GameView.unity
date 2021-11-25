@@ -9659,6 +9659,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 422215678867213688, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 422215678867213688, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: buyFlowHive
+      objectReference: {fileID: 0}
     - target: {fileID: 1244161067013513545, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -9808,8 +9816,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: flowHiveButton
+      value: 
+      objectReference: {fileID: 1953213130}
+    - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: shopPanels.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: shopItemsSO.Array.size
-      value: 6
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: shopPanelsGO.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: shopPanels.Array.data[6]
+      value: 
+      objectReference: {fileID: 1953213139}
+    - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: myPurchaseBtns.Array.size
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: shopItemsSO.Array.data[1]
@@ -9834,7 +9862,15 @@ PrefabInstance:
     - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: shopItemsSO.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 64d3cfa63a806554ca79d472f187f7a0, type: 2}
+      objectReference: {fileID: 11400000, guid: 33caeb84f78eb3042a50901932b549bf, type: 2}
+    - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: shopPanelsGO.Array.data[6]
+      value: 
+      objectReference: {fileID: 1953213131}
+    - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: myPurchaseBtns.Array.data[6]
+      value: 
+      objectReference: {fileID: 1953213130}
     - target: {fileID: 7665373996957966797, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9961,6 +9997,33 @@ MonoBehaviour:
   chanceCards: []
   infoCards: []
   questionCards: []
+--- !u!114 &1953213130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 422215678867213688, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+  m_PrefabInstance: {fileID: 1953213127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1953213131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7004714448879225084, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+  m_PrefabInstance: {fileID: 1953213127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1953213139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4549973456609230887, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+  m_PrefabInstance: {fileID: 1953213127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953213131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771d6c4cbd6a1dc4eb12837dbdb9c0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1977021812
 GameObject:
   m_ObjectHideFlags: 0

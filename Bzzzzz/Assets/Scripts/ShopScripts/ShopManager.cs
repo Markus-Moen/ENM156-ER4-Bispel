@@ -12,6 +12,7 @@ public class ShopManager : MonoBehaviour
     public ShopTemplate[] shopPanels;   // Array of the used shop panels.
     public GameObject[] shopPanelsGO;   // Array used to handle which of the items in the SO-array that should be active.
     public Button[] myPurchaseBtns;     // Array of all purchase buttons.
+    private bool ownFlowHive = false;
 
 
     // Start is called before the first frame update
@@ -40,8 +41,7 @@ public class ShopManager : MonoBehaviour
     		myPurchaseBtns[0].interactable = false;
         }
         CheckPurchaseable();
-        //LoadItems();
-        //Currently not used.  
+        
     }
 
     //Updates the text elements in each panel.
@@ -56,6 +56,7 @@ public class ShopManager : MonoBehaviour
         shopPanels[2].quantityTxt.text = "";
         shopPanels[4].quantityTxt.text = "";
         shopPanels[5].quantityTxt.text = "";
+        shopPanels[6].quantityTxt.text = "";
 
     }
 
@@ -65,12 +66,15 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
             if (GameManager.instance.getPlayerHoney() >= shopItemsSO[i].baseCost)
-                myPurchaseBtns[i].interactable = true;
+            {
+                if ((i == 6) && (!ownFlowHive))
+                    myPurchaseBtns[i].interactable = true;
+            }
             else
                 myPurchaseBtns[i].interactable = false;
             honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney().ToString();
-
         }
+        //myPurchaseBtns[6].interactable = !ownFlowHive;
     }
 
     // Checks if the player's current honey is enough to buy an item. 
@@ -158,6 +162,18 @@ public class ShopManager : MonoBehaviour
         {
             GameManager.instance.decPlayerHoney(shopItemsSO[4].baseCost);
             Parasites.instance.stopParasites();
+            CheckPurchaseable();
+        }
+    }
+    public void buyFlowHive()
+    {
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[6].baseCost)
+        {
+            GameManager.instance.decPlayerHoney(shopItemsSO[6].baseCost);
+            hiveScript.instance.upgradeHive();
+            myPurchaseBtns[6].interactable = false;
+            ownFlowHive = true;
+            shopPanels[6].quantityTxt.text = "Flow Hive owned!";
             CheckPurchaseable();
         }
     }

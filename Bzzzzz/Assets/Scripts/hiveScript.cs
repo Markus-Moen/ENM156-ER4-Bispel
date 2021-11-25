@@ -25,6 +25,8 @@ public class hiveScript : MonoBehaviour
     private int maxHoney = 0;               //Total max honey across all hives
     private int tmpHives;
     private int hiveApproximation = 0;
+    //Flow hive (Upgrades all hives for now...)
+    private bool ownFlowHive = false;
 
     public static hiveScript instance;
 
@@ -66,6 +68,10 @@ public class hiveScript : MonoBehaviour
             setMaxHoney(tmpHives);
         }
         incHoney();
+        if (ownFlowHive)
+        {
+            TaskOnClick();
+        }
     }
 
      void TaskOnClick()
@@ -125,6 +131,11 @@ public class hiveScript : MonoBehaviour
 
     public float getTotalPercentalChange(){
         return totalPercentalChange;
+    }
+
+    public void upgradeHive()
+    {
+        ownFlowHive = true;
     }
 
     /*
