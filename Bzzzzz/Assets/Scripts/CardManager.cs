@@ -136,6 +136,8 @@ public class CardManager: MonoBehaviour
         infoCards[card].SetActive(true);
 
         // HERE ADD TO LOG SOMEHOW?
+        // Oh hello there! /Markus
+        LogManager.instance.saveToLog(card);
 
     }
 

@@ -11063,6 +11063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   log: {fileID: 2139709558}
+  savedCards: 
 --- !u!114 &2139709560
 MonoBehaviour:
   m_ObjectHideFlags: 0
