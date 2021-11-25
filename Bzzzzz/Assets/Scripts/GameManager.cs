@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private const int startFlowHives = 0;
 
     // max values
-    private const int max = 10000;
+    private const int max = 1000;
     private const int maxBeesPerHive = max;
     private int maxHives = max;
     private int maxBees = maxBeesPerHive*startHives;
@@ -41,10 +41,18 @@ public class GameManager : MonoBehaviour
     Text honeyText;
     Text hivesText;
     Text beesText;
+    Text timerText;
+    Text yearlyCostText;
 
 
     private float timer = 0;
     private float delay = 10;   // the time (seconds) before the timer event and timer resets 
+
+    private float seasonTimer = 0;      // timer for the season
+    private float seasonDelay = 65;     // length of a season (/year) in seconds
+    private float percentOfBeesFood = 0.05f;         // 1+percentOfBeesFood = amount of food eaten per bee
+
+
 
 
     // should probably be in hiveScript
@@ -78,33 +86,44 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        seasonTimer = seasonDelay;  // the timer ticks down, not up, so it starts on highest value
+
         // Initialize text fields
         foodText = GameObject.Find("Food Text").GetComponent<Text>();
         honeyText = GameObject.Find("Honey Text").GetComponent<Text>();
         hivesText = GameObject.Find("Hives Text").GetComponent<Text>();
         beesText = GameObject.Find("Bees Text").GetComponent<Text>();
+        timerText = GameObject.Find("Timer Text").GetComponent<Text>();
+        yearlyCostText = GameObject.Find("Yearly Cost Text").GetComponent<Text>();
 
         // Set text field texts
-        foodText.text = "Food: " + numOfFood + " / " + maxFood;
-        honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
-        hivesText.text = "Hives: " + numOfHives;
-        beesText.text = "Bees: " + numOfBees + " / " + maxBees;
+        int hives = numOfHives + numOfFlowHives;
+        //foodText.text = "Food: " + numOfFood + " / " + maxFood;
+        //honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
+        //hivesText.text = "Hives: " + hives + " (Flow: " + numOfFlowHives + ")";
+        //beesText.text = "Bees: " + numOfBees + " / " + maxBees;
+        //timerText.text = "Time till next season: " + getTime();
+        //yearlyCostText.text = "Yearly cost: "  + "\nFood: " + (int) Mathf.Floor(numOfBees*percentOfBeesFood)
+        //                        + "\nHoney: " + yearlyHoneyCost();
+        updateFoodTxt();
+        updateHoneyTxt();
+        updateHivesTxt();
+        updateBeesTxt();
+        updateTimerTxt();
+        updateYearlyCostTxt();
         
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
         // start killing bees if there is no food
-        if(deathByStarvation){
-            timer += Time.deltaTime;
-            if(timer >= delay){
-                // kill a number of bees
-                changeBeePercent(beeKillingRate);
-                // reset timer
-                timer = 0;
-            }
-        }
+        starvationDeath();
+
+        // comment out to disable seasons
+        //seasonCountDown();
              
     }
 
@@ -114,9 +133,10 @@ public class GameManager : MonoBehaviour
 
     // updates all text fields
     public void reload(){
+        int hives = numOfHives + numOfFlowHives;
         foodText.text = "Food: " + numOfFood + " / " + maxFood;
         honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
-        hivesText.text = "Hives: " + numOfHives;
+        hivesText.text = "Hives: " + hives + " (Flow: " + numOfFlowHives + ")";
         beesText.text = "Bees: " + numOfBees + " / " + maxBees;
     }
 
@@ -136,7 +156,15 @@ public class GameManager : MonoBehaviour
     private void updateBeesTxt(){
         beesText.text = "Bees: " + numOfBees + " / " + maxBees;
     }
+    private void updateTimerTxt(){
+        timerText.text = "Time till next season: " + getTime();
+    }
+    private void updateYearlyCostTxt(){
+        yearlyCostText.text = "Yearly cost: "  + "\nFood: " + (int) Mathf.Floor(numOfBees*percentOfBeesFood)
+                                + "\nHoney: " + yearlyHoneyCost();
+    }
 
+    // loads game over scene
     private void gameOver(){
         SceneManager.LoadScene("GameOver");
     }
@@ -150,6 +178,72 @@ public class GameManager : MonoBehaviour
     // stop killing bees
     private void stopKillFood(){
         deathByStarvation = false;
+    }
+
+    // updates timer for (and executes) bee death
+    // if deathByStarvation is set to true 
+    private void starvationDeath(){
+        if(deathByStarvation){
+            timer += Time.deltaTime;        // update timer
+            if(timer >= delay){
+                // kill a number of bees
+                changeBeePercent(beeKillingRate);
+                // reset timer
+                timer = 0;
+            }
+        }
+    }
+
+
+    // counts down until next year
+    // when timer reaches zero, the yearly cost and the amount of bees that die because of starvation is subtracted
+    private void seasonCountDown(){
+        if(seasonTimer > 0){
+            seasonTimer -= Time.deltaTime;  // update timer (starts at highest possible time)
+        }else{
+            seasonTimer = seasonDelay;      // reset timer
+
+            // if there is not enough food to keep all of the bees alive
+            // the ones who don't get food die of starvation
+            int foodEatenByBees = Mathf.FloorToInt(numOfBees*percentOfBeesFood);
+            int missingFood = numOfFood - foodEatenByBees;
+            
+            if(missingFood < 0){
+                missingFood = Mathf.Abs(missingFood);                              // make positive
+                decPlayerBees(Mathf.RoundToInt(missingFood / percentOfBeesFood));   // kill # bees corresponding to missing food
+            }
+            decPlayerFood(foodEatenByBees);   // subtract starving bees (caused by too little food over winter)
+            
+            // set numOfHoney = 0 if there is not enough honey to pay for the yearly cost
+            bool b = decPlayerHoney(yearlyHoneyCost());          // subtract yearly cost
+            if(!b){ 
+                numOfHoney = 0;
+                updateHoneyTxt();
+            }
+                                                                                                        
+        }
+        updateTimerTxt();   // update timer text field
+        
+    }
+
+    // The yearly cost from beeing (get it) a beekeeper
+    private int yearlyHoneyCost(){  // just a placeholder formula
+                // costs to have hives
+                // costs even more to have automated hives
+                // costs to water and tend flowers
+                // costs to have storage and land
+        return (numOfHives + numOfFlowHives*100 + numOfFlowers*2 + maxHoney/8 + maxFood/8 + maxFlowers/2); // also factor in pestilence thingy
+    }
+
+    // returns string of seasonTimer set in minutes and seconds with a colon in between
+    private string getTime(){
+        int minutes = Mathf.FloorToInt(seasonTimer) / 60;
+        int seconds = Mathf.FloorToInt(seasonTimer) % 60;
+        string minutesString = (minutes < 10) ? "0" + minutes : "" + minutes;   // adds a zero in front of number if < 10
+        string secondsString = (seconds < 10) ? "0" + seconds : "" + seconds;   // adds a zero in front of number if < 10
+        
+
+        return minutesString + ":" + secondsString;
     }
 
 
@@ -215,6 +309,7 @@ public class GameManager : MonoBehaviour
         maxBees = maxBeesPerHive * numOfHives;  // the max number of bees increases with every added hive
         updateHivesTxt();
         updateBeesTxt();
+        updateYearlyCostTxt();
         return leftovers;
     }
 
@@ -228,6 +323,7 @@ public class GameManager : MonoBehaviour
             leftovers = numOfFlowers - maxFlowers;
             numOfFlowers = maxFlowers;
         }
+        updateYearlyCostTxt();
         return leftovers;
     }
 
@@ -240,10 +336,10 @@ public class GameManager : MonoBehaviour
             numOfHives -= 1;
             numOfFlowHives += 1;
             updateHivesTxt();
+            updateYearlyCostTxt();
             return true;
         }
         return false;
-        
     }
 
 
@@ -295,19 +391,26 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    // subtracts n from numOfFood
-    // - returns false if numOfHives <= 0 (and sets it to 0 at the lowest)
-    // - returns true otherwise
-    public bool decPlayerHives(int n){         // Should probably call some function to change game state if all hives are gone
+    // subtracts n from numOfHives
+    // cannot be lower than 0
+    public void decPlayerHives(int n){         // Should probably call some function to change game state if all hives are gone
         numOfHives -= n;                       // and/or if hives start dissapearing?
         if(numOfHives <= 0){
             numOfHives = 0;                    // don't know if the player can loose hives, and if they can reach 0
-            updateHivesTxt();
-            return false;
         }
         updateHivesTxt();
-        return true;
+        updateYearlyCostTxt();
     } 
+
+    // subtracts n from numOfFlowers
+    // cannot be lower than 0
+    public void decFlowers(int n){
+        numOfFlowers -= n;
+        if(numOfFlowers <= 0){
+            numOfFlowers = 0;
+        }
+        updateYearlyCostTxt();
+    }
 
     // multiplies numOfHoney by the argument f
     // effectively changing the amount of honey by a percentage
@@ -373,11 +476,13 @@ public class GameManager : MonoBehaviour
     public void setMaxFood(int n){
         maxFood = n;
         updateFoodTxt();
+        updateYearlyCostTxt();
     }
 
     public void setMaxHoney(int n){
         maxHoney = n;
         updateHoneyTxt();
+        updateYearlyCostTxt();
     }
 
     public void setDelay(float f){
@@ -387,6 +492,7 @@ public class GameManager : MonoBehaviour
     public void setMaxFlowers(int n)
     {
         maxFlowers = n;
+        updateYearlyCostTxt();
     }
 
     
