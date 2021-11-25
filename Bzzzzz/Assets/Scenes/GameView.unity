@@ -9831,6 +9831,10 @@ PrefabInstance:
       propertyPath: shopItemsSO.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: c18646df956ac3e4080aa4d0bf7f7743, type: 2}
+    - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: shopItemsSO.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 64d3cfa63a806554ca79d472f187f7a0, type: 2}
     - target: {fileID: 7665373996957966797, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_Pivot.x
       value: 0

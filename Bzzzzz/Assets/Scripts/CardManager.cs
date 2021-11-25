@@ -53,7 +53,7 @@ public class CardManager: MonoBehaviour
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(0, 10); //Add last card when it works
+        int card = Random.Range(0, chanceCards.Length); //Add last card when it works
 
         
         //for debugging purposes
@@ -66,8 +66,14 @@ public class CardManager: MonoBehaviour
 
     public void RandomizeInfoCard()
     {
-        int card = Random.Range(0, 2);
+        int card = Random.Range(0, infoCards.Length);
         InfoCardManager(card);
+    }
+
+    public void RandomizeQuestionCard()
+    {
+        int card = Random.Range(0, questionCards.Length);
+        QuestionCardManager(card);
     }
 
     //Handles each individual card
@@ -132,6 +138,13 @@ public class CardManager: MonoBehaviour
         // HERE ADD TO LOG SOMEHOW?
 
     }
+
+    public void QuestionCardManager(int card)
+    {
+        questionCards[card].SetActive(true);
+
+    }
+
     //Hides card again and now Store object is on top. 
     public void ReturnToStoreChance(int card)
     {
@@ -141,5 +154,10 @@ public class CardManager: MonoBehaviour
     public void ReturnToStoreInfo(int card)
     {
         infoCards[card].SetActive(false);
+    }
+
+    public void ReturnToStoreQuestion(int card)
+    {
+        questionCards[card].SetActive(false);
     }
 }
