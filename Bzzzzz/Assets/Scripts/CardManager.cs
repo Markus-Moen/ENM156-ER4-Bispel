@@ -5,14 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class chanceCard : MonoBehaviour
+public class CardManager: MonoBehaviour
 {
     // Start is called before the first frame update
 
     //public SpriteRenderer chancecard;
 
-    public GameObject[] cards;
-
+    public GameObject[] chanceCards;
+    public GameObject[] infoCards;
+    public GameObject[] questionCards;
     //for card 8
     private float timer = 0;
     private float timerStop = 10;
@@ -40,7 +41,8 @@ public class chanceCard : MonoBehaviour
             {
                 timer = 0;
                 timerActive = false;
-                GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(hiveTmp);
+                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(hiveTmp);
+                hiveScript.instance.setBeeProductivity(hiveTmp);
                 //GameObject.Find("Hive").GetComponent<hiveScript>().beeProductivity = hiveTmp; //restore hive productivity
                 //Debug.Log("Timer done");
             }
@@ -58,14 +60,20 @@ public class chanceCard : MonoBehaviour
         Debug.Log("card " + card);
 
         //loads new scene with chosen card
-         CardManager(card);
+        ChanceCardManager(card);
         //cardTest2.SetActive(true);
     }
 
-    //Handles each individual card
-    public void CardManager(int card)
+    public void RandomizeInfoCard()
     {
-        cards[card].SetActive(true);
+        int card = Random.Range(0, 2);
+        InfoCardManager(card);
+    }
+
+    //Handles each individual card
+    public void ChanceCardManager(int card)
+    {
+        chanceCards[card].SetActive(true);
         switch (card)
         {
             case 0:
@@ -117,10 +125,21 @@ public class chanceCard : MonoBehaviour
         }
     }
 
-    //Hides card again and now Store object is on top. 
-    public void ReturnToStore(int card)
+    public void InfoCardManager(int card)
     {
-        cards[card].SetActive(false);
+        infoCards[card].SetActive(true);
+
+        // HERE ADD TO LOG SOMEHOW?
+
+    }
+    //Hides card again and now Store object is on top. 
+    public void ReturnToStoreChance(int card)
+    {
+        chanceCards[card].SetActive(false);
     }
 
+    public void ReturnToStoreInfo(int card)
+    {
+        infoCards[card].SetActive(false);
+    }
 }

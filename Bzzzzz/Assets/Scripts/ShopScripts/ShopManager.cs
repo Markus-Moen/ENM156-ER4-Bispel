@@ -55,6 +55,7 @@ public class ShopManager : MonoBehaviour
         }
         shopPanels[2].quantityTxt.text = "";
         shopPanels[4].quantityTxt.text = "";
+        shopPanels[5].quantityTxt.text = "";
 
     }
 
@@ -130,6 +131,17 @@ public class ShopManager : MonoBehaviour
             CheckPurchaseable();
         }
     }
+
+    public void buyInfoCard()
+    {
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[5].baseCost)
+        {
+            GameManager.instance.decPlayerHoney(shopItemsSO[2].baseCost);
+            shopItemsSO[5].owned += shopItemsSO[5].owned;
+            CheckPurchaseable();
+        }
+    }
+
     public void buyNewHive(){
     	if (GameManager.instance.getPlayerHoney() >= shopItemsSO[3].baseCost)
     	{
@@ -150,3 +162,4 @@ public class ShopManager : MonoBehaviour
         }
     }
 }
+
