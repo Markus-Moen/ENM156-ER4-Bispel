@@ -33,7 +33,7 @@ public class hiveScript : MonoBehaviour
 
         // Makes Hive easily available from other scripts
         if (instance != null && instance != this)
-        {Destroy(this.gameObject);}
+        { Destroy(this.gameObject);}
         else {instance = this;}
 
         tmpBees = GameManager.instance.getPlayerBees();

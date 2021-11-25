@@ -337,6 +337,10 @@ public class GameManager : MonoBehaviour
         return maxBees;
     }
 
+    public int getMaxFlowers()
+    {
+        return maxFlowers;
+    }
 
 
 
@@ -354,6 +358,11 @@ public class GameManager : MonoBehaviour
 
     public void setDelay(float f){
         delay = f;
+    }
+
+    public void setMaxFlowers(int n)
+    {
+        maxFlowers = n;
     }
 
     

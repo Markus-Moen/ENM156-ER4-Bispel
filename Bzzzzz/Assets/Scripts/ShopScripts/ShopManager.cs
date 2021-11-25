@@ -95,7 +95,7 @@ public class ShopManager : MonoBehaviour
         shop.SetActive(true);
         honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney();
 
-        // Medicine costs 80% of what you got when you open the shop.
+        // Medicine costs 80% of what you got when you open the shop. Might want to change this.
         shopItemsSO[4].baseCost = (int)Mathf.Floor(GameManager.instance.getPlayerHoney() * 0.8f);
         shopPanels[4].costTxt.text = "Price: " + shopItemsSO[4].baseCost.ToString();
 
