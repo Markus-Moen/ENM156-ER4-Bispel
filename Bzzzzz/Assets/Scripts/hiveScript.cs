@@ -26,8 +26,16 @@ public class hiveScript : MonoBehaviour
     private int tmpHives;
     private int hiveApproximation = 0;
 
+    public static hiveScript instance;
+
     //I used Awake because when I gave the value to beeAmount outside Awake it did not get the right value when changed
     void Awake(){
+
+        // Makes Hive easily available from other scripts
+        if (instance != null && instance != this)
+        {Destroy(this.gameObject);}
+        else {instance = this;}
+
         tmpBees = GameManager.instance.getPlayerBees();
         setHoneyInc(tmpBees);
         tmpHives = GameManager.instance.getPlayerHives();

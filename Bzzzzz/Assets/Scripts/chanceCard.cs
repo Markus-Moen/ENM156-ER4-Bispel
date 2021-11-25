@@ -75,18 +75,17 @@ public class chanceCard : MonoBehaviour
                 GameManager.instance.changeBeePercent(1.5f); // 50% More bees
                 break;
             case 2:
-                //GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 1.1f;
-                //Debug.Log(GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation);
-                GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(1.1f);
                 // Increase honey production by 10%
+                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(1.1f);
+                hiveScript.instance.setBeeProductivity(1.2f);
                 break;
             case 3:
-               // +1 Flower
+                // +1 flower
+                GameManager.instance.incFlowers(1);
                 break;
             case 4:
-                //GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 1.2f;
-                //Debug.Log(GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation);
-                GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(1.2f);
+                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(1.2f);
+                hiveScript.instance.setBeeProductivity(1.2f);
                 //  20 % honeyproduction increase    
                 break;
             case 5:
@@ -100,11 +99,11 @@ public class chanceCard : MonoBehaviour
                 break;
             case 8:
                 // For one minute honeyproduction reduced by 90% Waiting NOT WORKING!
-                //hiveTmp = GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation;
-                //GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 0.1f;
-                hiveTmp = GameObject.Find("Hive").GetComponent<hiveScript>().getTotalPercentalChange();
+                hiveTmp = hiveScript.instance.getTotalPercentalChange();
+                //GameObject.Find("Hive").GetComponent<hiveScript>().getTotalPercentalChange();
                 //Debug.Log("hiveTmp: " + hiveTmp.ToString()); This is just a test to see if hiveTmp is correct
-                GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(0.1f);;
+                hiveScript.instance.setBeeProductivity(0.1f);
+                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(0.1f);
                 //new WaitForSeconds(6);
 
                 timerActive = true; //starts process in update
@@ -113,6 +112,7 @@ public class chanceCard : MonoBehaviour
                 break;
             case 9:
                 // +2 Flowers
+                GameManager.instance.incFlowers(2);
                 break; 
         }
     }

@@ -54,7 +54,8 @@ public class ShopManager : MonoBehaviour
             shopPanels[i].quantityTxt.text = "Owned: " + shopItemsSO[i].owned.ToString();
         }
         shopPanels[2].quantityTxt.text = "";
-        
+        shopPanels[4].quantityTxt.text = "";
+
     }
 
     //Updates whether wach button should be enabled or not. 
@@ -93,6 +94,11 @@ public class ShopManager : MonoBehaviour
     {
         shop.SetActive(true);
         honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney();
+
+        // Medicine costs 80% of what you got when you open the shop.
+        shopItemsSO[4].baseCost = (int)Mathf.Floor(GameManager.instance.getPlayerHoney() * 0.8f);
+        shopPanels[4].costTxt.text = "Price: " + shopItemsSO[4].baseCost.ToString();
+
     }
 
     public void buyBee()
@@ -133,5 +139,14 @@ public class ShopManager : MonoBehaviour
             shopPanels[3].costTxt.text = "Price: " + shopItemsSO[3].baseCost.ToString();
             CheckPurchaseable();
     	}
+    }
+
+    public void buyMedicine(){
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[4].baseCost)
+        {
+            GameManager.instance.decPlayerHoney(shopItemsSO[4].baseCost);
+            Parasites.instance.stopParasites();
+            CheckPurchaseable();
+        }
     }
 }

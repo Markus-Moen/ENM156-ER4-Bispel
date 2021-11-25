@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private const int startBees = 100;
     private const int startHives = 1;
     private const int startHoney = 100;
+    private const int startFlowers = 0;
 
     // max values
     private const int max = 10000;
@@ -19,12 +20,15 @@ public class GameManager : MonoBehaviour
     private int maxBees = maxBeesPerHive*startHives;
     private int maxHoney = max;
     private int maxFood = max;
+    private int maxFlowers = 100;
 
     // Variables
     private int numOfHoney = startHoney;
     private int numOfFood = startFood;
     private int numOfBees = startBees;
     private int numOfHives = startHives;
+    private int numOfFlowers = startFlowers;
+
     private float beeProductivity = 1f;     // hov much honey one bee produce per time unit
     private float beeKillingRate = 0.95f;   // how many bees die per time unit when starving / parasites
 
@@ -209,6 +213,18 @@ public class GameManager : MonoBehaviour
         return leftovers;
     }
 
+    // adds n flowers
+    // returns any leftovers (if the max limit is hit)
+    public int incFlowers(int n)
+    {   numOfFlowers += n;
+        int leftovers = 0;
+        if(numOfFlowers > maxFlowers)
+        {
+            leftovers = numOfFlowers - maxFlowers;
+            numOfFlowers = maxFlowers;
+        }
+        return leftovers;
+    }
 
 
     //-----------------------------------------------------------------------------------------------//
