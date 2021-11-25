@@ -14,7 +14,9 @@ public class hiveScript : MonoBehaviour
     //Increasing the honey
     public int delay = 3;                   //Used for increasing honey
     public int honeyAmount = 0;             //The amount of honey in the hive
-    public float productivityApproximation = 1;
+    private float beeProductivity = 1f;
+    private float totalPercentalChange = 1f;
+    //public float productivityApproximation = 1;
     //Giving away honey
     int temporaryHoney = 0;                 //Used when moving honey to the cellar
     private int leftovers = 0;
@@ -48,7 +50,6 @@ public class hiveScript : MonoBehaviour
     { 
         timer += Time.deltaTime;
         tmpBees = GameManager.instance.getPlayerBees();
-        //Debug.Log("Honey amount is :" + honeyAmount.ToString());
         if(tmpBees != beeApproximation){
             setHoneyInc(tmpBees);
         }
@@ -80,7 +81,6 @@ public class hiveScript : MonoBehaviour
             temporaryHoney = honeyIncrease + honeyAmount;
             if(temporaryHoney > maxHoney){
                 honeyAmount = maxHoney;
-                Debug.Log(productivityApproximation);
             }else{
                 honeyAmount += honeyIncrease;
             }
@@ -88,14 +88,35 @@ public class hiveScript : MonoBehaviour
     }
     //Function that sets how much honey we get per unit of time
     public void setHoneyInc(int numberOfBees){
-        honeyIncrease = (int) productivityApproximation*numberOfBees*2; // DOES NOT WORK! ProductivityApprox is not updated somehow!!!
+        //honeyIncrease = (int) productivityApproximation*numberOfBees*2; // DOES NOT WORK! ProductivityApprox is not updated somehow!!!
+        honeyIncrease = (int) beeProductivity*numberOfBees*2;
         beeApproximation = numberOfBees;
         return;
     }
+
+    public void setHoneyIncProductivity(float prod){
+        honeyIncrease = (int) (prod*honeyIncrease);
+        //Debug.Log("Percent " + prod.ToString());
+        Debug.Log("Honey increase " + honeyIncrease.ToString());
+        return;
+    }
+
     //Sets the max honey in the beehives
     void setMaxHoney(int hives){
         maxHoney = hives * maxHoneyPerHive;
         hiveApproximation = hives;
+    }
+
+    public void setBeeProductivity(float productivity){
+        setHoneyIncProductivity(productivity);
+        beeProductivity = productivity;
+        totalPercentalChange *= productivity;
+        Debug.Log("Total change is: " + totalPercentalChange.ToString());
+        return;
+    }
+
+    public float getTotalPercentalChange(){
+        return totalPercentalChange;
     }
 
     /*

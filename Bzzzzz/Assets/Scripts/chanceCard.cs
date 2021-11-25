@@ -40,7 +40,8 @@ public class chanceCard : MonoBehaviour
             {
                 timer = 0;
                 timerActive = false;
-                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = hiveTmp; //restore hive productivity
+                GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(hiveTmp);
+                //GameObject.Find("Hive").GetComponent<hiveScript>().beeProductivity = hiveTmp; //restore hive productivity
                 //Debug.Log("Timer done");
             }
             
@@ -74,16 +75,18 @@ public class chanceCard : MonoBehaviour
                 GameManager.instance.changeBeePercent(1.5f); // 50% More bees
                 break;
             case 2:
-                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 1.1f;
-                Debug.Log(GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation);
+                //GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 1.1f;
+                //Debug.Log(GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation);
+                GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(1.1f);
                 // Increase honey production by 10%
                 break;
             case 3:
                // +1 Flower
                 break;
             case 4:
-                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 1.2f;
-                Debug.Log(GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation);
+                //GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 1.2f;
+                //Debug.Log(GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation);
+                GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(1.2f);
                 //  20 % honeyproduction increase    
                 break;
             case 5:
@@ -97,8 +100,11 @@ public class chanceCard : MonoBehaviour
                 break;
             case 8:
                 // For one minute honeyproduction reduced by 90% Waiting NOT WORKING!
-                hiveTmp = GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation;
-                GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 0.1f;
+                //hiveTmp = GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation;
+                //GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = 0.1f;
+                hiveTmp = GameObject.Find("Hive").GetComponent<hiveScript>().getTotalPercentalChange();
+                //Debug.Log("hiveTmp: " + hiveTmp.ToString()); This is just a test to see if hiveTmp is correct
+                GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(0.1f);;
                 //new WaitForSeconds(6);
 
                 timerActive = true; //starts process in update
