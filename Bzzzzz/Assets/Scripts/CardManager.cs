@@ -143,67 +143,67 @@ public class CardManager: MonoBehaviour
         questionCards[card].SetActive(true);
     }
 
-    public void ButtonTrue(int card){
+     public void ButtonTrue(int card){
             switch (card){
-                case 10:
-
-                    break;
-
-                case 11: 
+                case 1: 
+                    // Wrong answer
                     break;
                 
                 default: 
 
                 break;
             }
-    }
-
-    public void ButtonFalse(int card){
+     }
+   public void ButtonFalse(int card){
         switch (card){
-                        case 10:
-
-                            break;
-
-                        case 11: 
+                    
+                        case 1: 
+                        // True answer
                             break;
                         
                         default: 
 
                         break;
-                    }
-    }
+                    }}
 
     public void ButtonOne(int card){
         switch (card){
-                    case 10:
+                    case 0:
+                        // Wrong Answer
                         break;
-                    case 11: 
+                    case 2: 
+                        // Correct Answer
                         break;
                         
                     default: 
                         break;
+
                     }
     }
 
     public void ButtonX(int card){
-        switch (card){
-                    case 10:
+      switch (card){
+                    case 0:
+                     // Wrong Answer
                         break;
 
-                    case 11: 
+                    case 2: 
+                     // Wrong Answer
                         break;
-                        
                     default: 
                         break;
                     } 
+    
     }
 
     public void ButtonTwo(int card){
       switch (card){
-                    case 10:
+                    case 0:
+                   // Correct Answer
                         break;
 
-                    case 11: 
+                    case 2: 
+                    // Wrong Answer
                         break;
                         
                     default: 
