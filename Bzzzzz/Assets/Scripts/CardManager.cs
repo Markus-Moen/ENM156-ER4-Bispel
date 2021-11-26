@@ -143,72 +143,64 @@ public class CardManager: MonoBehaviour
         questionCards[card].SetActive(true);
     }
 
-    public void ButtonTrue(int card){
-            switch (card){
-                case 10:
-
-                    break;
-
-                case 11: 
-                    break;
-                
-                default: 
-
-                break;
+    // Answer true for questioncard
+    public void ButtonTrue(int questioncard){
+            switch (questioncard){   
+                        case 1: 
+                        // Wrong answer
+                            break;
             }
+        ReturnToStoreQuestion(questioncard);
     }
-
-    public void ButtonFalse(int card){
-        switch (card){
-                        case 10:
-
+    // Answer false for questioncard
+    public void ButtonFalse(int questioncard){
+        switch (questioncard){
+                        case 1: 
+                        // Correct answer
                             break;
-
-                        case 11: 
-                            break;
-                        
-                        default: 
-
-                        break;
                     }
+        ReturnToStoreQuestion(questioncard);
     }
 
-    public void ButtonOne(int card){
-        switch (card){
-                    case 10:
+    // Answer 1 for questioncard
+    public void ButtonOne(int questioncard){
+        switch (questioncard){   
+                    case 0:
+                        // wrong answer
+                        break; 
+                    // Qcard3                  
+                    case 2:
+                    // correct answer
                         break;
-                    case 11: 
-                        break;
-                        
-                    default: 
-                        break;
+
                     }
+         ReturnToStoreQuestion(questioncard);
     }
-
-    public void ButtonX(int card){
-        switch (card){
-                    case 10:
-                        break;
-
-                    case 11: 
-                        break;
-                        
-                    default: 
-                        break;
+     // Answer X for questioncard
+    public void ButtonX(int questioncard){
+        switch (questioncard){
+                    case 0:
+                    // wrong answer
+                        break;                
+                    case 2:
+                    // wrong answer
+                        break; 
                     } 
+        ReturnToStoreQuestion(questioncard);
     }
 
-    public void ButtonTwo(int card){
-      switch (card){
-                    case 10:
+    // Answer 2 for questioncard
+    public void ButtonTwo(int questioncard){
+      switch (questioncard){
+                    case 0:
+                    // Correct answer
                         break;
-
-                    case 11: 
+                    case 2:
+                     // wrong answer
                         break;
-                        
-                    default: 
-                        break;
+                   
                     }
+        ReturnToStoreQuestion(questioncard);
     }
     //Hides card again and now Store object is on top. 
     public void ReturnToStoreChance(int card)
