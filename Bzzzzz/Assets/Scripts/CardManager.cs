@@ -58,7 +58,7 @@ public class CardManager: MonoBehaviour
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(8, 9); //Add last card when it works
+        int card = Random.Range(0, chanceCards.Length); //Add last card when it works
 
         
         //for debugging purposes
