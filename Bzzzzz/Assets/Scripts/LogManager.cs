@@ -44,4 +44,10 @@ public class LogManager : MonoBehaviour
         savedCards.Add(card);
         Debug.Log("Infocards: " + string.Join(",", savedCards));
     }
+
+    public void buttonClick(int card)
+    {
+        //CardManager.instance.chanceCards[savedCards[card]].SetActive(true);
+        Debug.Log("Button clicked");
+    }
 }
