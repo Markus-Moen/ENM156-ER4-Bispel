@@ -67,7 +67,7 @@ public class hiveScript : MonoBehaviour
         if(tmpBees != beeApproximation){
             setHoneyInc(tmpBees);
         }
-        tmpHives = GameManager.instance.getPlayerHives();
+        tmpHives = GameManager.instance.getPlayerHives() + GameManager.instance.getPlayerFlowHives();
         if(tmpHives != hiveApproximation){
             setMaxHoney(tmpHives);
         }

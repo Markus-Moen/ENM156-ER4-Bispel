@@ -12,7 +12,6 @@ public class CardManager: MonoBehaviour
     //public SpriteRenderer chancecard;
 
     public GameObject[] chanceCards;
-    public GameObject[] infoCards;
     public GameObject[] questionCards;
     //for card 8
     private float timer = 0;
@@ -62,12 +61,6 @@ public class CardManager: MonoBehaviour
         //loads new scene with chosen card
         ChanceCardManager(card);
         //cardTest2.SetActive(true);
-    }
-
-    public void RandomizeInfoCard()
-    {
-        int card = Random.Range(0, infoCards.Length);
-        InfoCardManager(card);
     }
 
     public void RandomizeQuestionCard()
@@ -128,34 +121,93 @@ public class CardManager: MonoBehaviour
                 // +2 Flowers
                 GameManager.instance.incFlowers(2);
                 break; 
+
+            case 10:
+                LogManager.instance.saveToLog(card);
+                break;
+
+            case 11:
+                LogManager.instance.saveToLog(card);
+                break;
         }
-    }
-
-    public void InfoCardManager(int card)
-    {
-        infoCards[card].SetActive(true);
-
-        // HERE ADD TO LOG SOMEHOW?
-        // Oh hello there! /Markus
-        LogManager.instance.saveToLog(card);
-
     }
 
     public void QuestionCardManager(int card)
     {
         questionCards[card].SetActive(true);
-
     }
 
+    public void ButtonTrue(int card){
+            switch (card){
+                case 10:
+
+                    break;
+
+                case 11: 
+                    break;
+                
+                default: 
+
+                break;
+            }
+    }
+
+    public void ButtonFalse(int card){
+        switch (card){
+                        case 10:
+
+                            break;
+
+                        case 11: 
+                            break;
+                        
+                        default: 
+
+                        break;
+                    }
+    }
+
+    public void ButtonOne(int card){
+        switch (card){
+                    case 10:
+                        break;
+                    case 11: 
+                        break;
+                        
+                    default: 
+                        break;
+                    }
+    }
+
+    public void ButtonX(int card){
+        switch (card){
+                    case 10:
+                        break;
+
+                    case 11: 
+                        break;
+                        
+                    default: 
+                        break;
+                    } 
+    }
+
+    public void ButtonTwo(int card){
+      switch (card){
+                    case 10:
+                        break;
+
+                    case 11: 
+                        break;
+                        
+                    default: 
+                        break;
+                    }
+    }
     //Hides card again and now Store object is on top. 
     public void ReturnToStoreChance(int card)
     {
         chanceCards[card].SetActive(false);
-    }
-
-    public void ReturnToStoreInfo(int card)
-    {
-        infoCards[card].SetActive(false);
     }
 
     public void ReturnToStoreQuestion(int card)
