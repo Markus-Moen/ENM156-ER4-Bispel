@@ -3619,8 +3619,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 232159067}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: RandomizeChanceCard
-        m_Mode: 1
+        m_MethodName: ReturnToStoreChance
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
