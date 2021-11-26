@@ -24,6 +24,7 @@ public class hiveScript : MonoBehaviour
     private int maxHoneyPerHive = 200;     //Max amount of honey per hive
     private int maxHoney = 0;               //Total max honey across all hives
     private int tmpHives;
+    private int tmpFlowHives;
     private int hiveApproximation = 0;
     //Flow hive (Upgrades all hives for now...)
     private bool ownFlowHive = false;
@@ -42,7 +43,8 @@ public class hiveScript : MonoBehaviour
 
         tmpBees = GameManager.instance.getPlayerBees();
         setHoneyInc(tmpBees);
-        tmpHives = GameManager.instance.getPlayerHives() + GameManager.instance.getPlayerFlowHives();
+        tmpHives = GameManager.instance.getPlayerHives();
+        tmpFlowHives = GameManager.instance.getPlayerFlowHives();
         setMaxHoney(tmpHives);
 
         honeyCounter = GameObject.Find("HoneyCounter").GetComponent<Text>();
@@ -67,14 +69,17 @@ public class hiveScript : MonoBehaviour
         if(tmpBees != beeApproximation){
             setHoneyInc(tmpBees);
         }
-        tmpHives = GameManager.instance.getPlayerHives() + GameManager.instance.getPlayerFlowHives();
-        if(tmpHives != hiveApproximation){
-            setMaxHoney(tmpHives);
+        tmpHives = GameManager.instance.getPlayerHives();
+        tmpFlowHives = GameManager.instance.getPlayerFlowHives();
+        if((tmpHives + tmpFlowHives)  != hiveApproximation){
+            setMaxHoney((tmpHives + tmpFlowHives));
+            Debug.Log("setMaxHoney");
         }
         incHoney();
-        if (ownFlowHive)
+        if (tmpFlowHives > 0)
         {
             TaskOnClick();
+            Debug.Log("Own flowhive");
         }
         honeyCounter.text = "Honey in hive: " + honeyAmount;
     }
@@ -82,9 +87,8 @@ public class hiveScript : MonoBehaviour
      void TaskOnClick()
     {
         //Moves honey to the "cellar", if the "cellar" is full, the leftovers are stored in the hive
-        leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
-        honeyAmount = leftovers;
-
+            leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
+            honeyAmount = leftovers;
     }
     //Increasing the honey in the hive
     void incHoney(){
