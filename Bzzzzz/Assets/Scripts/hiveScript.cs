@@ -12,7 +12,7 @@ public class hiveScript : MonoBehaviour
     int tmpBees = 0;                            //Used for setting honey increase
     int honeyIncrease = 0;                  //Dependent on # of bees
     //Increasing the honey
-    public int delay = 3;                   //Used for increasing honey
+    public int delay = 2;                   //Used for increasing honey
     public int honeyAmount = 0;             //The amount of honey in the hive
     private float beeProductivity = 1f;
     private float totalPercentalChange = 1f;
@@ -30,6 +30,7 @@ public class hiveScript : MonoBehaviour
     private int hiveApproximation = 0;
     //Flow hive (Upgrades all hives for now...)
     private bool ownFlowHive = false;
+
 
     Text honeyCounter;
 
@@ -77,14 +78,8 @@ public class hiveScript : MonoBehaviour
         totalHives = tmpHives + tmpFlowHives;
         if(totalHives  != hiveApproximation){
             setMaxHoney(totalHives);
-            Debug.Log("setMaxHoney");
         }
         incHoney();
-        if (tmpFlowHives > 0)
-        {
-            TaskOnClick();
-            Debug.Log("Own flowhive");
-        }
         honeyCounter.text = "Honey in hive: " + honeyAmount;
     }
 
@@ -93,6 +88,7 @@ public class hiveScript : MonoBehaviour
         //Moves honey to the "cellar", if the "cellar" is full, the leftovers are stored in the hive
             leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
             honeyAmount = leftovers;
+
     }
     //Increasing the honey in the hive
     void incHoney(){
@@ -101,43 +97,29 @@ public class hiveScript : MonoBehaviour
             //Reset the timer
             timer = 0;
             //If the bee hive is full we return without increasing
-            if(honeyAmount>=maxHoney){
-                return;
-            }
             //If the increse in honey exceeds max honey per bee hive we set the value to max
-            temporaryHoney = honeyIncrease + honeyAmount;
+            temporaryHoney = honeyIncrease + honeyAmount; 
+            //Honey in normal hives
+            normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));         
+            leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
+            honeyAmount += leftovers;
+            temporaryHoney = honeyAmount + normalHoneyIncrease;
             if(temporaryHoney > maxHoney){
                 honeyAmount = maxHoney;
             }else{
-                honeyAmount += honeyIncrease;
-                //Honey in normal hives
-                /*
-                normalHoneyIncrease = (int) (honeyIncrease * (tmpHives/totalHives));
                 honeyAmount += normalHoneyIncrease;
-                Debug.Log("The normal honey is: " + normalHoneyIncrease);
-                Debug.Log(honeyAmount.ToString());
-                //Honey from flowhive
-                leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
-                honeyAmount += leftovers;
-                 if(honeyAmount > maxHoney){
-                    honeyAmount = maxHoney;
-                }
-                */
             }
         }
     }
     //Function that sets how much honey we get per unit of time
     public void setHoneyInc(int numberOfBees){
         honeyIncrease = (int) (beeProductivity*numberOfBees*0.25);
-        //honeyIncrease = 1000;
         beeApproximation = numberOfBees;
         return;
     }
 
     public void setHoneyIncProductivity(float prod){
         honeyIncrease = (int) (prod*honeyIncrease);
-        //Debug.Log("Percent " + prod.ToString());
-        //Debug.Log("Honey increase " + honeyIncrease.ToString());
         return;
     }
 
@@ -151,7 +133,6 @@ public class hiveScript : MonoBehaviour
         setHoneyIncProductivity(productivity);
         beeProductivity = productivity;
         totalPercentalChange *= productivity;
-        //Debug.Log("Total change is: " + totalPercentalChange.ToString());
         return;
     }
 
