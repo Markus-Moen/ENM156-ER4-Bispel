@@ -12,7 +12,6 @@ public class CardManager: MonoBehaviour
     //public SpriteRenderer chancecard;
 
     public GameObject[] chanceCards;
-    public GameObject[] infoCards;
     public GameObject[] questionCards;
     //for card 8
     private float timer = 0;
@@ -62,12 +61,6 @@ public class CardManager: MonoBehaviour
         //loads new scene with chosen card
         ChanceCardManager(card);
         //cardTest2.SetActive(true);
-    }
-
-    public void RandomizeInfoCard()
-    {
-        int card = Random.Range(0, infoCards.Length);
-        InfoCardManager(card);
     }
 
     public void RandomizeQuestionCard()
@@ -131,16 +124,6 @@ public class CardManager: MonoBehaviour
         }
     }
 
-    public void InfoCardManager(int card)
-    {
-        infoCards[card].SetActive(true);
-
-        // HERE ADD TO LOG SOMEHOW?
-        // Oh hello there! /Markus
-        LogManager.instance.saveToLog(card);
-
-    }
-
     public void QuestionCardManager(int card)
     {
         questionCards[card].SetActive(true);
@@ -151,11 +134,6 @@ public class CardManager: MonoBehaviour
     public void ReturnToStoreChance(int card)
     {
         chanceCards[card].SetActive(false);
-    }
-
-    public void ReturnToStoreInfo(int card)
-    {
-        infoCards[card].SetActive(false);
     }
 
     public void ReturnToStoreQuestion(int card)

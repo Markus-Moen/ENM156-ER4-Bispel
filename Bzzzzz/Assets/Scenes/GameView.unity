@@ -1035,7 +1035,7 @@ MonoBehaviour:
   - {fileID: 689792146}
   - {fileID: 1371711597}
   - {fileID: 487833773}
-  infoCards:
+  - {fileID: 487833773}
   - {fileID: 962221873}
   - {fileID: 1601181561}
   questionCards:
@@ -2014,7 +2014,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &403444455
 MonoBehaviour:
@@ -2330,7 +2329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &487833776
 MonoBehaviour:
@@ -3210,7 +3208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &657592664
 MonoBehaviour:
@@ -3407,7 +3404,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &689792149
 MonoBehaviour:
@@ -3733,7 +3729,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &756191428
 MonoBehaviour:
@@ -5145,7 +5140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!1 &962221873
 GameObject:
@@ -5180,7 +5174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &962221875
 MonoBehaviour:
@@ -7146,7 +7139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &1371711600
 MonoBehaviour:
@@ -8022,7 +8014,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &1601181564
 MonoBehaviour:
@@ -8140,7 +8131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &1617723521
 MonoBehaviour:
@@ -8815,7 +8805,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &1813954605
 MonoBehaviour:
@@ -8933,7 +8922,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &1821489216
 MonoBehaviour:
@@ -9939,7 +9927,7 @@ PrefabInstance:
     - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: shopItemsSO.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: c18646df956ac3e4080aa4d0bf7f7743, type: 2}
+      objectReference: {fileID: 11400000, guid: 64d3cfa63a806554ca79d472f187f7a0, type: 2}
     - target: {fileID: 7665373996957966796, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: shopItemsSO.Array.data[6]
       value: 
@@ -10048,6 +10036,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.000061035156
       objectReference: {fileID: 0}
+    - target: {fileID: 7665373998653029192, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8890104939764360159, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_Transition
       value: 1
@@ -10076,7 +10068,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chanceCards: []
-  infoCards: []
   questionCards: []
 --- !u!114 &1953213130 stripped
 MonoBehaviour:

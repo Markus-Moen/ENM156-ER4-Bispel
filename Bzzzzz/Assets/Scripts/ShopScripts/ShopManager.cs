@@ -67,8 +67,12 @@ public class ShopManager : MonoBehaviour
         {
             if (GameManager.instance.getPlayerHoney() >= shopItemsSO[i].baseCost)
             {
-                if ((i == 6) && (!ownFlowHive))
+                if (i != 6){
+                     myPurchaseBtns[i].interactable = true;
+                }
+                else if (!ownFlowHive){
                     myPurchaseBtns[i].interactable = true;
+                    }
             }
             else
                 myPurchaseBtns[i].interactable = false;

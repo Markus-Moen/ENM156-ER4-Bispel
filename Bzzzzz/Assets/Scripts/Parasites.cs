@@ -63,7 +63,7 @@ public class Parasites : MonoBehaviour
         // every randomEventDelay seconds there is a 10% chance of parasites
         //randomEventTimer += Time.deltaTime;           // uncomment to unleash hell (start the random parasites)
         if(randomEventTimer >= randomEventDelay){
-            parasiteRisk = Random.Range(0, 10);
+            parasiteRisk = Random.Range(0, 20);
             if(parasiteRisk == 1){                  // if parasiteRisk == 1, the parasites start
                 deathByParasites = true;
             }
