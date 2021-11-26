@@ -121,15 +121,20 @@ public class CardManager: MonoBehaviour
                 // +2 Flowers
                 GameManager.instance.incFlowers(2);
                 break; 
+
+            case 10:
+                LogManager.instance.saveToLog(card);
+                break;
+
+            case 11:
+                LogManager.instance.saveToLog(card);
+                break;
         }
     }
 
     public void QuestionCardManager(int card)
     {
         questionCards[card].SetActive(true);
-
-
-
     }
 
     public void ButtonTrue(int card){
