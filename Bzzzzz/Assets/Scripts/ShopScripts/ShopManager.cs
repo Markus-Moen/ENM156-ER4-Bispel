@@ -13,6 +13,10 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopPanelsGO;   // Array used to handle which of the items in the SO-array that should be active.
     public Button[] myPurchaseBtns;     // Array of all purchase buttons.
     private bool ownFlowHive = false;
+    private int buyBeeAmount = 1;
+    public TMP_Text buyBeeText;
+    public Button incBeeAmountBtn;
+    public Button decBeeAmountBtn;
 
 
     // Start is called before the first frame update
@@ -41,7 +45,11 @@ public class ShopManager : MonoBehaviour
     		myPurchaseBtns[0].interactable = false;
         }
         CheckPurchaseable();
-        
+        if (buyBeeAmount <= 1)
+            decBeeAmountBtn.interactable = false;
+        else
+            decBeeAmountBtn.interactable = true;
+
     }
 
     //Updates the text elements in each panel.
@@ -59,6 +67,7 @@ public class ShopManager : MonoBehaviour
         shopPanels[6].quantityTxt.text = "";
         shopPanels[7].quantityTxt.text = "";
         shopPanels[8].quantityTxt.text = "";
+        buyBeeText.text = "Purchace: " + buyBeeAmount;
 
     }
 
@@ -69,10 +78,14 @@ public class ShopManager : MonoBehaviour
         {
             if (GameManager.instance.getPlayerHoney() >= shopItemsSO[i].baseCost)
             {
-                
-                if (i == 6 && GameManager.instance.getPlayerHives() == 0){
-                     myPurchaseBtns[i].interactable = false;
-                }else{
+                if (i == 0 && GameManager.instance.getPlayerHoney() < shopItemsSO[i].baseCost * buyBeeAmount)
+                    myPurchaseBtns[i].interactable = false;
+                else if (i == 6 && GameManager.instance.getPlayerHives() == 0)
+                {
+                    myPurchaseBtns[i].interactable = false;
+                }
+                else
+                {
                     myPurchaseBtns[i].interactable = true;
                 }
                 /*else if (!ownFlowHive){
@@ -117,10 +130,10 @@ public class ShopManager : MonoBehaviour
 
     public void buyBee()
     {
-        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[0].baseCost)
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[0].baseCost * buyBeeAmount)
         {
-            GameManager.instance.incPlayerBees(1);
-            GameManager.instance.decPlayerHoney(shopItemsSO[0].baseCost);
+            GameManager.instance.incPlayerBees(buyBeeAmount);
+            GameManager.instance.decPlayerHoney(shopItemsSO[0].baseCost * buyBeeAmount);
             shopItemsSO[0].owned = GameManager.instance.getPlayerBees();    
             CheckPurchaseable();
         }
@@ -211,6 +224,19 @@ public class ShopManager : MonoBehaviour
 
             CheckPurchaseable();
         }
+    }
+    public void incBeeAmount()
+    {
+        if (buyBeeAmount <= 1)
+            myPurchaseBtns[0].interactable = true;
+        buyBeeAmount += 1;
+        buyBeeText.text = "Purchace: " + buyBeeAmount;
+    }
+    public void decBeeAmount()
+    {
+        buyBeeAmount -= 1;
+        buyBeeText.text = "Purchace: " + buyBeeAmount;
+
     }
 }
 
