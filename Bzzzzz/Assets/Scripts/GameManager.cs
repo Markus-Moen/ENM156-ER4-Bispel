@@ -124,7 +124,26 @@ public class GameManager : MonoBehaviour
 
         // comment out to disable seasons
         //seasonCountDown();
-             
+
+
+        if (CardManager.instance.getTimerActive())
+        {
+            Debug.Log("Timer active");
+            if (CardManager.instance.getTimer() < CardManager.instance.getTimerStop()) //until stoptime is reached, keep counting up
+            {
+                CardManager.instance.setTimer(CardManager.instance.getTimer() + Time.deltaTime);
+            }
+            else
+            {
+                CardManager.instance.setTimer(0);
+                CardManager.instance.setTimerActive(false);
+                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(hiveTmp);
+                hiveScript.instance.setBeeProductivity(CardManager.instance.getHiveTmp());
+                //GameObject.Find("Hive").GetComponent<hiveScript>().beeProductivity = hiveTmp; //restore hive productivity
+                Debug.Log("Timer done");
+            }
+
+        }
     }
 
 
