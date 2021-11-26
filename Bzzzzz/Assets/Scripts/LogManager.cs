@@ -20,7 +20,7 @@ public class LogManager : MonoBehaviour
     void Start()
     {
         // Inactivates the log while still letting it get instantiated.
-        //log.SetActive(true);
+        savedCards.Add(10);
         log.SetActive(false);
     }
 
@@ -48,6 +48,6 @@ public class LogManager : MonoBehaviour
     public void buttonClick(int card)
     {
         //CardManager.instance.chanceCards[savedCards[card]].SetActive(true);
-        Debug.Log("Button clicked");
+        Debug.Log("Button clicked: " + savedCards[card]);
     }
 }
