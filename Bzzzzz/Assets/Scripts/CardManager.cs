@@ -11,14 +11,22 @@ public class CardManager: MonoBehaviour
 
     //public SpriteRenderer chancecard;
 
+    public static CardManager instance;
+
     public GameObject[] chanceCards;
     public GameObject[] questionCards;
     //for card 8
-    private float timer = 0;
-    private float timerStop = 10;
-    private bool timerActive = false;
-    private float hiveTmp;
-    
+    public float timer = 0;
+    public float timerStop = 10;
+    public bool timerActive = false;
+    public float hiveTmp;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        { Destroy(this.gameObject); }
+        else { instance = this; }
+    }
 
     void Start()
     {
@@ -28,25 +36,7 @@ public class CardManager: MonoBehaviour
 
     private void Update()
     {
-        //for card 9 (8 in switch statment)
-        if (timerActive)
-        {
-            //Debug.Log("Timer active");
-            if (timer < timerStop) //until stoptime is reached, keep counting up
-            {
-                timer += Time.deltaTime;
-            }
-            else 
-            {
-                timer = 0;
-                timerActive = false;
-                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(hiveTmp);
-                hiveScript.instance.setBeeProductivity(hiveTmp);
-                //GameObject.Find("Hive").GetComponent<hiveScript>().beeProductivity = hiveTmp; //restore hive productivity
-                //Debug.Log("Timer done");
-            }
-            
-        }
+        
     }
 
     public void RandomizeChanceCard()
@@ -65,7 +55,7 @@ public class CardManager: MonoBehaviour
 
     public void RandomizeQuestionCard()
     {
-        int card = Random.Range(0, questionCards.Length);
+        int card = Random.Range(8, 9);
         QuestionCardManager(card);
     }
 
@@ -208,5 +198,53 @@ public class CardManager: MonoBehaviour
     public void ReturnToStoreQuestion(int card)
     {
         questionCards[card].SetActive(false);
+    }
+
+    public void setTimer(float n)
+    {
+        timer = n;
+
+    }
+
+    public void setTimerStop(float n)
+    {
+        timerStop = n;
+
+    }
+
+    public void setTimerActive(bool n)
+    {
+        timerActive = n;
+
+    }
+
+    public void setHiveTmp(float n)
+    {
+        timer = n;
+
+    }
+
+    public float getTimer()
+    {
+        return timer;
+
+    }
+
+    public float getTimerStop()
+    {
+        return timerStop;
+
+    }
+
+    public bool getTimerActive()
+    {
+        return timerActive;
+
+    }
+
+    public float getHiveTmp()
+    {
+        return timer;
+
     }
 }
