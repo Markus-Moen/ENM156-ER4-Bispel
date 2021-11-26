@@ -455,6 +455,10 @@ public class GameManager : MonoBehaviour
         return numOfFlowHives;
     }
 
+    public float getPercentOfBeesFood(){
+        return percentOfBeesFood;
+    }
+
 
     public int getMaxFood(){
         return maxFood;
