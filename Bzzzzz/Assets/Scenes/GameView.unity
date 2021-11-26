@@ -11449,6 +11449,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Chancecard
       objectReference: {fileID: 0}
+    - target: {fileID: 6544732892584416141, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544732892584416141, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: buyFoodStorageUpgrade
+      objectReference: {fileID: 0}
     - target: {fileID: 7197886604292627535, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1

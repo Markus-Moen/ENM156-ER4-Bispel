@@ -58,6 +58,7 @@ public class ShopManager : MonoBehaviour
         shopPanels[5].quantityTxt.text = "";
         shopPanels[6].quantityTxt.text = "";
         shopPanels[7].quantityTxt.text = "";
+        shopPanels[8].quantityTxt.text = "";
 
     }
 
@@ -197,6 +198,16 @@ public class ShopManager : MonoBehaviour
             GameManager.instance.decPlayerHoney(shopItemsSO[7].baseCost);           // TODO: increase price every time upgrade is bought
             int currentMaxHoney = GameManager.instance.getMaxHoney();
             GameManager.instance.setMaxHoney(currentMaxHoney + 500);    // increase the storage size by 500 honey
+
+            CheckPurchaseable();
+        }
+    }
+
+    public void buyFoodStorageUpgrade(){
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[8].baseCost){      // TODO: set so player cannot buy more than a certain number of upgrades
+            GameManager.instance.decPlayerHoney(shopItemsSO[8].baseCost);           // TODO: increase price every time upgrade is bought
+            int currentMaxFood = GameManager.instance.getMaxFood();
+            GameManager.instance.setMaxFood(currentMaxFood + 500);    // increase the storage size by 500 honey
 
             CheckPurchaseable();
         }
