@@ -21,12 +21,14 @@ public class hiveScript : MonoBehaviour
     int temporaryHoney = 0;                 //Used when moving honey to the cellar
     private int leftovers = 0;
     //Hives
-    private int maxHoneyPerHive = 2000;     //Max amount of honey per hive
+    private int maxHoneyPerHive = 200;     //Max amount of honey per hive
     private int maxHoney = 0;               //Total max honey across all hives
     private int tmpHives;
     private int hiveApproximation = 0;
     //Flow hive (Upgrades all hives for now...)
     private bool ownFlowHive = false;
+
+    Text honeyCounter;
 
     public static hiveScript instance;
 
@@ -40,8 +42,10 @@ public class hiveScript : MonoBehaviour
 
         tmpBees = GameManager.instance.getPlayerBees();
         setHoneyInc(tmpBees);
-        tmpHives = GameManager.instance.getPlayerHives();
+        tmpHives = GameManager.instance.getPlayerHives() + GameManager.instance.getPlayerFlowHives();
         setMaxHoney(tmpHives);
+
+        honeyCounter = GameObject.Find("HoneyCounter").GetComponent<Text>();
     }
     // Start is called before the first frame update
     void Start()
@@ -72,6 +76,7 @@ public class hiveScript : MonoBehaviour
         {
             TaskOnClick();
         }
+        honeyCounter.text = "Honey in hive: " + honeyAmount;
     }
 
      void TaskOnClick()
@@ -103,7 +108,7 @@ public class hiveScript : MonoBehaviour
     //Function that sets how much honey we get per unit of time
     public void setHoneyInc(int numberOfBees){
         //honeyIncrease = (int) productivityApproximation*numberOfBees*2; // DOES NOT WORK! ProductivityApprox is not updated somehow!!!
-        honeyIncrease = (int) beeProductivity*numberOfBees*2;
+        honeyIncrease = (int) (beeProductivity*numberOfBees*0.25);
         beeApproximation = numberOfBees;
         return;
     }
@@ -111,7 +116,7 @@ public class hiveScript : MonoBehaviour
     public void setHoneyIncProductivity(float prod){
         honeyIncrease = (int) (prod*honeyIncrease);
         //Debug.Log("Percent " + prod.ToString());
-        Debug.Log("Honey increase " + honeyIncrease.ToString());
+        //Debug.Log("Honey increase " + honeyIncrease.ToString());
         return;
     }
 
@@ -125,7 +130,7 @@ public class hiveScript : MonoBehaviour
         setHoneyIncProductivity(productivity);
         beeProductivity = productivity;
         totalPercentalChange *= productivity;
-        Debug.Log("Total change is: " + totalPercentalChange.ToString());
+        //Debug.Log("Total change is: " + totalPercentalChange.ToString());
         return;
     }
 
