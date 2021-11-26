@@ -207,7 +207,7 @@ public class ShopManager : MonoBehaviour
         if (GameManager.instance.getPlayerHoney() >= shopItemsSO[8].baseCost){      // TODO: set so player cannot buy more than a certain number of upgrades
             GameManager.instance.decPlayerHoney(shopItemsSO[8].baseCost);           // TODO: increase price every time upgrade is bought
             int currentMaxFood = GameManager.instance.getMaxFood();
-            GameManager.instance.setMaxFood(currentMaxFood + 500);    // increase the storage size by 500 honey
+            GameManager.instance.setMaxFood(currentMaxFood + 500);    // increase the storage size by 500 food
 
             CheckPurchaseable();
         }
