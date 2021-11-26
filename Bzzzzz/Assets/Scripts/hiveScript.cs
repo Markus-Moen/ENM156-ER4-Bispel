@@ -25,6 +25,8 @@ public class hiveScript : MonoBehaviour
     private int maxHoney = 0;               //Total max honey across all hives
     private int tmpHives;
     private int tmpFlowHives;
+    private int totalHives;
+    private int normalHoneyIncrease;
     private int hiveApproximation = 0;
     //Flow hive (Upgrades all hives for now...)
     private bool ownFlowHive = false;
@@ -45,7 +47,8 @@ public class hiveScript : MonoBehaviour
         setHoneyInc(tmpBees);
         tmpHives = GameManager.instance.getPlayerHives();
         tmpFlowHives = GameManager.instance.getPlayerFlowHives();
-        setMaxHoney(tmpHives);
+        totalHives = tmpHives + tmpFlowHives;
+        setMaxHoney(totalHives);
 
         honeyCounter = GameObject.Find("HoneyCounter").GetComponent<Text>();
     }
@@ -71,8 +74,9 @@ public class hiveScript : MonoBehaviour
         }
         tmpHives = GameManager.instance.getPlayerHives();
         tmpFlowHives = GameManager.instance.getPlayerFlowHives();
-        if((tmpHives + tmpFlowHives)  != hiveApproximation){
-            setMaxHoney((tmpHives + tmpFlowHives));
+        totalHives = tmpHives + tmpFlowHives;
+        if(totalHives  != hiveApproximation){
+            setMaxHoney(totalHives);
             Debug.Log("setMaxHoney");
         }
         incHoney();
@@ -106,6 +110,19 @@ public class hiveScript : MonoBehaviour
                 honeyAmount = maxHoney;
             }else{
                 honeyAmount += honeyIncrease;
+                //Honey in normal hives
+                /*
+                normalHoneyIncrease = (int) (honeyIncrease * (tmpHives/totalHives));
+                honeyAmount += normalHoneyIncrease;
+                Debug.Log("The normal honey is: " + normalHoneyIncrease);
+                Debug.Log(honeyAmount.ToString());
+                //Honey from flowhive
+                leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
+                honeyAmount += leftovers;
+                 if(honeyAmount > maxHoney){
+                    honeyAmount = maxHoney;
+                }
+                */
             }
         }
     }
