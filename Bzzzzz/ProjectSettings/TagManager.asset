@@ -5,8 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - chanceCard#1
-  - logButton#1
-  - logButton#2
+  - logButton
   layers:
   - Default
   - TransparentFX
