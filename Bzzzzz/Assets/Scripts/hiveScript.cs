@@ -40,7 +40,7 @@ public class hiveScript : MonoBehaviour
 
         tmpBees = GameManager.instance.getPlayerBees();
         setHoneyInc(tmpBees);
-        tmpHives = GameManager.instance.getPlayerHives();
+        tmpHives = GameManager.instance.getPlayerHives() + GameManager.instance.getPlayerFlowHives();
         setMaxHoney(tmpHives);
     }
     // Start is called before the first frame update
@@ -63,7 +63,7 @@ public class hiveScript : MonoBehaviour
         if(tmpBees != beeApproximation){
             setHoneyInc(tmpBees);
         }
-        tmpHives = GameManager.instance.getPlayerHives();
+        tmpHives = GameManager.instance.getPlayerHives() + GameManager.instance.getPlayerFlowHives();
         if(tmpHives != hiveApproximation){
             setMaxHoney(tmpHives);
         }

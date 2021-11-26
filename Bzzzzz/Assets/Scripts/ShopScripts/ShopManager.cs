@@ -67,12 +67,15 @@ public class ShopManager : MonoBehaviour
         {
             if (GameManager.instance.getPlayerHoney() >= shopItemsSO[i].baseCost)
             {
-                if (i != 6){
-                     myPurchaseBtns[i].interactable = true;
-                }
-                else if (!ownFlowHive){
+                
+                if (i == 6 && GameManager.instance.getPlayerHives() == 0){
+                     myPurchaseBtns[i].interactable = false;
+                }else{
                     myPurchaseBtns[i].interactable = true;
-                    }
+                }
+                /*else if (!ownFlowHive){
+                    myPurchaseBtns[i].interactable = true;
+                    }*/
             }
             else
                 myPurchaseBtns[i].interactable = false;
@@ -171,13 +174,17 @@ public class ShopManager : MonoBehaviour
     }
     public void buyFlowHive()
     {
-        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[6].baseCost)
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[6].baseCost && GameManager.instance.getPlayerHives() != 0)
         {
-            GameManager.instance.decPlayerHoney(shopItemsSO[6].baseCost);
-            hiveScript.instance.upgradeHive();
-            myPurchaseBtns[6].interactable = false;
-            ownFlowHive = true;
-            shopPanels[6].quantityTxt.text = "Flow Hive owned!";
+            bool b = GameManager.instance.upgradeHive();
+            if(b){
+                GameManager.instance.decPlayerHoney(shopItemsSO[6].baseCost);
+            }
+            
+            
+            //myPurchaseBtns[6].interactable = false;
+            //ownFlowHive = true;
+            //shopPanels[6].quantityTxt.text = "Flow Hive owned!";
             CheckPurchaseable();
         }
     }
