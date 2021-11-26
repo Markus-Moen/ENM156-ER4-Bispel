@@ -20,6 +20,7 @@ public class LogManager : MonoBehaviour
     void Start()
     {
         // Inactivates the log while still letting it get instantiated.
+        //log.SetActive(true);
         log.SetActive(false);
     }
 
