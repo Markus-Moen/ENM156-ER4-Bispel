@@ -3780,8 +3780,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 232159067}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: RandomizeChanceCard
-        m_Mode: 1
+        m_MethodName: ReturnToStoreChance
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7704,6 +7704,7 @@ GameObject:
   - component: {fileID: 1251718214}
   - component: {fileID: 1251718213}
   - component: {fileID: 1251718212}
+  - component: {fileID: 1251718215}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7776,6 +7777,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1251718215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251718211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fffe8c2854f3d447962cb0e5880592c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceCards:
+  - {fileID: 961496882}
+  - {fileID: 1813954602}
+  - {fileID: 1821489213}
+  - {fileID: 756191425}
+  - {fileID: 1617723518}
+  - {fileID: 657592661}
+  - {fileID: 403444452}
+  - {fileID: 689792146}
+  - {fileID: 1371711597}
+  - {fileID: 487833773}
+  - {fileID: 962221873}
+  - {fileID: 1601181561}
+  questionCards: []
+  timer: 0
+  timerStop: 10
+  timerActive: 0
+  hiveTmp: 0
 --- !u!1 &1276815308
 GameObject:
   m_ObjectHideFlags: 0

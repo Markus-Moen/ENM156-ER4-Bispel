@@ -10,28 +10,33 @@ public class CardManager: MonoBehaviour
     // Start is called before the first frame update
 
     //public SpriteRenderer chancecard;
+     public static CardManager instance;
 
     public GameObject[] chanceCards;
     public GameObject[] questionCards;
     //for card 8
-    private float timer = 0;
-    private float timerStop = 10;
-    private bool timerActive = false;
-    private float hiveTmp;
-    
+    public float timer = 0;
+    public float timerStop = 10;
+    public bool timerActive = false;
+    public float hiveTmp;
+
+    private void Awake() => instance = this;
+
+
 
     void Start()
     {
-      
-        
+       
+
     }
 
     private void Update()
     {
+        /*
         //for card 9 (8 in switch statment)
         if (timerActive)
         {
-            //Debug.Log("Timer active");
+            Debug.Log("Timer active");
             if (timer < timerStop) //until stoptime is reached, keep counting up
             {
                 timer += Time.deltaTime;
@@ -43,16 +48,17 @@ public class CardManager: MonoBehaviour
                 //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(hiveTmp);
                 hiveScript.instance.setBeeProductivity(hiveTmp);
                 //GameObject.Find("Hive").GetComponent<hiveScript>().beeProductivity = hiveTmp; //restore hive productivity
-                //Debug.Log("Timer done");
+                Debug.Log("Timer done");
             }
             
         }
+        */
     }
 
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(0, chanceCards.Length); //Add last card when it works
+        int card = Random.Range(8, 9); //Add last card when it works
 
         
         //for debugging purposes
@@ -113,7 +119,7 @@ public class CardManager: MonoBehaviour
                 //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(0.1f);
                 //new WaitForSeconds(6);
 
-                timerActive = true; //starts process in update
+                CardManager.instance.setTimerActive(true); //timerActive = true; //starts process in update
 
                 //GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = tmp;
                 break;
@@ -214,4 +220,54 @@ public class CardManager: MonoBehaviour
     {
         questionCards[card].SetActive(false);
     }
+
+    
+    public void setTimer(float n)
+    {
+        timer = n;
+
+    }
+
+    public void setTimerStop(float n)
+    {
+        timerStop = n;
+
+    }
+
+    public void setTimerActive(bool n)
+    {
+        timerActive = n;
+
+    }
+
+    public void setHiveTmp(float n)
+    {
+        timer = n;
+
+    }
+
+    public float getTimer()
+    {
+        return timer;
+
+    }
+
+    public float getTimerStop()
+    {
+        return timerStop;
+
+    }
+
+    public bool getTimerActive()
+    {
+        return timerActive;
+
+    }
+
+    public float getHiveTmp()
+    {
+        return timer;
+
+    }
+    
 }
