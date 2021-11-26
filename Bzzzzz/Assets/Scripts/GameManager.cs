@@ -482,6 +482,10 @@ public class GameManager : MonoBehaviour
     public int getMaxFood(){
         return maxFood;
     }
+
+    public int getMaxHoney(){
+        return maxHoney;
+    }
     
     public int getMaxBees(){
         return maxBees;

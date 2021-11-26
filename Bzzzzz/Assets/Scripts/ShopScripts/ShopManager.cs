@@ -57,6 +57,7 @@ public class ShopManager : MonoBehaviour
         shopPanels[4].quantityTxt.text = "";
         shopPanels[5].quantityTxt.text = "";
         shopPanels[6].quantityTxt.text = "";
+        shopPanels[7].quantityTxt.text = "";
 
     }
 
@@ -185,6 +186,18 @@ public class ShopManager : MonoBehaviour
             //myPurchaseBtns[6].interactable = false;
             //ownFlowHive = true;
             //shopPanels[6].quantityTxt.text = "Flow Hive owned!";
+            CheckPurchaseable();
+        }
+    }
+
+
+
+    public void buyHoneyStorageUpgrade(){
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[7].baseCost){      // TODO: set so player cannot buy more than a certain number of upgrades
+            GameManager.instance.decPlayerHoney(shopItemsSO[7].baseCost);           // TODO: increase price every time upgrade is bought
+            int currentMaxHoney = GameManager.instance.getMaxHoney();
+            GameManager.instance.setMaxHoney(currentMaxHoney + 500);    // increase the storage size by 500 honey
+
             CheckPurchaseable();
         }
     }
