@@ -6,3 +6,18 @@ False. Bees live longer during the winter.
 
 QCard3:
 1. Worker bees are shorter and more slender.
+
+QCard4:
+2. Pesticides can cause disorientaiton.
+
+QCard5:
+X. 0.8 g.
+
+QCard6:
+1. They have large eyes.
+
+QCard7:
+True. There is only one queen bee.
+
+QCard8:
+False. They fly up to 4 km.
