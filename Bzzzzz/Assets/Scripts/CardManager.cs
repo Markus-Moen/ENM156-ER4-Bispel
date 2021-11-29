@@ -11,6 +11,7 @@ public class CardManager: MonoBehaviour
 
     public GameObject[] chanceCards;
     public GameObject[] questionCards;
+    public GameObject wrongCanvas;
 
     //for card 8
     public float timer = 0;
@@ -132,110 +133,147 @@ public class CardManager: MonoBehaviour
 
      public void ButtonTrue(int card){
             switch (card){
-                case 1: 
-                     // Wrong answer
-                     break;
+                case 1:
+                    wrongCanvas.SetActive(true);
+                    // Wrong answer
+                    break;
                 case 6:
+                     // Add BeeCoin
                      // Correct answer   
                      break;
                 case 7:
-                     // Wrong answer
-                     break;
-                default: 
+                    wrongCanvas.SetActive(true);
+                    // Wrong answer
+                    break;
+                default:
+                Debug.Log("QuestionCard does not exist");
                      break;
             }
-     }
-   public void ButtonFalse(int card){
-        switch (card){
-                    
-            case 1: 
-                 // True answer
+        questionCards[card].SetActive(false);
+    }
+    public void ButtonFalse(int card) {
+        switch (card) {
+
+            case 1:
+                // Add BeeCoin
+                // True answer
                 break;
             case 6:
+                wrongCanvas.SetActive(true);
                 // Wrong answer   
                 break;
             case 7:
+                // Add BeeCoin
                 // Correct answer   
                 break;
-            default: 
+            default:
+                Debug.Log("QuestionCard does not exist");
                 break;
-                    }}
+        }
+        questionCards[card].SetActive(false);
+    }
+
 
     public void ButtonOne(int card){
         switch (card){
             case 0:
+                chanceCards[10].SetActive(true);
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
             case 2:
-               // Correct Answer
+                // Add BeeCoin
+                // Correct Answer
                 break;
             case 3:
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
             case 4:
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
             case 5:
+                // Add BeeCoin
                 // Correct Answer
                 break;
-            default: 
+            default:
+                Debug.Log("QuestionCard does not exist");
                 break;
                     }
+        questionCards[card].SetActive(false);
     }
 
     public void ButtonX(int card){
       switch (card){
             case 0:
+                chanceCards[10].SetActive(true);
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
-            case 2: 
+            case 2:
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
             case 3:
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
             case 4:
+                // Add BeeCoin
                 // Correct Answer
                 break;
             case 5:
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
-            default: 
+            default:
+                Debug.Log("QuestionCard does not exist");
                 break;
-                    } 
+                    }
+        questionCards[card].SetActive(false);
     
     }
 
     public void ButtonTwo(int card){
       switch (card){
             case 0:
-               // Correct Answer
+                // Add BeeCoin
+                // Correct Answer
                 break;
-            case 2: 
+            case 2:
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
             case 3:
+                // Add BeeCoin
                 // Correct Answer
                 break;
             case 4:
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
             case 5:
+                wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
-            default: 
+            default:
+                Debug.Log("QuestionCard does not exist");
                 break;
                     }
+        questionCards[card].SetActive(false);
     }
     //Hides card again and now Store object is on top. 
     public void ReturnToStoreChance(int card)
     {
         chanceCards[card].SetActive(false);
+        wrongCanvas.SetActive(false);
     }
 
     public void ReturnToStoreQuestion(int card)
     {
         questionCards[card].SetActive(false);
+
     }
 
     
