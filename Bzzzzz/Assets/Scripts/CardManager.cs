@@ -135,14 +135,16 @@ public class CardManager: MonoBehaviour
             switch (card){
                 case 1:
                     wrongCanvas.SetActive(true);
+                    chanceCards[11].SetActive(true);
                     // Wrong answer
-                    break;
+                break;
                 case 6:
                      // Add BeeCoin
                      // Correct answer   
                      break;
                 case 7:
-                    wrongCanvas.SetActive(true);
+                     chanceCards[14].SetActive(true);
+                     wrongCanvas.SetActive(true);
                     // Wrong answer
                     break;
                 default:
@@ -159,6 +161,7 @@ public class CardManager: MonoBehaviour
                 // True answer
                 break;
             case 6:
+                chanceCards[13].SetActive(true);
                 wrongCanvas.SetActive(true);
                 // Wrong answer   
                 break;
@@ -187,9 +190,11 @@ public class CardManager: MonoBehaviour
                 break;
             case 3:
                 wrongCanvas.SetActive(true);
+                chanceCards[15].SetActive(true);
                 // Wrong Answer
                 break;
             case 4:
+                chanceCards[14].SetActive(true);
                 wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
@@ -212,10 +217,12 @@ public class CardManager: MonoBehaviour
                 // Wrong Answer
                 break;
             case 2:
+                chanceCards[11].SetActive(true);
                 wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
             case 3:
+                chanceCards[15].SetActive(true);
                 wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
@@ -224,6 +231,7 @@ public class CardManager: MonoBehaviour
                 // Correct Answer
                 break;
             case 5:
+                chanceCards[12].SetActive(true);
                 wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
@@ -242,6 +250,7 @@ public class CardManager: MonoBehaviour
                 // Correct Answer
                 break;
             case 2:
+                chanceCards[11].SetActive(true);
                 wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
@@ -250,10 +259,12 @@ public class CardManager: MonoBehaviour
                 // Correct Answer
                 break;
             case 4:
+                chanceCards[14].SetActive(true);
                 wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
             case 5:
+                chanceCards[15].SetActive(true);
                 wrongCanvas.SetActive(true);
                 // Wrong Answer
                 break;
