@@ -133,68 +133,98 @@ public class CardManager: MonoBehaviour
      public void ButtonTrue(int card){
             switch (card){
                 case 1: 
-                    // Wrong answer
-                    break;
-                
+                     // Wrong answer
+                     break;
+                case 6:
+                     // Correct answer   
+                     break;
+                case 7:
+                     // Wrong answer
+                     break;
                 default: 
-
-                break;
+                     break;
             }
      }
    public void ButtonFalse(int card){
         switch (card){
                     
-                        case 1: 
-                        // True answer
-                            break;
-                        
-                        default: 
-
-                        break;
+            case 1: 
+                 // True answer
+                break;
+            case 6:
+                // Wrong answer   
+                break;
+            case 7:
+                // Correct answer   
+                break;
+            default: 
+                break;
                     }}
 
     public void ButtonOne(int card){
         switch (card){
-                    case 0:
-                        // Wrong Answer
-                        break;
-                    case 2: 
-                        // Correct Answer
-                        break;
-                        
-                    default: 
-                        break;
-
+            case 0:
+                // Wrong Answer
+                break;
+            case 2:
+               // Correct Answer
+                break;
+            case 3:
+                // Wrong Answer
+                break;
+            case 4:
+                // Wrong Answer
+                break;
+            case 5:
+                // Correct Answer
+                break;
+            default: 
+                break;
                     }
     }
 
     public void ButtonX(int card){
       switch (card){
-                    case 0:
-                     // Wrong Answer
-                        break;
-
-                    case 2: 
-                     // Wrong Answer
-                        break;
-                    default: 
-                        break;
+            case 0:
+                // Wrong Answer
+                break;
+            case 2: 
+                // Wrong Answer
+                break;
+            case 3:
+                // Wrong Answer
+                break;
+            case 4:
+                // Correct Answer
+                break;
+            case 5:
+                // Wrong Answer
+                break;
+            default: 
+                break;
                     } 
     
     }
 
     public void ButtonTwo(int card){
       switch (card){
-                    case 0:
-                   // Correct Answer
-                        break;
-
-                    case 2: 
-                    // Wrong Answer
-                        break;
-                        
-                    default: 
-                        break;
+            case 0:
+               // Correct Answer
+                break;
+            case 2: 
+                // Wrong Answer
+                break;
+            case 3:
+                // Correct Answer
+                break;
+            case 4:
+                // Wrong Answer
+                break;
+            case 5:
+                // Wrong Answer
+                break;
+            default: 
+                break;
                     }
     }
     //Hides card again and now Store object is on top. 
