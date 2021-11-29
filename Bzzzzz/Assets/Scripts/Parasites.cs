@@ -5,6 +5,7 @@ using UnityEngine;
 public class Parasites : MonoBehaviour
 {
 
+    private bool startRandParasites = false;    // false until player attains x number of bees - beefore this, there are no random parasites
     private bool deathByParasites = false;  // true if bees start to die because of parasites
 
     private const float baseKillingRate = 0.9f;             // the standard rate of killing bees
@@ -49,6 +50,12 @@ public class Parasites : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(GameManager.instance.getPlayerBees() >= 200){
+            startRandParasites = true;
+        }
+        Debug.Log(startRandParasites);
+
         // start killing bees if the boolean is true
         if(deathByParasites){
             timer += Time.deltaTime;
@@ -60,14 +67,21 @@ public class Parasites : MonoBehaviour
             }
         }
 
-        // every randomEventDelay seconds there is a 10% chance of parasites
-        //randomEventTimer += Time.deltaTime;           // uncomment to unleash hell (start the random parasites)
-        if(randomEventTimer >= randomEventDelay){
-            parasiteRisk = Random.Range(0, 20);
-            if(parasiteRisk == 1){                  // if parasiteRisk == 1, the parasites start
-                deathByParasites = true;
+
+    
+        // There is only a risk of random parasites after the player reaches x amount of bees
+        if(startRandParasites){
+            // every randomEventDelay seconds there is a 10% chance of parasites
+            randomEventTimer += Time.deltaTime;           // uncomment to unleash hell (start the random parasites)
+
+            if(randomEventTimer >= randomEventDelay){
+                parasiteRisk = Random.Range(0, 20);
+                if(parasiteRisk == 1){                  // if parasiteRisk == 1, the parasites start
+                    deathByParasites = true;
+                }
             }
         }
+        
 
         
     }
