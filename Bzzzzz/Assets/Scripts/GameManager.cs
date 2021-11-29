@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
         // comment out to disable seasons
         //seasonCountDown();
 
-
+        //for chanceCard 9, card 8 in switch statment in cardManager
         if (CardManager.instance.getTimerActive())
         {
             Debug.Log("Timer active");

@@ -7,13 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class CardManager: MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    //public SpriteRenderer chancecard;
      public static CardManager instance;
 
     public GameObject[] chanceCards;
     public GameObject[] questionCards;
+
     //for card 8
     public float timer = 0;
     public float timerStop = 10;
@@ -30,30 +28,12 @@ public class CardManager: MonoBehaviour
 
     }
 
+    /*
     private void Update()
     {
-        /*
-        //for card 9 (8 in switch statment)
-        if (timerActive)
-        {
-            Debug.Log("Timer active");
-            if (timer < timerStop) //until stoptime is reached, keep counting up
-            {
-                timer += Time.deltaTime;
-            }
-            else 
-            {
-                timer = 0;
-                timerActive = false;
-                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(hiveTmp);
-                hiveScript.instance.setBeeProductivity(hiveTmp);
-                //GameObject.Find("Hive").GetComponent<hiveScript>().beeProductivity = hiveTmp; //restore hive productivity
-                Debug.Log("Timer done");
-            }
-            
-        }
-        */
+       
     }
+    */
 
     public void RandomizeChanceCard()
     {
@@ -62,7 +42,7 @@ public class CardManager: MonoBehaviour
 
         
         //for debugging purposes
-        Debug.Log("card " + card);
+        //Debug.Log("card " + card);
 
         //loads new scene with chosen card
         ChanceCardManager(card);
@@ -111,17 +91,12 @@ public class CardManager: MonoBehaviour
                 GameManager.instance.changeBeePercent(0.75f);   // 25% of bees die
                 break;
             case 8:
-                // For one minute honeyproduction reduced by 90% Waiting NOT WORKING!
+                // For one minute honeyproduction reduced by 90% 
                 hiveTmp = hiveScript.instance.getTotalPercentalChange();
-                //GameObject.Find("Hive").GetComponent<hiveScript>().getTotalPercentalChange();
-                //Debug.Log("hiveTmp: " + hiveTmp.ToString()); This is just a test to see if hiveTmp is correct
                 hiveScript.instance.setBeeProductivity(0.1f);
-                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(0.1f);
-                //new WaitForSeconds(6);
 
-                CardManager.instance.setTimerActive(true); //timerActive = true; //starts process in update
+                CardManager.instance.setTimerActive(true); //starts countdown process in update function in gameManager
 
-                //GameObject.Find("Hive").GetComponent<hiveScript>().productivityApproximation = tmp;
                 break;
             case 9:
                 // +2 Flowers
