@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private const int startHoney = 100;
     private const int startFlowers = 0;
     private const int startFlowHives = 0;
+    private const int startBeeCoins = 0;
 
     // max values
     private const int max = 1000;
@@ -23,12 +24,14 @@ public class GameManager : MonoBehaviour
     private int maxFood = max;
     private int maxFlowers = 100;
     private int maxFlowHives = max;
+    private int maxBeeCoins = 1000;
 
     // Variables
     private int numOfHoney = startHoney;
     private int numOfFood = startFood;
     private int numOfBees = startBees;
     private int numOfHives = startHives;
+    private int numOfBeeCoins = startBeeCoins;
 
     private int numOfFlowers = startFlowers;
     private int numOfFlowHives = startFlowHives;
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
     Text honeyText;
     Text hivesText;
     Text beesText;
+    Text beeCoinText;
     Text timerText;
     Text yearlyCostText;
     Text flowersText;
@@ -98,6 +102,7 @@ public class GameManager : MonoBehaviour
         timerText = GameObject.Find("Timer Text").GetComponent<Text>();
         yearlyCostText = GameObject.Find("Yearly Cost Text").GetComponent<Text>();
         flowersText = GameObject.Find("Flowers Text").GetComponent<Text>();
+        beeCoinText = GameObject.Find("Bee Coin Text").GetComponent<Text>();
 
         // Set text field texts
         int hives = numOfHives + numOfFlowHives;
@@ -115,6 +120,7 @@ public class GameManager : MonoBehaviour
         updateTimerTxt();
         updateYearlyCostTxt();
         updateFlowersTxt();
+        updateBeeCoinTxt();
     }
 
 
@@ -161,6 +167,7 @@ public class GameManager : MonoBehaviour
         hivesText.text = "Hives: " + hives + " (Flow: " + numOfFlowHives + ")";
         beesText.text = "Bees: " + numOfBees + " / " + maxBees;
         flowersText.text = "Flowers: " + numOfFlowers + " / " + maxFlowers;
+        beeCoinText.text = "Beec Coins: " + numOfBeeCoins + " / " + maxBeeCoins;
     }
 
 
@@ -179,8 +186,11 @@ public class GameManager : MonoBehaviour
     private void updateBeesTxt(){
         beesText.text = "Bees: " + numOfBees + " / " + maxBees;
     }
+    private void updateBeeCoinTxt(){
+        beeCoinText.text = "Beec Coins: " + numOfBeeCoins + " / " + maxBeeCoins;
+    }
     private void updateTimerTxt(){
-        timerText.text = "Time till next season: " + getTime();
+        timerText.text = "Time till next year: " + getTime();
     }
     private void updateYearlyCostTxt(){
         yearlyCostText.text = "Yearly cost: "  + "\nFood: " + (int) Mathf.Floor(numOfBees*percentOfBeesFood)
@@ -340,6 +350,21 @@ public class GameManager : MonoBehaviour
         return leftovers;
     }
 
+
+    // adds n to the players bee coins
+    // returns any leftovers (if the max limit is hit)
+    public int incPlayerBeeCoins(int n){
+        numOfBeeCoins += n;
+        int leftovers = 0;
+        // cannot have more than the max amount of bee coins
+        if(numOfBeeCoins > maxBeeCoins){
+            leftovers = numOfBeeCoins - maxBeeCoins;
+            numOfBeeCoins = maxBeeCoins;
+        }
+        updateBeeCoinTxt();
+        return leftovers;
+    }
+
     // adds n flowers
     // returns any leftovers (if the max limit is hit)
     public int incFlowers(int n)
@@ -431,6 +456,21 @@ public class GameManager : MonoBehaviour
         updateYearlyCostTxt();
     } 
 
+    // subtracts n from numOfBeeCoins - if this does not 
+    // result in a negative numOfHoney
+    // - returns true if subtraction is successful
+    // - returns false if it would lead to a negative value of
+    //   numOfBeeCoins
+    public bool decPlayerBeeCoins(int n){
+        if(numOfBeeCoins - n < 0){
+            updateBeeCoinTxt();
+            return false;
+        }
+        numOfBeeCoins -= n;
+        updateBeeCoinTxt();
+        return true;
+    }
+
     // subtracts n from numOfFlowers
     // cannot be lower than 0
     public void decFlowers(int n){
@@ -478,6 +518,10 @@ public class GameManager : MonoBehaviour
 
     public int getPlayerFood(){
         return numOfFood;
+    }
+
+    public int getPlayerBeeCoins(){
+        return numOfBeeCoins;
     }
 
     public int getPlayerFlowHives(){
