@@ -33,8 +33,9 @@ public class GameManager : MonoBehaviour
     private int numOfFlowers = startFlowers;
     private int numOfFlowHives = startFlowHives;
 
-    private float beeProductivity = 1f;     // hov much honey one bee produce per time unit
-    private float beeKillingRate = 0.95f;   // how many bees die per time unit when starving / parasites
+    private float beeProductivity = 1f;         // hov much honey one bee produce per time unit
+    private float beeKillingRate = 0.95f;       // how many bees die per time unit when starving / parasites
+    private float productivityPerFlower = 1.05f; // how much productivity is increased per flower
 
     // Text fields
     Text foodText;
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
     Text beesText;
     Text timerText;
     Text yearlyCostText;
+    Text flowersText;
 
 
     private float timer = 0;
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour
         beesText = GameObject.Find("Bees Text").GetComponent<Text>();
         timerText = GameObject.Find("Timer Text").GetComponent<Text>();
         yearlyCostText = GameObject.Find("Yearly Cost Text").GetComponent<Text>();
+        flowersText = GameObject.Find("Flowers Text").GetComponent<Text>();
 
         // Set text field texts
         int hives = numOfHives + numOfFlowHives;
@@ -111,7 +114,7 @@ public class GameManager : MonoBehaviour
         updateBeesTxt();
         updateTimerTxt();
         updateYearlyCostTxt();
-        
+        updateFlowersTxt();
     }
 
 
@@ -157,6 +160,7 @@ public class GameManager : MonoBehaviour
         honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
         hivesText.text = "Hives: " + hives + " (Flow: " + numOfFlowHives + ")";
         beesText.text = "Bees: " + numOfBees + " / " + maxBees;
+        flowersText.text = "Flowers: " + numOfFlowers + " / " + maxFlowers;
     }
 
 
@@ -181,6 +185,10 @@ public class GameManager : MonoBehaviour
     private void updateYearlyCostTxt(){
         yearlyCostText.text = "Yearly cost: "  + "\nFood: " + (int) Mathf.Floor(numOfBees*percentOfBeesFood)
                                 + "\nHoney: " + yearlyHoneyCost();
+    }
+    private void updateFlowersTxt()
+    {
+        flowersText.text = "Flowers: " + numOfFlowers + " / " + maxFlowers;
     }
 
     // loads game over scene
@@ -342,7 +350,9 @@ public class GameManager : MonoBehaviour
             leftovers = numOfFlowers - maxFlowers;
             numOfFlowers = maxFlowers;
         }
+        hiveScript.instance.setBeeProductivity(productivityPerFlower);
         updateYearlyCostTxt();
+        updateFlowersTxt();
         return leftovers;
     }
 
@@ -473,6 +483,10 @@ public class GameManager : MonoBehaviour
     public int getPlayerFlowHives(){
         return numOfFlowHives;
     }
+    public int getPlayerFlowers()
+    {
+        return numOfFlowers;
+    }
 
     public float getPercentOfBeesFood(){
         return percentOfBeesFood;
@@ -521,8 +535,4 @@ public class GameManager : MonoBehaviour
         maxFlowers = n;
         updateYearlyCostTxt();
     }
-
-    
-
-    
 }

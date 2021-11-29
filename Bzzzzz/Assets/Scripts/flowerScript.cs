@@ -28,7 +28,7 @@ public class flowerScript : MonoBehaviour
 
     }
 
-    public void addNewFlower()
+    public void newFlower()
     {
         int posX = UnityEngine.Random.Range(minX, maxX);
         float posY = UnityEngine.Random.Range(minY, maxY);
@@ -45,6 +45,15 @@ public class flowerScript : MonoBehaviour
         image.rectTransform.localScale = new Vector2(minWidth * scale, minHeight * scale);
         image.sprite = flowers[flowerIndex];
         newFlower.transform.SetParent(flowerCanvas.transform);
+    }
+
+    public void addFlowers(int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            newFlower();
+        }
+        GameManager.instance.incFlowers(n);
     }
     
 }

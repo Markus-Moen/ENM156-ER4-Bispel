@@ -38,6 +38,7 @@ public class ShopManager : MonoBehaviour
         shopPanels[0].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerBees();
         shopPanels[1].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerFood();
         shopPanels[3].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerHives();
+        shopPanels[9].quantityTxt.text = "Owned: " + GameManager.instance.getPlayerFlowers();
         if (GameManager.instance.getPlayerFood()>= GameManager.instance.getMaxFood()){
     		myPurchaseBtns[1].interactable = false;
     	}
@@ -225,6 +226,15 @@ public class ShopManager : MonoBehaviour
             CheckPurchaseable();
         }
     }
+    public void buyFlower()
+    {
+        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[9].baseCost)
+        {
+            GameManager.instance.decPlayerHoney(shopItemsSO[9].baseCost);
+            shop.GetComponent<flowerScript>().addFlowers(1);
+            CheckPurchaseable();
+        }
+    }
     public void incBeeAmount()
     {
         if (buyBeeAmount <= 1)
@@ -236,7 +246,6 @@ public class ShopManager : MonoBehaviour
     {
         buyBeeAmount -= 1;
         buyBeeText.text = "Purchase: " + buyBeeAmount;
-
     }
 }
 
