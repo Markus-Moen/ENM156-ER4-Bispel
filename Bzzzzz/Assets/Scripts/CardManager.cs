@@ -128,11 +128,23 @@ public class CardManager: MonoBehaviour
                 GameManager.instance.incFlowers(2);
                 break; 
 
+                //infocards
             case 10:
                 LogManager.instance.saveToLog(card);
                 break;
-
             case 11:
+                LogManager.instance.saveToLog(card);
+                break;
+            case 12:
+                LogManager.instance.saveToLog(card);
+                break;
+            case 13:
+                LogManager.instance.saveToLog(card);
+                break;
+            case 14:
+                LogManager.instance.saveToLog(card);
+                break;
+            case 15:
                 LogManager.instance.saveToLog(card);
                 break;
         }

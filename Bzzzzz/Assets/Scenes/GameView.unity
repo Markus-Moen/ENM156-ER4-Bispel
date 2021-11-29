@@ -1718,9 +1718,10 @@ MonoBehaviour:
   - {fileID: 487833773}
   - {fileID: 962221873}
   - {fileID: 1601181561}
-  - {fileID: 1601181561}
-  - {fileID: 1601181561}
-  - {fileID: 1601181561}
+  - {fileID: 1222300491}
+  - {fileID: 262880706}
+  - {fileID: 385518251}
+  - {fileID: 2014670531}
   questionCards:
   - {fileID: 1371487590}
   - {fileID: 1190001485}
