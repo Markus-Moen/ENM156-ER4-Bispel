@@ -67,7 +67,7 @@ public class ShopManager : MonoBehaviour
         shopPanels[6].quantityTxt.text = "";
         shopPanels[7].quantityTxt.text = "";
         shopPanels[8].quantityTxt.text = "";
-        buyBeeText.text = "Purchace: " + buyBeeAmount;
+        buyBeeText.text = "Purchase: " + buyBeeAmount;
 
     }
 
@@ -230,12 +230,12 @@ public class ShopManager : MonoBehaviour
         if (buyBeeAmount <= 1)
             myPurchaseBtns[0].interactable = true;
         buyBeeAmount += 1;
-        buyBeeText.text = "Purchace: " + buyBeeAmount;
+        buyBeeText.text = "Purchase: " + buyBeeAmount;
     }
     public void decBeeAmount()
     {
         buyBeeAmount -= 1;
-        buyBeeText.text = "Purchace: " + buyBeeAmount;
+        buyBeeText.text = "Purchase: " + buyBeeAmount;
 
     }
 }

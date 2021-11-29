@@ -33,8 +33,7 @@ public class flowerScript : MonoBehaviour
         int posX = UnityEngine.Random.Range(minX, maxX);
         float posY = UnityEngine.Random.Range(minY, maxY);
         float scale = 1.4f*(1.4f * maxY - posY) / maxY;
-        int flowerIndex = (int) UnityEngine.Random.Range(0, 4);
-        //Vector2 position = new Vector2(posX, posY);
+        int flowerIndex = UnityEngine.Random.Range(0, 4);
         GameObject newFlower = new GameObject();
 
         RectTransform trans = newFlower.AddComponent<RectTransform>();
