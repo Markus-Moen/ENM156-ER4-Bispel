@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         hivesText.text = "Hives: " + hives + " (Flow: " + numOfFlowHives + ")";
         beesText.text = "Bees: " + numOfBees + " / " + maxBees;
         flowersText.text = "Flowers: " + numOfFlowers + " / " + maxFlowers;
-        beeCoinText.text = "Beec Coins: " + numOfBeeCoins + " / " + maxBeeCoins;
+        beeCoinText.text = "Bee Coins: " + numOfBeeCoins + " / " + maxBeeCoins;
     }
 
 
@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
         beesText.text = "Bees: " + numOfBees + " / " + maxBees;
     }
     private void updateBeeCoinTxt(){
-        beeCoinText.text = "Beec Coins: " + numOfBeeCoins + " / " + maxBeeCoins;
+        beeCoinText.text = "Bee Coins: " + numOfBeeCoins + " / " + maxBeeCoins;
     }
     private void updateTimerTxt(){
         timerText.text = "Time till next year: " + getTime();

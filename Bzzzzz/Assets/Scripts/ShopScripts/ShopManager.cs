@@ -70,6 +70,12 @@ public class ShopManager : MonoBehaviour
         shopPanels[8].quantityTxt.text = "";
         buyBeeText.text = "Purchase: " + buyBeeAmount;
 
+        // Upgrades are bought using Bee Coins
+        // Just to remember to add some good looking solution
+        shopPanels[6].costTxt.text = "Price (Bee Coins): " + shopItemsSO[6].baseCost.ToString();
+        shopPanels[7].costTxt.text = "Price (Bee Coins): " + shopItemsSO[7].baseCost.ToString();
+        shopPanels[8].costTxt.text = "Price (Bee Coins): " + shopItemsSO[8].baseCost.ToString();
+
     }
 
     //Updates whether wach button should be enabled or not. 
@@ -79,25 +85,33 @@ public class ShopManager : MonoBehaviour
         {
             if (GameManager.instance.getPlayerHoney() >= shopItemsSO[i].baseCost)
             {
-                if (i == 0 && GameManager.instance.getPlayerHoney() < shopItemsSO[i].baseCost * buyBeeAmount)
+                if (i == 0 && GameManager.instance.getPlayerHoney() < shopItemsSO[i].baseCost * buyBeeAmount){
                     myPurchaseBtns[i].interactable = false;
-                else if (i == 6 && GameManager.instance.getPlayerHives() == 0)
-                {
-                    myPurchaseBtns[i].interactable = false;
-                }
-                else
+                }else
                 {
                     myPurchaseBtns[i].interactable = true;
                 }
-                /*else if (!ownFlowHive){
-                    myPurchaseBtns[i].interactable = true;
-                    }*/
             }
             else
                 myPurchaseBtns[i].interactable = false;
             honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney().ToString();
         }
-        //myPurchaseBtns[6].interactable = !ownFlowHive;
+
+
+        // Extra case for shop items 6,7 and 8, since they are bought using Bee Coins
+        for(int j = 6;j<9;j++){
+            // If enough Bee Coins - The object is purchasable
+            if(GameManager.instance.getPlayerBeeCoins() >= shopItemsSO[j].baseCost){
+                if (j == 6 && GameManager.instance.getPlayerHives() == 0)       // to buy flow hive, you need an upgradeable hive
+                {
+                    myPurchaseBtns[j].interactable = false;
+                }else{
+                    myPurchaseBtns[j].interactable = true;
+                }
+            }else{
+                myPurchaseBtns[j].interactable = false;
+            }
+        }
     }
 
     // Checks if the player's current honey is enough to buy an item. 
@@ -188,13 +202,17 @@ public class ShopManager : MonoBehaviour
             CheckPurchaseable();
         }
     }
+
+
+
+    // bought using Bee Coins
     public void buyFlowHive()
     {
-        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[6].baseCost && GameManager.instance.getPlayerHives() != 0)
+        if (GameManager.instance.getPlayerBeeCoins() >= shopItemsSO[6].baseCost && GameManager.instance.getPlayerHives() != 0)
         {
             bool b = GameManager.instance.upgradeHive();
             if(b){
-                GameManager.instance.decPlayerHoney(shopItemsSO[6].baseCost);
+                GameManager.instance.decPlayerBeeCoins(shopItemsSO[6].baseCost);
             }
             
             
@@ -206,10 +224,10 @@ public class ShopManager : MonoBehaviour
     }
 
 
-
+    // Bought using Bee Coins
     public void buyHoneyStorageUpgrade(){
-        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[7].baseCost){      // TODO: set so player cannot buy more than a certain number of upgrades
-            GameManager.instance.decPlayerHoney(shopItemsSO[7].baseCost);           // TODO: increase price every time upgrade is bought
+        if (GameManager.instance.getPlayerBeeCoins() >= shopItemsSO[7].baseCost){      // TODO: set so player cannot buy more than a certain number of upgrades
+            GameManager.instance.decPlayerBeeCoins(shopItemsSO[7].baseCost);           // TODO: increase price every time upgrade is bought
             int currentMaxHoney = GameManager.instance.getMaxHoney();
             GameManager.instance.setMaxHoney(currentMaxHoney + 500);    // increase the storage size by 500 honey
 
@@ -217,15 +235,18 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    // Bought using Bee Coins
     public void buyFoodStorageUpgrade(){
-        if (GameManager.instance.getPlayerHoney() >= shopItemsSO[8].baseCost){      // TODO: set so player cannot buy more than a certain number of upgrades
-            GameManager.instance.decPlayerHoney(shopItemsSO[8].baseCost);           // TODO: increase price every time upgrade is bought
+        if (GameManager.instance.getPlayerBeeCoins() >= shopItemsSO[8].baseCost){      // TODO: set so player cannot buy more than a certain number of upgrades
+            GameManager.instance.decPlayerBeeCoins(shopItemsSO[8].baseCost);           // TODO: increase price every time upgrade is bought
             int currentMaxFood = GameManager.instance.getMaxFood();
             GameManager.instance.setMaxFood(currentMaxFood + 500);    // increase the storage size by 500 food
 
             CheckPurchaseable();
         }
     }
+
+
     public void buyFlower()
     {
         if (GameManager.instance.getPlayerHoney() >= shopItemsSO[9].baseCost)
@@ -235,6 +256,8 @@ public class ShopManager : MonoBehaviour
             CheckPurchaseable();
         }
     }
+
+
     public void incBeeAmount()
     {
         if (buyBeeAmount <= 1)
@@ -242,6 +265,7 @@ public class ShopManager : MonoBehaviour
         buyBeeAmount += 1;
         buyBeeText.text = "Purchase: " + buyBeeAmount;
     }
+
     public void decBeeAmount()
     {
         buyBeeAmount -= 1;

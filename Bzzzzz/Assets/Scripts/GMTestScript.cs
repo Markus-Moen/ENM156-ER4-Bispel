@@ -82,6 +82,9 @@ public class GMTestScript : MonoBehaviour
     public void testStopParasites(){
             Parasites.instance.stopParasites();
     }
+    public void testincPlayerBeeCoins(int n){
+            GameManager.instance.incPlayerBeeCoins(n);
+    }
 
 
     
