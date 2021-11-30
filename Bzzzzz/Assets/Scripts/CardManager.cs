@@ -12,6 +12,7 @@ public class CardManager: MonoBehaviour
     public GameObject[] chanceCards;
     public GameObject[] questionCards;
     public GameObject wrongCanvas;
+    public GameObject correctCanvas;
 
     //for card 8
     public float timer = 0;
@@ -21,6 +22,7 @@ public class CardManager: MonoBehaviour
 
     private void Awake() => instance = this;
 
+    private int beeCoins = 50;
 
 
     void Start()
@@ -52,7 +54,7 @@ public class CardManager: MonoBehaviour
 
     public void RandomizeQuestionCard()
     {
-        int card = Random.Range(0, questionCards.Length);
+        int card = Random.Range(0, 1); //questionCards.Length);
         QuestionCardManager(card);
     }
 
@@ -139,9 +141,11 @@ public class CardManager: MonoBehaviour
                     // Wrong answer
                 break;
                 case 6:
-                     // Add BeeCoin
-                     // Correct answer   
-                     break;
+                correctCanvas.SetActive(true);
+                GameManager.instance.incPlayerBeeCoins(beeCoins);
+                // Add BeeCoin
+                // Correct answer   
+                break;
                 case 7:
                      chanceCards[14].SetActive(true);
                      wrongCanvas.SetActive(true);
@@ -159,6 +163,7 @@ public class CardManager: MonoBehaviour
             case 1:
                 // Add BeeCoin
                 // True answer
+                correctCanvas.SetActive(true);
                 break;
             case 6:
                 chanceCards[13].SetActive(true);
@@ -168,6 +173,8 @@ public class CardManager: MonoBehaviour
             case 7:
                 // Add BeeCoin
                 // Correct answer   
+                correctCanvas.SetActive(true);
+                GameManager.instance.incPlayerBeeCoins(beeCoins);
                 break;
             default:
                 Debug.Log("QuestionCard does not exist");
@@ -187,6 +194,8 @@ public class CardManager: MonoBehaviour
             case 2:
                 // Add BeeCoin
                 // Correct Answer
+                correctCanvas.SetActive(true);
+                GameManager.instance.incPlayerBeeCoins(beeCoins);
                 break;
             case 3:
                 wrongCanvas.SetActive(true);
@@ -201,6 +210,8 @@ public class CardManager: MonoBehaviour
             case 5:
                 // Add BeeCoin
                 // Correct Answer
+                correctCanvas.SetActive(true);
+                GameManager.instance.incPlayerBeeCoins(beeCoins);
                 break;
             default:
                 Debug.Log("QuestionCard does not exist");
@@ -229,6 +240,8 @@ public class CardManager: MonoBehaviour
             case 4:
                 // Add BeeCoin
                 // Correct Answer
+                correctCanvas.SetActive(true);
+                GameManager.instance.incPlayerBeeCoins(beeCoins);
                 break;
             case 5:
                 chanceCards[12].SetActive(true);
@@ -247,7 +260,10 @@ public class CardManager: MonoBehaviour
       switch (card){
             case 0:
                 // Add BeeCoin
-                // Correct Answer
+                // Correct Answe
+                GameManager.instance.incPlayerBeeCoins(beeCoins);
+                correctCanvas.SetActive(true);
+                Debug.Log("Card 1 Correct answer");
                 break;
             case 2:
                 chanceCards[11].SetActive(true);
@@ -257,6 +273,8 @@ public class CardManager: MonoBehaviour
             case 3:
                 // Add BeeCoin
                 // Correct Answer
+                GameManager.instance.incPlayerBeeCoins(beeCoins);
+                correctCanvas.SetActive(true);
                 break;
             case 4:
                 chanceCards[14].SetActive(true);
@@ -285,6 +303,11 @@ public class CardManager: MonoBehaviour
     {
         questionCards[card].SetActive(false);
 
+    }
+
+    public void ReturnToStoreCorrect()
+    {
+        correctCanvas.SetActive(false);
     }
 
     
