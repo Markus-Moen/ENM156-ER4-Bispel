@@ -80,13 +80,14 @@ public class hiveScript : MonoBehaviour
             setMaxHoney(totalHives);
         }
         incHoney();
-        honeyCounter.text = "Honey in hive: " + honeyAmount;
+        honeyCounter.text = "Honey to collect: " + honeyAmount;
     }
 
      void TaskOnClick()
     {
         //Moves honey to the "cellar", if the "cellar" is full, the leftovers are stored in the hive
             leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
+            GameManager.instance.decPlayerFood(honeyAmount);
             honeyAmount = leftovers;
 
     }
@@ -102,6 +103,7 @@ public class hiveScript : MonoBehaviour
             //Honey in normal hives
             normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));         
             leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
+            GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
             honeyAmount += leftovers;
             temporaryHoney = honeyAmount + normalHoneyIncrease;
             if(temporaryHoney > maxHoney){

@@ -24,7 +24,8 @@ public class HiveTest : MonoBehaviour
      void TaskOnClick()
     {
         //hiveScript.instance.setBeeProductivity(1.3f);
-        GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(0.9f);
+        //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(0.9f);
+        GameManager.instance.incPlayerFood(1000);
         return;
     }
 
