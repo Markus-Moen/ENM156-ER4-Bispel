@@ -108,22 +108,22 @@ public class CardManager: MonoBehaviour
 
                 //infocards
             case 10:
-                LogManager.instance.saveToLog(card);
+                LogManager.instance.saveToLog(chanceCards[card]);
                 break;
             case 11:
-                LogManager.instance.saveToLog(card);
+                LogManager.instance.saveToLog(chanceCards[card]);
                 break;
             case 12:
-                LogManager.instance.saveToLog(card);
+                LogManager.instance.saveToLog(chanceCards[card]);
                 break;
             case 13:
-                LogManager.instance.saveToLog(card);
+                LogManager.instance.saveToLog(chanceCards[card]);
                 break;
             case 14:
-                LogManager.instance.saveToLog(card);
+                LogManager.instance.saveToLog(chanceCards[card]);
                 break;
             case 15:
-                LogManager.instance.saveToLog(card);
+                LogManager.instance.saveToLog(chanceCards[card]);
                 break;
         }
     }
