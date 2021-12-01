@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class flowerScript : MonoBehaviour
 {
@@ -15,11 +16,14 @@ public class flowerScript : MonoBehaviour
     private int minWidth = 35;
     private int maxHeight = 100;
     private int minHeight = 50;
-    public Sprite[] flowers;
+    public Sprite[] flowerImages;
+    public List<GameObject> flowers;
+
+    public static flowerScript instance;
 
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -27,6 +31,7 @@ public class flowerScript : MonoBehaviour
     {
 
     }
+
 
     public void newFlower()
     {
@@ -43,17 +48,40 @@ public class flowerScript : MonoBehaviour
 
         Image image = newFlower.AddComponent<Image>();
         image.rectTransform.localScale = new Vector2(minWidth * scale, minHeight * scale);
-        image.sprite = flowers[flowerIndex];
+        image.sprite = flowerImages[flowerIndex];
         newFlower.transform.SetParent(flowerCanvas.transform);
+        flowers.Add(newFlower);
     }
 
     public void addFlowers(int n)
     {
-        for (int i = 0; i < n; i++)
+        int leftovers = n;
+        int available = GameManager.instance.getMaxFlowers() - GameManager.instance.getPlayerFlowers();
+        if (n > available)
+            leftovers = available;
+        for (int i = 0; i < leftovers; i++)
         {
             newFlower();
         }
         GameManager.instance.incFlowers(n);
+    }
+    public void removeFlowers(int n)
+    {
+        if (flowers.Count > 0)
+        {
+            if (flowers.Count < n)
+            {
+                n = flowers.Count;
+
+            }
+            for (int i = 0; i < n; i++)
+            {
+                GameObject flower = flowers.Last();
+                flowers.Remove(flower);
+                Destroy(flower);
+            }
+            GameManager.instance.decFlowers(n);
+        }
     }
     
 }

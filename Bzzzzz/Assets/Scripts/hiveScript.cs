@@ -135,6 +135,15 @@ public class hiveScript : MonoBehaviour
         totalPercentalChange *= productivity;
         return;
     }
+    public void setFlowerProductivity(float productivity, int flowers)
+    {
+        float prodChange = 1f;
+        for (int i = 0; i < flowers; i++)
+        {
+            prodChange *= productivity;
+        }
+        honeyIncrease = (int)(beeProductivity * beeApproximation * 0.25 * prodChange);
+    }
 
     public float getTotalPercentalChange(){
         return totalPercentalChange;

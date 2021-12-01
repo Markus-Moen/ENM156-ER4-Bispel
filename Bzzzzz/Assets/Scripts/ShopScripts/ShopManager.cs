@@ -17,6 +17,8 @@ public class ShopManager : MonoBehaviour
     public TMP_Text buyBeeText;
     public Button incBeeAmountBtn;
     public Button decBeeAmountBtn;
+    
+
 
 
     // Start is called before the first frame update
@@ -252,7 +254,7 @@ public class ShopManager : MonoBehaviour
         if (GameManager.instance.getPlayerHoney() >= shopItemsSO[9].baseCost)
         {
             GameManager.instance.decPlayerHoney(shopItemsSO[9].baseCost);
-            shop.GetComponent<flowerScript>().addFlowers(1);
+            flowerScript.instance.addFlowers(1);
             CheckPurchaseable();
         }
     }

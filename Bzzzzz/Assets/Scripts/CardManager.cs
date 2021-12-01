@@ -77,7 +77,7 @@ public class CardManager: MonoBehaviour
                 break;
             case 3:
                 // +1 flower
-                GameManager.instance.incFlowers(1);
+                flowerScript.instance.addFlowers(1);
                 break;
             case 4:
                 //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(1.2f);
@@ -103,7 +103,7 @@ public class CardManager: MonoBehaviour
                 break;
             case 9:
                 // +2 Flowers
-                GameManager.instance.incFlowers(2);
+                flowerScript.instance.addFlowers(2);
                 break; 
 
                 //infocards

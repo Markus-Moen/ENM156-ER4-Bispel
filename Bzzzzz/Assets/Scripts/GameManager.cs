@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     private float beeProductivity = 1f;         // hov much honey one bee produce per time unit
     private float beeKillingRate = 0.95f;       // how many bees die per time unit when starving / parasites
-    private float productivityPerFlower = 1.05f; // how much productivity is increased per flower
+    private float prodPerFlower = 1.03f; // how much productivity is increased per flower
 
     // Text fields
     Text foodText;
@@ -375,7 +375,7 @@ public class GameManager : MonoBehaviour
             leftovers = numOfFlowers - maxFlowers;
             numOfFlowers = maxFlowers;
         }
-        hiveScript.instance.setBeeProductivity(productivityPerFlower);
+        hiveScript.instance.setFlowerProductivity(prodPerFlower, numOfFlowers);
         updateYearlyCostTxt();
         updateFlowersTxt();
         return leftovers;
@@ -478,6 +478,8 @@ public class GameManager : MonoBehaviour
         if(numOfFlowers <= 0){
             numOfFlowers = 0;
         }
+        hiveScript.instance.setFlowerProductivity(prodPerFlower, numOfFlowers);
+        updateFlowersTxt();
         updateYearlyCostTxt();
     }
 
