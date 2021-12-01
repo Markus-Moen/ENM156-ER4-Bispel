@@ -6,6 +6,7 @@ TagManager:
   tags:
   - chanceCard#1
   - logButton
+  - emptyText
   layers:
   - Default
   - TransparentFX

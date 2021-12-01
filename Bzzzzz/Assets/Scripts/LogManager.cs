@@ -9,6 +9,7 @@ public class LogManager : MonoBehaviour
     private List<GameObject> savedCards = new List<GameObject>();
     public GameObject[] logButtons;
     private int buttonIndex = 0;
+    private GameObject emptyText;
 
     public static LogManager instance;
 
@@ -25,8 +26,10 @@ public class LogManager : MonoBehaviour
         // Creates an array of all objects with the "logButton" tag.
         logButtons = GameObject.FindGameObjectsWithTag("logButton");
 
+        emptyText = GameObject.FindGameObjectsWithTag("emptyText")[0];
+
         // Deactivates all the buttons, as nothing is logged before the game starts.
-        foreach(GameObject logButton in logButtons)
+        foreach (GameObject logButton in logButtons)
         { logButton.SetActive(false); }
 
         // Inactivates the log while still letting it get instantiated.
@@ -50,6 +53,8 @@ public class LogManager : MonoBehaviour
 
     public void saveToLog(GameObject card)
     {
+        emptyText.SetActive(false);
+
         // Saves the card int to savedCards if it's not there already,
         // activates the buttons for it, and increments the button list index
         //Debug.Log("Saved? " + savedCards.Contains(card));
