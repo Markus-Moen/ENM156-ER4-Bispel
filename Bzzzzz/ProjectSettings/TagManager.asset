@@ -53,3 +53,6 @@ TagManager:
   - name: ChanceCards
     uniqueID: 1934726321
     locked: 0
+  - name: Warnings
+    uniqueID: 2409377895
+    locked: 0
