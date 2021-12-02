@@ -18,6 +18,8 @@ public class ShopManager : MonoBehaviour
     public Button incBeeAmountBtn;
     public Button decBeeAmountBtn;
     
+    public GameObject beePrefab;        // The bee prefab to be added with every hive
+    
 
 
 
@@ -193,6 +195,9 @@ public class ShopManager : MonoBehaviour
             shopItemsSO[3].baseCost = shopItemsSO[3].baseCost * 5;
             shopPanels[3].costTxt.text = "Price: " + shopItemsSO[3].baseCost.ToString();
             CheckPurchaseable();
+            
+            //Add a bee for each hive
+            Instantiate(beePrefab, new Vector2(0, 0), Quaternion.identity);
     	}
     }
 
