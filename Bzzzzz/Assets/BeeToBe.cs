@@ -37,7 +37,7 @@ public class BeeToBe : MonoBehaviour
           buzzRounds = Random.Range(1, 100001); //Random 1-100 000 (integer)
       }      
       if(buzzRounds <= 500) {
-        Debug.Log("Buzzing");
+        //Debug.Log("Buzzing");
         if(updates == 0) {
             float xSpeed = Random.Range(-maxBuzzSpeed, maxBuzzSpeed); //-maxBuzzSpeed <= speed <= maxBuzzSpeed (float)
             float ySpeed = Random.Range(-maxBuzzSpeed, maxBuzzSpeed);

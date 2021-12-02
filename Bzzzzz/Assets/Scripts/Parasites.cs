@@ -18,6 +18,8 @@ public class Parasites : MonoBehaviour
     private float randomEventDelay = 60;    // every 60 seconds there is a risk of parasites
     private int parasiteRisk = 0;           // is set to a random number. if == 1 => parasites
 
+    public GameObject parasiteWarningSign;
+
 
 
     //private static Parasites _instance;
@@ -54,10 +56,11 @@ public class Parasites : MonoBehaviour
         if(GameManager.instance.getPlayerBees() >= 200){
             startRandParasites = true;
         }
-        Debug.Log(startRandParasites);
+        //Debug.Log(startRandParasites);
 
         // start killing bees if the boolean is true
         if(deathByParasites){
+           // Debug.Log("death by parasites true");
             timer += Time.deltaTime;
             if(timer >= delay){
                 // kill a number of bees
@@ -78,6 +81,8 @@ public class Parasites : MonoBehaviour
                 parasiteRisk = Random.Range(0, 20);
                 if(parasiteRisk == 1){                  // if parasiteRisk == 1, the parasites start
                     deathByParasites = true;
+                    parasiteWarningSign.SetActive(true); //active player warning
+                    randomEventTimer = 0; //Added reset, otherwise warning keep popping up
                 }
             }
         }
@@ -114,6 +119,15 @@ public class Parasites : MonoBehaviour
     public void setDelay(float f){
         delay = f;
     }
+
+    //close parasite warning popup
+    public void exitParasiteWarningSign()
+    {
+        parasiteWarningSign.SetActive(false);
+       // Debug.Log("closed warning");
+    }
+
+    
 
     
     
