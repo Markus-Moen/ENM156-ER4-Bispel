@@ -42,21 +42,31 @@ public class BeeToBe : MonoBehaviour
             float xSpeed = Random.Range(-maxBuzzSpeed, maxBuzzSpeed); //-maxBuzzSpeed <= speed <= maxBuzzSpeed (float)
             float ySpeed = Random.Range(-maxBuzzSpeed, maxBuzzSpeed);
             
-            //Set speed if close to edge
+            //Set speed if close to edge, stop buzzing to not go out of bounds
             if(bee.position.x <= leftEdgeX + width)
+            {
                 xSpeed = maxBuzzSpeed;
+                buzzRounds = 5000;
+                buzzing = false;
+            }
             else if(rightEdgeX - width <= bee.position.x)
+            {
                 xSpeed = -maxBuzzSpeed;
+                buzzRounds = 5000;
+                buzzing = false;
+            }            
             else if(bee.position.y <= downEdgeY + height)
+            {
                 ySpeed = maxBuzzSpeed;
+                buzzRounds = 5000;
+                buzzing = false;
+            }               
             else if(topEdgeY - height <= bee.position.y)
+            {
                 ySpeed = -maxBuzzSpeed;
-            
-            //Check if new direction x-axis, if so flip the bee.
-            if(Mathf.Sign(bee.velocity.x) != Mathf.Sign(xSpeed)) {
-                var sprite = bee.GetComponent<SpriteRenderer>();
-                sprite.flipX = !sprite.flipX;
-            }                          
+                buzzRounds = 5000;
+                buzzing = false;
+            }                                               
             bee.velocity = new Vector2(xSpeed, ySpeed);
         }
         else { //Go in the same direction a little while
@@ -66,7 +76,7 @@ public class BeeToBe : MonoBehaviour
                 updates = updates + 0.01f;
         }
         buzzRounds--;
-        if(buzzRounds == 0) { //Stop buzzing?
+        if(buzzRounds <= 0) { //Stop buzzing?
             buzzing = false;
             buzzRounds = 5000; //Go straight for a bit
         }           
@@ -75,19 +85,28 @@ public class BeeToBe : MonoBehaviour
             buzzRounds = buzzRounds + 0.1f;
             bee.velocity = beeSpeed; //Change to inital speed in current direction
         }
-    
-    //Turn at edges and flip picture if necessary.
-    if(bee.position.x <= leftEdgeX + width/2 || rightEdgeX - width/2 <= bee.position.x) {              
-        bee.velocity = new Vector2(-bee.velocity[0], bee.velocity[1]);
-        var sprite = bee.GetComponent<SpriteRenderer>();
-        sprite.flipX = !sprite.flipX;
-    }
-    if(bee.position.y <= downEdgeY + height)
-        bee.velocity = new Vector2(bee.velocity[0], Mathf.Abs(bee.velocity[1]));
-    else if(topEdgeY - height <= bee.position.y)
-        bee.velocity = new Vector2(bee.velocity[0], -Mathf.Abs(bee.velocity[1]));
-    
-    //Change saved velocity if direction changed at an edge.
-    beeSpeed = bee.velocity;     
+       //Turn at edges and flip picture if necessary.
+        if(bee.position.x <= leftEdgeX + width/2) {           
+            bee.velocity = new Vector2(Mathf.Abs(bee.velocity[0]), bee.velocity[1]);
+            //var sprite = bee.GetComponent<SpriteRenderer>();
+            //sprite.flipX = !sprite.flipX;
+        }
+        else if(rightEdgeX - width/2 <= bee.position.x) {
+            bee.velocity = new Vector2(-Mathf.Abs(bee.velocity[0]), bee.velocity[1]);
+            //var sprite = bee.GetComponent<SpriteRenderer>();
+            //sprite.flipX = !sprite.flipX;
+        }
+               
+        if(bee.position.y <= downEdgeY + height/2)
+            bee.velocity = new Vector2(bee.velocity[0], Mathf.Abs(bee.velocity[1]));
+        else if(topEdgeY - height/2 <= bee.position.y)
+            bee.velocity = new Vector2(bee.velocity[0], -Mathf.Abs(bee.velocity[1]));             
+        
+        if(Mathf.Sign(beeSpeed[0]) != Mathf.Sign(bee.velocity.x)) {
+            var sprite = bee.GetComponent<SpriteRenderer>();
+            sprite.flipX = !sprite.flipX;
+        }
+        //Change saved velocity if direction changed at an edge.
+        beeSpeed = bee.velocity;
     }
 }
