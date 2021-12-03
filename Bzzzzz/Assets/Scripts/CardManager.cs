@@ -54,7 +54,7 @@ public class CardManager: MonoBehaviour
 
     public void RandomizeQuestionCard()
     {
-        int card = Random.Range(0, 1); //questionCards.Length);
+        int card = Random.Range(0,questionCards.Length);
         QuestionCardManager(card);
     }
 
