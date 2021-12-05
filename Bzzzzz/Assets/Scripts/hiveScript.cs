@@ -33,6 +33,8 @@ public class hiveScript : MonoBehaviour
 
 
     Text honeyCounter;
+    Text normalText;
+    Text flowText;
 
     public static hiveScript instance;
 
@@ -52,6 +54,8 @@ public class hiveScript : MonoBehaviour
         setMaxHoney(totalHives);
 
         honeyCounter = GameObject.Find("HoneyCounter").GetComponent<Text>();
+        flowText = GameObject.Find("FlowHoney").GetComponent<Text>();
+        normalText = GameObject.Find("NormalHoney").GetComponent<Text>();
     }
     // Start is called before the first frame update
     void Start()
@@ -81,6 +85,10 @@ public class hiveScript : MonoBehaviour
         }
         incHoney();
         honeyCounter.text = "Honey to collect: " + honeyAmount;
+        //normalText.text = "Increasing honey from normal hives: " + normalHoneyIncrease;
+        //flowText.text = "Increasing honey from flowhives: " + (honeyIncrease - normalHoneyIncrease);
+        normalText.text = "Normal hives: " + normalHoneyIncrease;
+        flowText.text = "Flowhives: " + (honeyIncrease - normalHoneyIncrease);
     }
 
      void TaskOnClick()
