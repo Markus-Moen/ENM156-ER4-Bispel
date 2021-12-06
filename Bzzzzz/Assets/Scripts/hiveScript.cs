@@ -66,8 +66,8 @@ public class hiveScript : MonoBehaviour
         //Sets the delay based on the number of bees
         tmpBees = GameManager.instance.getPlayerBees();
         setHoneyInc(tmpBees);
-        normalText.text = "Normal hives: " + honeyIncrease;
-        flowText.text = "Flowhives: 0";
+        normalText.text = "Honey/Normal hive: " + honeyIncrease;
+        flowText.text = "Honey/Flowhive: 0";
         //maxHoney = maxHoneyPerHive;
         
     }
@@ -86,8 +86,8 @@ public class hiveScript : MonoBehaviour
         if(totalHives  != hiveApproximation){
             setMaxHoney(totalHives);
         }
-        normalText.text = "Normal hives: " + normalHoneyIncrease;
-        flowText.text = "Flowhives: " + (honeyIncrease - normalHoneyIncrease);
+        normalText.text = "Honey/Normal hive: " + normalHoneyIncrease;
+        flowText.text = "Honey/Flowhive: " + (honeyIncrease - normalHoneyIncrease);
         incHoney();
         honeyCounter.text = "Honey to collect: " + honeyAmount;
     }
