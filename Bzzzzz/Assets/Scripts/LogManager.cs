@@ -95,3 +95,4 @@ public class LogManager : MonoBehaviour
         savedCards[card].SetActive(true);
     }
 }
+// Infocard > Log > QuestionCards = ChanceCards > Shop

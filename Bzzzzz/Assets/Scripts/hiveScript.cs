@@ -47,10 +47,11 @@ public class hiveScript : MonoBehaviour
         else {instance = this;}
 
         tmpBees = GameManager.instance.getPlayerBees();
-        setHoneyInc(tmpBees);
+        
         tmpHives = GameManager.instance.getPlayerHives();
         tmpFlowHives = GameManager.instance.getPlayerFlowHives();
         totalHives = tmpHives + tmpFlowHives;
+        setHoneyInc(tmpBees);
         setMaxHoney(totalHives);
 
         honeyCounter = GameObject.Find("HoneyCounter").GetComponent<Text>();
@@ -65,6 +66,8 @@ public class hiveScript : MonoBehaviour
         //Sets the delay based on the number of bees
         tmpBees = GameManager.instance.getPlayerBees();
         setHoneyInc(tmpBees);
+        normalText.text = "Normal hives: " + honeyIncrease;
+        flowText.text = "Flowhives: 0";
         //maxHoney = maxHoneyPerHive;
         
     }
@@ -83,12 +86,10 @@ public class hiveScript : MonoBehaviour
         if(totalHives  != hiveApproximation){
             setMaxHoney(totalHives);
         }
-        incHoney();
-        honeyCounter.text = "Honey to collect: " + honeyAmount;
-        //normalText.text = "Increasing honey from normal hives: " + normalHoneyIncrease;
-        //flowText.text = "Increasing honey from flowhives: " + (honeyIncrease - normalHoneyIncrease);
         normalText.text = "Normal hives: " + normalHoneyIncrease;
         flowText.text = "Flowhives: " + (honeyIncrease - normalHoneyIncrease);
+        incHoney();
+        honeyCounter.text = "Honey to collect: " + honeyAmount;
     }
 
      void TaskOnClick()
@@ -121,15 +122,18 @@ public class hiveScript : MonoBehaviour
             }
         }
     }
+
     //Function that sets how much honey we get per unit of time
     public void setHoneyInc(int numberOfBees){
         honeyIncrease = (int) (beeProductivity*numberOfBees*0.25);
         beeApproximation = numberOfBees;
+        normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));   
         return;
     }
 
     public void setHoneyIncProductivity(float prod){
         honeyIncrease = (int) (prod*honeyIncrease);
+        //normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));   
         return;
     }
 
