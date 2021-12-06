@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     Text yearlyCostText;
     Text flowersText;
 
+    private GameObject outOfFoodText;
+
 
     private float timer = 0;
     private float delay = 10;   // the time (seconds) before the timer event and timer resets 
@@ -103,6 +105,8 @@ public class GameManager : MonoBehaviour
         yearlyCostText = GameObject.Find("Yearly Cost Text").GetComponent<Text>();
         flowersText = GameObject.Find("Flowers Text").GetComponent<Text>();
         beeCoinText = GameObject.Find("Bee Coin Text").GetComponent<Text>();
+        outOfFoodText = GameObject.Find("Food Warning");
+        outOfFoodText.SetActive(false);
 
         // Set text field texts
         int hives = numOfHives + numOfFlowHives;
@@ -199,6 +203,13 @@ public class GameManager : MonoBehaviour
     private void updateFlowersTxt()
     {
         flowersText.text = "Flowers: " + numOfFlowers + " / " + maxFlowers;
+    }
+
+    private void activateFoodWarning(){
+        outOfFoodText.SetActive(true);
+    }
+    private void deactivateFoodWarning(){
+        outOfFoodText.SetActive(false);
     }
 
     // loads game over scene
@@ -328,6 +339,7 @@ public class GameManager : MonoBehaviour
         // No bees die if there is food
         if(numOfFood > 0){             // only stop the killing if there is food an there are no termites
             stopKillFood();
+            deactivateFoodWarning();
         }
         updateFoodTxt();
         return leftovers;
@@ -438,6 +450,7 @@ public class GameManager : MonoBehaviour
         if(numOfFood <= 0){
             numOfFood = 0;
             updateFoodTxt();
+            activateFoodWarning();
             startKillFood();        // no food => bees start to die
             return false;
         }
