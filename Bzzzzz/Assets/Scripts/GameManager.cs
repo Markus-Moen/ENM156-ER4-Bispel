@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
         starvationDeath();
 
         // comment out to disable seasons
-        //seasonCountDown();
+        seasonCountDown();
 
         //for chanceCard 9, card 8 in switch statment in cardManager
         if (CardManager.instance.getTimerActive())
