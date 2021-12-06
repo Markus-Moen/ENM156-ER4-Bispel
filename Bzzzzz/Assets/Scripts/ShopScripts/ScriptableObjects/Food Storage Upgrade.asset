@@ -15,3 +15,4 @@ MonoBehaviour:
   title: Food Storage Upgrade
   baseCost: 900
   owned: 0
+  description: Increase the maximum of food you can store.
