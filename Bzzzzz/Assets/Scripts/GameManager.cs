@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     private float seasonTimer = 0;      // timer for the season
     private float seasonDelay = 300;     // length of a season (/year) in seconds 5 min
     private float firstSeasonDelay = 120; //first year is 2 min for demo purpuses
-    private float percentOfBeesFood = 0.05f;         // 1+percentOfBeesFood = amount of food eaten per bee
+    private float percentOfBeesFood = 0.20f;         // 1+percentOfBeesFood = amount of food eaten per bee
 
     public GameObject newYearWarning;
 
