@@ -55,7 +55,7 @@ public class CardManager: MonoBehaviour
     public void RandomizeQuestionCard()
     {
         int card = Random.Range(0,questionCards.Length);
-        QuestionCardManager(card);
+        questionCards[card].SetActive(true);
     }
 
     //Handles each individual card
@@ -68,19 +68,17 @@ public class CardManager: MonoBehaviour
                 GameManager.instance.changeBeePercent(1.1f); // 10% More Bees
                 break;
             case 1:
-                GameManager.instance.changeBeePercent(1.5f); // 50% More bees
+                GameManager.instance.changeBeePercent(1.3f); // 30% More bees
                 break;
             case 2:
                 // Increase honey production by 10%
-                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(1.1f);
-                hiveScript.instance.setBeeProductivity(1.2f);
+                hiveScript.instance.setBeeProductivity(1.1f);
                 break;
             case 3:
                 // +1 flower
                 flowerScript.instance.addFlowers(1);
                 break;
             case 4:
-                //GameObject.Find("Hive").GetComponent<hiveScript>().setBeeProductivity(1.2f);
                 hiveScript.instance.setBeeProductivity(1.2f);
                 //  20 % honeyproduction increase    
                 break;
@@ -94,7 +92,7 @@ public class CardManager: MonoBehaviour
                 GameManager.instance.changeBeePercent(0.75f);   // 25% of bees die
                 break;
             case 8:
-                // For one minute honeyproduction reduced by 90% 
+                // For 1 minute (30 seconds for demo) honeyproduction reduced by 90% 
                 hiveTmp = hiveScript.instance.getTotalPercentalChange();
                 hiveScript.instance.setBeeProductivity(0.1f);
 
@@ -126,11 +124,6 @@ public class CardManager: MonoBehaviour
                 LogManager.instance.saveToLog(chanceCards[card]);
                 break;
         }
-    }
-
-    public void QuestionCardManager(int card)
-    {
-        questionCards[card].SetActive(true);
     }
 
      public void ButtonTrue(int card){
