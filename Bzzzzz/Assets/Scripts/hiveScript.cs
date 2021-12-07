@@ -89,7 +89,7 @@ public class hiveScript : MonoBehaviour
         normalText.text = "Honey/Normal hive: " + normalHoneyIncrease;
         flowText.text = "Honey/Flowhive: " + (honeyIncrease - normalHoneyIncrease);
         incHoney();
-        honeyCounter.text = "Honey to collect: \n" + honeyAmount;
+        honeyCounter.text = "Honey to collect: " + honeyAmount;
     }
 
      void TaskOnClick()
