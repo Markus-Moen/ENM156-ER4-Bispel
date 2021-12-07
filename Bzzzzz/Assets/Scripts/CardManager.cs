@@ -16,7 +16,7 @@ public class CardManager: MonoBehaviour
 
     //for card 8
     public float timer = 0;
-    public float timerStop = 10;
+    public float timerStop = 30;
     public bool timerActive = false;
     public float hiveTmp;
 
