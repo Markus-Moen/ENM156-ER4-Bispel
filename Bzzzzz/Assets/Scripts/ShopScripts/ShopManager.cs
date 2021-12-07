@@ -86,37 +86,50 @@ public class ShopManager : MonoBehaviour
     //Updates whether wach button should be enabled or not. 
     public void CheckPurchaseable()
     {
+        Debug.Log(shopItemsSO[9].owned);
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            if (GameManager.instance.getPlayerHoney() >= shopItemsSO[i].baseCost)
-            {
-                if (i == 0 && GameManager.instance.getPlayerHoney() < shopItemsSO[i].baseCost * buyBeeAmount){
-                    myPurchaseBtns[i].interactable = false;
-                }else
-                {
-                    myPurchaseBtns[i].interactable = true;
-                }
-            }
-            else
-                myPurchaseBtns[i].interactable = false;
-            honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney().ToString();
-        }
-
-
-        // Extra case for shop items 6,7 and 8, since they are bought using Bee Coins
-        for(int j = 6;j<9;j++){
-            // If enough Bee Coins - The object is purchasable
-            if(GameManager.instance.getPlayerBeeCoins() >= shopItemsSO[j].baseCost){
-                if (j == 6 && GameManager.instance.getPlayerHives() == 0)       // to buy flow hive, you need an upgradeable hive
-                {
-                    myPurchaseBtns[j].interactable = false;
-                }else{
-                    myPurchaseBtns[j].interactable = true;
-                }
+            if(i == 0 && GameManager.instance.getPlayerBees() >= GameManager.instance.getMaxBees()){//shopItemsSO[0].owned
+                myPurchaseBtns[0].interactable = false;
+            }else if(i == 1 && GameManager.instance.getPlayerFood() >= GameManager.instance.getMaxFood()){//shopItemsSO[1].owned
+                myPurchaseBtns[1].interactable = false;
+            }else if(i == 3 && GameManager.instance.getPlayerHives() >= GameManager.instance.getMaxHives()){//shopItemsSO[3].owned
+                myPurchaseBtns[3].interactable = false;
+            }else if(i == 6 && GameManager.instance.getPlayerFlowHives() >= GameManager.instance.getMaxFlowHives()){//shopItemsSO[6].owned
+                myPurchaseBtns[6].interactable = false;
+            }else if(i == 9 && GameManager.instance.getPlayerFlowers() >= GameManager.instance.getMaxFlowers()){//shopItemsSO[9].owned
+                myPurchaseBtns[9].interactable = false;
             }else{
-                myPurchaseBtns[j].interactable = false;
+                if(i == 6 || i == 7 || i == 8){
+                    // If enough Bee Coins - The object is purchasable
+                    if(GameManager.instance.getPlayerBeeCoins() >= shopItemsSO[i].baseCost){
+                        if (i == 6 && GameManager.instance.getPlayerHives() == 0){       // to buy flow hive, you need an upgradeable hive{
+                            myPurchaseBtns[i].interactable = false;
+                        }else{
+                            myPurchaseBtns[i].interactable = true;
+                        }
+                    }else{
+                        myPurchaseBtns[i].interactable = false;
+                    }
+                }else{
+                    if (GameManager.instance.getPlayerHoney() >= shopItemsSO[i].baseCost){
+                        if (i == 0 && GameManager.instance.getPlayerHoney() < shopItemsSO[i].baseCost * buyBeeAmount){
+                            myPurchaseBtns[i].interactable = false;
+                        }else{
+                            myPurchaseBtns[i].interactable = true;
+                        }
+                    }else{
+                        myPurchaseBtns[i].interactable = false;
+                        
+                    }
+
+                }
             }
-        }
+            
+        } 
+        honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney().ToString();   
+
+
     }
 
     // Checks if the player's current honey is enough to buy an item. 
@@ -281,3 +294,51 @@ public class ShopManager : MonoBehaviour
     }
 }
 
+
+
+
+/*
+//Updates whether wach button should be enabled or not. 
+    public void CheckPurchaseable()
+    {
+        for (int i = 0; i < shopItemsSO.Length; i++)
+        {
+            if (GameManager.instance.getPlayerHoney() >= shopItemsSO[i].baseCost)
+            {
+                if (i == 0 && GameManager.instance.getPlayerHoney() < shopItemsSO[i].baseCost * buyBeeAmount){
+                    myPurchaseBtns[i].interactable = false;
+                }else
+                {
+                    myPurchaseBtns[i].interactable = true;
+                }
+            }
+            else
+                myPurchaseBtns[i].interactable = false;
+            honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney().ToString();
+        }
+
+
+        // Extra case for shop items 6,7 and 8, since they are bought using Bee Coins
+        for(int j = 6;j<9;j++){
+            // If enough Bee Coins - The object is purchasable
+            if(GameManager.instance.getPlayerBeeCoins() >= shopItemsSO[j].baseCost){
+                if (j == 6 && GameManager.instance.getPlayerHives() == 0)       // to buy flow hive, you need an upgradeable hive
+                {
+                    myPurchaseBtns[j].interactable = false;
+                }else{
+                    myPurchaseBtns[j].interactable = true;
+                }
+            }else{
+                myPurchaseBtns[j].interactable = false;
+            }
+        }
+        
+        
+        if(shopItemsSO[0].owned >= GameManager.instance.getMaxBees()){myPurchaseBtns[0].interactable = false;}
+        if(shopItemsSO[1].owned >= GameManager.instance.getMaxFood()){myPurchaseBtns[1].interactable = false;}
+        if(shopItemsSO[3].owned >= GameManager.instance.getMaxHives()){myPurchaseBtns[3].interactable = false;}
+        if(shopItemsSO[6].owned >= GameManager.instance.getMaxFlowHives()){myPurchaseBtns[6].interactable = false;}
+        if(shopItemsSO[9].owned >= GameManager.instance.getMaxFlowers()){myPurchaseBtns[9].interactable = false;}       
+
+
+    }*/

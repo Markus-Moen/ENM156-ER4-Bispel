@@ -272,6 +272,8 @@ public class GameManager : MonoBehaviour
                 updateHoneyTxt();
             }
 
+            flowerScript.instance.removeFlowers(numOfFlowers);// Kill all flowers
+
             //activate warning card informing player.
             newYearWarning.SetActive(true);
                                                                                                         
@@ -572,6 +574,14 @@ public class GameManager : MonoBehaviour
     public int getMaxFlowers()
     {
         return maxFlowers;
+    }
+
+    public int getMaxHives(){
+        return maxHives;
+    }
+
+    public int getMaxFlowHives(){
+        return maxFlowHives;
     }
 
 
