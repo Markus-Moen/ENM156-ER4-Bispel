@@ -133,7 +133,7 @@ public class hiveScript : MonoBehaviour
 
     public void setHoneyIncProductivity(float prod){
         honeyIncrease = (int) (prod*honeyIncrease);
-        //normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));   
+        normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));   
         return;
     }
 
@@ -157,6 +157,7 @@ public class hiveScript : MonoBehaviour
             prodChange *= productivity;
         }
         honeyIncrease = (int)(beeProductivity * beeApproximation * 0.25 * prodChange);
+        normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));  
     }
 
     public float getTotalPercentalChange(){
