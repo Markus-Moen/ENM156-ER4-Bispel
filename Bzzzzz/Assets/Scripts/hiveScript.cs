@@ -96,8 +96,8 @@ public class hiveScript : MonoBehaviour
     {
         //Moves honey to the "cellar", if the "cellar" is full, the leftovers are stored in the hive
             leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
-            GameManager.instance.decPlayerFood((honeyAmount-leftovers)/10); //To not decrease the food when honey is full
-            //GameManager.instance.decPlayerFood(honeyAmount/10);
+            //GameManager.instance.decPlayerFood((honeyAmount-leftovers)/10); //To not decrease the food when honey is full
+            GameManager.instance.decPlayerFood(honeyAmount/10);
             honeyAmount = leftovers;
 
     }
