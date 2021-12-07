@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private int maxHives = max;
     private int maxBees = maxBeesPerHive*startHives;
     private int maxHoney = max;
-    private int maxFood = max;
+    private int maxFood = 500;
     private int maxFlowers = 20;
     private int maxFlowHives = max;
     private int maxBeeCoins = 1000;
