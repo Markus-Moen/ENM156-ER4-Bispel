@@ -347,7 +347,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -411,6 +411,7 @@ MonoBehaviour:
   buyBeeText: {fileID: 0}
   incBeeAmountBtn: {fileID: 0}
   decBeeAmountBtn: {fileID: 0}
+  beePrefab: {fileID: 0}
 --- !u!1 &7665373997249217289
 GameObject:
   m_ObjectHideFlags: 0
