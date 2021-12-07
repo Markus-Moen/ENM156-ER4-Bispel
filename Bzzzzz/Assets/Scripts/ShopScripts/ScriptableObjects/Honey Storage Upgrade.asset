@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Honey Storage Upgrade
   m_EditorClassIdentifier: 
   title: Honey Storage Upgrade
-  baseCost: 900
+  baseCost: 100
   owned: 0
   description: Increase the amount of honey you can store.
