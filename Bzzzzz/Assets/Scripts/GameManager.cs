@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour
     private float delay = 10;   // the time (seconds) before the timer event and timer resets 
 
     private float seasonTimer = 0;      // timer for the season
-    private float seasonDelay = 65;     // length of a season (/year) in seconds
+    private float seasonDelay = 300;     // length of a season (/year) in seconds 5 min
+    private float firstSeasonDelay = 120; //first year is 2 min for demo purpuses
     private float percentOfBeesFood = 0.05f;         // 1+percentOfBeesFood = amount of food eaten per bee
 
     public GameObject newYearWarning;
@@ -96,7 +97,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        seasonTimer = seasonDelay;  // the timer ticks down, not up, so it starts on highest value
+        seasonTimer = firstSeasonDelay;  // the timer ticks down, not up, so it starts on highest value
 
         // Initialize text fields
         foodText = GameObject.Find("Food Text").GetComponent<Text>();
@@ -276,7 +277,6 @@ public class GameManager : MonoBehaviour
                                                                                                         
         }
         updateTimerTxt();   // update timer text field
-        
     }
 
     // The yearly cost from beeing (get it) a beekeeper

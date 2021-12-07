@@ -162,7 +162,7 @@ public class ShopManager : MonoBehaviour
     {
         if (GameManager.instance.getPlayerHoney() >= shopItemsSO[1].baseCost)
         {
-            GameManager.instance.incPlayerFood(1);
+            GameManager.instance.incPlayerFood(10);
             GameManager.instance.decPlayerHoney(shopItemsSO[1].baseCost);
             shopItemsSO[1].owned = GameManager.instance.getPlayerFood();
             CheckPurchaseable();

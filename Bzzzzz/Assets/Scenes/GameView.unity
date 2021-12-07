@@ -801,6 +801,7 @@ GameObject:
   - component: {fileID: 48932293}
   - component: {fileID: 48932292}
   - component: {fileID: 48932291}
+  - component: {fileID: 48932297}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -929,6 +930,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &48932297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48932290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b424dd360e11ef64db56792311f0cc3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 48932290}
 --- !u!1 &55274436
 GameObject:
   m_ObjectHideFlags: 0
@@ -20024,7 +20038,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1747603504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 48932297}
+        m_TargetAssemblyTypeName: StartScript, Assembly-CSharp
+        m_MethodName: startGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1747603504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22244,6 +22270,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: buyFlowHive
       objectReference: {fileID: 0}
+    - target: {fileID: 508269019630049739, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: HoneyStorage
+      objectReference: {fileID: 0}
+    - target: {fileID: 894283839474387853, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Flower
+      objectReference: {fileID: 0}
     - target: {fileID: 1244161067013513545, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -22408,6 +22442,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Chancecard
       objectReference: {fileID: 0}
+    - target: {fileID: 4483953150269199881, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: FoodStorage
+      objectReference: {fileID: 0}
     - target: {fileID: 4549973456609230887, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: descriptionTxt
       value: 
@@ -22444,6 +22482,10 @@ PrefabInstance:
       propertyPath: descriptionTxt
       value: 
       objectReference: {fileID: 1939689914}
+    - target: {fileID: 7004714448879225084, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: FlowHive
+      objectReference: {fileID: 0}
     - target: {fileID: 7197886604292627535, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -22708,9 +22750,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8479602619025747325, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Food
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602619171540697, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: ChanceCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602619569440508, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Bee
+      objectReference: {fileID: 0}
     - target: {fileID: 8479602619569440508, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602619849058259, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Medicine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602619872795959, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Hive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602620002149581, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: QuestionCard
       objectReference: {fileID: 0}
     - target: {fileID: 8890104939764360159, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_Transition

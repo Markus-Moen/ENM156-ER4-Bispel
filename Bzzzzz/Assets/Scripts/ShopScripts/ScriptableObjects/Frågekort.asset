@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Fr\xE5gekort"
   m_EditorClassIdentifier: 
   title: Question card
-  baseCost: 50
+  baseCost: 150
   owned: 0
   description: In order to buy some items in the shop you need bee coins. Test your
     knowledge and you will be rewarded.
