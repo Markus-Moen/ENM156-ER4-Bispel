@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     // max values
     private const int max = 1000;
-    private const int maxBeesPerHive = max;
+    private const int maxBeesPerHive = 200;
     private int maxHives = max;
     private int maxBees = maxBeesPerHive*startHives;
     private int maxHoney = max;
