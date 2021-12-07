@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flower
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
   title: Flower
-  baseCost: 50
+  baseCost: 20
   owned: 0
   description: With a bunch of flowers near the hive the bees will be able to produce
     more honey.
