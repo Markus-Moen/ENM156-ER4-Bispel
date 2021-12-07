@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     Text timerText;
     Text yearlyCostText;
     Text flowersText;
+    Text flowHiveText;
 
     private GameObject outOfFoodText;
 
@@ -103,6 +104,7 @@ public class GameManager : MonoBehaviour
         foodText = GameObject.Find("Food Text").GetComponent<Text>();
         honeyText = GameObject.Find("Honey Text").GetComponent<Text>();
         hivesText = GameObject.Find("Hives Text").GetComponent<Text>();
+        flowHiveText = GameObject.Find("Flowhive Text").GetComponent<Text>();
         beesText = GameObject.Find("Bees Text").GetComponent<Text>();
         timerText = GameObject.Find("Timer Text").GetComponent<Text>();
         yearlyCostText = GameObject.Find("Yearly Cost Text").GetComponent<Text>();
@@ -128,6 +130,7 @@ public class GameManager : MonoBehaviour
         updateYearlyCostTxt();
         updateFlowersTxt();
         updateBeeCoinTxt();
+        updateFlowHiveTxt();
     }
 
 
@@ -169,32 +172,37 @@ public class GameManager : MonoBehaviour
     // updates all text fields
     public void reload(){
         int hives = numOfHives + numOfFlowHives;
-        foodText.text = "Food: " + numOfFood + " / " + maxFood;
-        honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
-        hivesText.text = "Hives: " + hives + " (Flow: " + numOfFlowHives + ")";
-        beesText.text = "Bees: " + numOfBees + " / " + maxBees;
-        flowersText.text = "Flowers: " + numOfFlowers + " / " + maxFlowers;
-        beeCoinText.text = "Bee Coins: " + numOfBeeCoins + " / " + maxBeeCoins;
+        foodText.text = numOfFood + " / " + maxFood;
+        honeyText.text =  numOfHoney + " / " + maxHoney;
+        hivesText.text =   hives + " (Flow: " + numOfFlowHives + ")";
+        beesText.text =   numOfBees + " / " + maxBees;
+        flowersText.text =   numOfFlowers + " / " + maxFlowers;
+        beeCoinText.text =  numOfBeeCoins + " / " + maxBeeCoins;
     }
 
 
     // updating one text field
 
     private void updateFoodTxt(){
-        foodText.text = "Food: " + numOfFood + " / " + maxFood;
+        foodText.text =  numOfFood + " / " + maxFood;
     }
     private void updateHoneyTxt(){
-        honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
+        honeyText.text =  numOfHoney + " / " + maxHoney;
     }
     private void updateHivesTxt(){
-        int hives = numOfHives + numOfFlowHives;
-        hivesText.text = "Hives: " + hives + " (Flow: " + numOfFlowHives + ")";
+        int hives = numOfHives;
+        hivesText.text = hives.ToString();
+    }
+    private void updateFlowHiveTxt()
+    {
+        int hives = numOfFlowHives;
+        flowHiveText.text = hives.ToString();
     }
     private void updateBeesTxt(){
-        beesText.text = "Bees: " + numOfBees + " / " + maxBees;
+        beesText.text =  numOfBees + " / " + maxBees;
     }
     private void updateBeeCoinTxt(){
-        beeCoinText.text = "Bee Coins: " + numOfBeeCoins + " / " + maxBeeCoins;
+        beeCoinText.text =  numOfBeeCoins + " / " + maxBeeCoins;
     }
     private void updateTimerTxt(){
         timerText.text = "Time till next year: " + getTime();
@@ -205,7 +213,7 @@ public class GameManager : MonoBehaviour
     }
     private void updateFlowersTxt()
     {
-        flowersText.text = "Flowers: " + numOfFlowers + " / " + maxFlowers;
+        flowersText.text = numOfFlowers + " / " + maxFlowers;
     }
 
     private void activateFoodWarning(){
@@ -409,6 +417,7 @@ public class GameManager : MonoBehaviour
             numOfHives -= 1;
             numOfFlowHives += 1;
             updateHivesTxt();
+            updateFlowHiveTxt();
             updateYearlyCostTxt();
             return true;
         }
