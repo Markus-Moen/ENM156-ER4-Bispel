@@ -65,6 +65,7 @@ public class ShopManager : MonoBehaviour
             shopPanels[i].titleTxt.text = shopItemsSO[i].title;
             shopPanels[i].costTxt.text = "Price: " + shopItemsSO[i].baseCost.ToString();
             shopPanels[i].quantityTxt.text = "Owned: " + shopItemsSO[i].owned.ToString();
+            shopPanels[i].descriptionTxt.text = shopItemsSO[i].description;
         }
         shopPanels[2].quantityTxt.text = "";
         shopPanels[4].quantityTxt.text = "";
@@ -247,7 +248,7 @@ public class ShopManager : MonoBehaviour
         if (GameManager.instance.getPlayerBeeCoins() >= shopItemsSO[8].baseCost){      // TODO: set so player cannot buy more than a certain number of upgrades
             GameManager.instance.decPlayerBeeCoins(shopItemsSO[8].baseCost);           // TODO: increase price every time upgrade is bought
             int currentMaxFood = GameManager.instance.getMaxFood();
-            GameManager.instance.setMaxFood(currentMaxFood + 500);    // increase the storage size by 500 food
+            GameManager.instance.setMaxFood(currentMaxFood + 250);    // increase the storage size by 500 food
 
             CheckPurchaseable();
         }

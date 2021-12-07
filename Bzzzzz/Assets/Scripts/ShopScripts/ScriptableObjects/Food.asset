@@ -15,3 +15,5 @@ MonoBehaviour:
   title: Food
   baseCost: 20
   owned: 0
+  description: Your bees need honey to survive. If you harvest honey, you must buy
+    food for your bees.

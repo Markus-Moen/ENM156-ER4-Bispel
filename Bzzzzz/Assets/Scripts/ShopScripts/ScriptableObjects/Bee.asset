@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemSO
   title: Bee
   baseCost: 5
+  owned: 101
+  description: Buy more bees to increase your honey production.

@@ -9,4 +9,5 @@ public class ShopTemplate : MonoBehaviour
     public TMP_Text titleTxt;
     public TMP_Text quantityTxt;
     public TMP_Text costTxt;
+    public TMP_Text descriptionTxt;
 }

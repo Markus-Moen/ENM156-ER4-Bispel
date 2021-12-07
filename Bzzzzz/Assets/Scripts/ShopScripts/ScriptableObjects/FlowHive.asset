@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: FlowHive
   m_EditorClassIdentifier: 
   title: Upgrade Hive (Flow Hive)
-  baseCost: 1000
+  baseCost: 150
   owned: 0
+  description: In a Flow Hive the honey collection is automated.

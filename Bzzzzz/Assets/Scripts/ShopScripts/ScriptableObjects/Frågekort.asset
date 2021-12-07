@@ -15,3 +15,5 @@ MonoBehaviour:
   title: Question card
   baseCost: 50
   owned: 0
+  description: In order to buy some items in the shop you need bee coins. Test your
+    knowledge and you will be rewarded.

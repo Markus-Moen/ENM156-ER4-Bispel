@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
     private float seasonDelay = 65;     // length of a season (/year) in seconds
     private float percentOfBeesFood = 0.05f;         // 1+percentOfBeesFood = amount of food eaten per bee
 
+    public GameObject newYearWarning;
+
 
 
 
@@ -136,7 +138,7 @@ public class GameManager : MonoBehaviour
         starvationDeath();
 
         // comment out to disable seasons
-        //seasonCountDown();
+        seasonCountDown();
 
         //for chanceCard 9, card 8 in switch statment in cardManager
         if (CardManager.instance.getTimerActive())
@@ -268,6 +270,9 @@ public class GameManager : MonoBehaviour
                 numOfHoney = 0;
                 updateHoneyTxt();
             }
+
+            //activate warning card informing player.
+            newYearWarning.SetActive(true);
                                                                                                         
         }
         updateTimerTxt();   // update timer text field
@@ -593,5 +598,15 @@ public class GameManager : MonoBehaviour
     {
         maxFlowers = n;
         updateYearlyCostTxt();
+    }
+
+    //-------------------------------------------------------------------------------
+
+    //for close button on new year warning
+    //Do we want to properly pause game when warning is up?
+    public void closeNewYearWarning()
+    {
+        newYearWarning.SetActive(false);  //remove warning card
+        seasonTimer = seasonDelay;        //set so new season/year start when closing
     }
 }

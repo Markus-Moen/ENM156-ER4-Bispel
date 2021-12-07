@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChanceCards/ChanceCard#3.unity
     guid: a58544c6cadc7934b9a16233fbf4e7e9
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: bebcef8be0aab59428dbfc57f0460de3
   m_configObjects: {}

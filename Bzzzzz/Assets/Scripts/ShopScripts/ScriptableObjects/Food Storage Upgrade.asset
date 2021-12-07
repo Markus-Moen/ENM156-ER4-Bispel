@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Food Storage Upgrade
   m_EditorClassIdentifier: 
   title: Food Storage Upgrade
-  baseCost: 900
+  baseCost: 100
   owned: 0
+  description: Increase the amount of food you can store.
