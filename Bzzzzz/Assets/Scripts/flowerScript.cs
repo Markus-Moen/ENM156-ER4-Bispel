@@ -8,10 +8,10 @@ public class flowerScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject flowerCanvas;
-    private int minX = 20;
-    private int maxX = 480;
-    private float minY = 0;
-    private float maxY = 300;
+    private int minX = -490;
+    private int maxX = 490;
+    private float minY = -210;
+    private float maxY = 320;
     private int maxWidth = 70;
     private int minWidth = 35;
     private int maxHeight = 100;
@@ -37,13 +37,13 @@ public class flowerScript : MonoBehaviour
     {
         int posX = UnityEngine.Random.Range(minX, maxX);
         float posY = UnityEngine.Random.Range(minY, maxY);
-        float scale = 1.4f*(1.4f * maxY - posY) / maxY;
+        float scale = 2f*(2f * maxY - posY) / maxY;
         int flowerIndex = UnityEngine.Random.Range(0, 4);
         GameObject newFlower = new GameObject();
 
         RectTransform trans = newFlower.AddComponent<RectTransform>();
         trans.transform.SetParent(flowerCanvas.transform);
-        trans.anchoredPosition = new Vector2(posX-250, posY-140);
+        trans.anchoredPosition = new Vector2(posX, posY);
         trans.sizeDelta = new Vector2(1,1);
 
         Image image = newFlower.AddComponent<Image>();
