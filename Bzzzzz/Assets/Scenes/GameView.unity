@@ -22125,6 +22125,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: buyFlowHive
       objectReference: {fileID: 0}
+    - target: {fileID: 508269019630049739, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: HoneyStorage
+      objectReference: {fileID: 0}
+    - target: {fileID: 894283839474387853, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Flower
+      objectReference: {fileID: 0}
     - target: {fileID: 1244161067013513545, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -22289,6 +22297,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Chancecard
       objectReference: {fileID: 0}
+    - target: {fileID: 4483953150269199881, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: FoodStorage
+      objectReference: {fileID: 0}
     - target: {fileID: 4549973456609230887, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: descriptionTxt
       value: 
@@ -22325,6 +22337,10 @@ PrefabInstance:
       propertyPath: descriptionTxt
       value: 
       objectReference: {fileID: 1939689914}
+    - target: {fileID: 7004714448879225084, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: FlowHive
+      objectReference: {fileID: 0}
     - target: {fileID: 7197886604292627535, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -22589,9 +22605,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8479602619025747325, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Food
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602619171540697, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: ChanceCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602619569440508, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Bee
+      objectReference: {fileID: 0}
     - target: {fileID: 8479602619569440508, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602619849058259, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Medicine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602619872795959, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: Hive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479602620002149581, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
+      propertyPath: m_Name
+      value: QuestionCard
       objectReference: {fileID: 0}
     - target: {fileID: 8890104939764360159, guid: 8aab3e0a4fe79334d87ecabcd2fb6976, type: 3}
       propertyPath: m_Transition

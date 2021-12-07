@@ -276,7 +276,6 @@ public class GameManager : MonoBehaviour
                                                                                                         
         }
         updateTimerTxt();   // update timer text field
-        
     }
 
     // The yearly cost from beeing (get it) a beekeeper
