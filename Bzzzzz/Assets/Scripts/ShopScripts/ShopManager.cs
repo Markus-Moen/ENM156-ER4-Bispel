@@ -89,7 +89,7 @@ public class ShopManager : MonoBehaviour
         Debug.Log(shopItemsSO[9].owned);
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
-            if(i == 0 && GameManager.instance.getPlayerBees() >= GameManager.instance.getMaxBees()){//shopItemsSO[0].owned
+            if(i == 0 && GameManager.instance.getPlayerBees() >= GameManager.instance.getMaxBees()*(GameManager.instance.getPlayerHives() + GameManager.instance.getPlayerFlowHives())){//shopItemsSO[0].owned
                 myPurchaseBtns[0].interactable = false;
             }else if(i == 1 && GameManager.instance.getPlayerFood() >= GameManager.instance.getMaxFood()){//shopItemsSO[1].owned
                 myPurchaseBtns[1].interactable = false;

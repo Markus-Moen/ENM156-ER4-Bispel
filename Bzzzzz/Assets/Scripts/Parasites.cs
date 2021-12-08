@@ -15,7 +15,7 @@ public class Parasites : MonoBehaviour
     private float delay = 5;        // the time (seconds) before the timer event and timer resets 
 
     private float randomEventTimer = 0;     // timer for random parasites
-    private float randomEventDelay = 60;    // every 60 seconds there is a risk of parasites
+    private float randomEventDelay = 120;    // every 60 seconds there is a risk of parasites
     private int parasiteRisk = 0;           // is set to a random number. if == 1 => parasites
 
     public GameObject parasiteWarningSign;
@@ -56,7 +56,6 @@ public class Parasites : MonoBehaviour
         if(GameManager.instance.getPlayerBees() >= 200){
             startRandParasites = true;
         }
-        //Debug.Log(startRandParasites);
 
         // start killing bees if the boolean is true
         if(deathByParasites){
@@ -78,7 +77,7 @@ public class Parasites : MonoBehaviour
             randomEventTimer += Time.deltaTime;           // uncomment to unleash hell (start the random parasites)
 
             if(randomEventTimer >= randomEventDelay){
-                parasiteRisk = Random.Range(0, 20);
+                parasiteRisk = Random.Range(0, 50);
                 if(parasiteRisk == 1){                  // if parasiteRisk == 1, the parasites start
                     deathByParasites = true;
                     parasiteWarningSign.SetActive(true); //active player warning
