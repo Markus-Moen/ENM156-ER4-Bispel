@@ -15,6 +15,7 @@ public class ShopManager : MonoBehaviour
     private bool ownFlowHive = false;
     private int buyBeeAmount = 1;
     public TMP_Text buyBeeText;
+    public TMP_Text beeCoinText;
     public Button incBeeAmountBtn;
     public Button decBeeAmountBtn;
     
@@ -127,8 +128,8 @@ public class ShopManager : MonoBehaviour
             }
             
         } 
-        honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney().ToString();   
-
+        honeyText.text = GameManager.instance.getPlayerHoney().ToString();
+        beeCoinText.text = GameManager.instance.getPlayerBeeCoins().ToString();
 
     }
 
@@ -153,7 +154,8 @@ public class ShopManager : MonoBehaviour
     public void openShop()
     {
         shop.SetActive(true);
-        honeyText.text = "Honey: " + GameManager.instance.getPlayerHoney();
+        honeyText.text = GameManager.instance.getPlayerHoney().ToString();
+        beeCoinText.text = GameManager.instance.getPlayerBeeCoins().ToString();
 
         // Medicine costs 80% of what you got when you open the shop. Might want to change this.
         shopItemsSO[4].baseCost = (int)Mathf.Floor(GameManager.instance.getPlayerHoney() * 0.8f);
