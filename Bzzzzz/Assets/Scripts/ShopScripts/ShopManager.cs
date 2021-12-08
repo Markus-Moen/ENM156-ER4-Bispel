@@ -63,7 +63,7 @@ public class ShopManager : MonoBehaviour
         for (int i=0; i<shopItemsSO.Length; i++)
         {
             shopPanels[i].titleTxt.text = shopItemsSO[i].title;
-            shopPanels[i].costTxt.text = "Price: " + shopItemsSO[i].baseCost.ToString();
+            shopPanels[i].costTxt.text = shopItemsSO[i].baseCost.ToString();
             shopPanels[i].quantityTxt.text = "Owned: " + shopItemsSO[i].owned.ToString();
             shopPanels[i].descriptionTxt.text = shopItemsSO[i].description;
         }
@@ -73,13 +73,13 @@ public class ShopManager : MonoBehaviour
         shopPanels[6].quantityTxt.text = "";
         shopPanels[7].quantityTxt.text = "";
         shopPanels[8].quantityTxt.text = "";
-        buyBeeText.text = "Purchase: " + buyBeeAmount;
+        buyBeeText.text = "(" + "x" + buyBeeAmount + ")";
 
         // Upgrades are bought using Bee Coins
         // Just to remember to add some good looking solution
-        shopPanels[6].costTxt.text = "Price (Bee Coins): " + shopItemsSO[6].baseCost.ToString();
-        shopPanels[7].costTxt.text = "Price (Bee Coins): " + shopItemsSO[7].baseCost.ToString();
-        shopPanels[8].costTxt.text = "Price (Bee Coins): " + shopItemsSO[8].baseCost.ToString();
+        shopPanels[6].costTxt.text = shopItemsSO[6].baseCost.ToString();
+        shopPanels[7].costTxt.text = shopItemsSO[7].baseCost.ToString();
+        shopPanels[8].costTxt.text = shopItemsSO[8].baseCost.ToString();
 
     }
 
@@ -157,7 +157,7 @@ public class ShopManager : MonoBehaviour
 
         // Medicine costs 80% of what you got when you open the shop. Might want to change this.
         shopItemsSO[4].baseCost = (int)Mathf.Floor(GameManager.instance.getPlayerHoney() * 0.8f);
-        shopPanels[4].costTxt.text = "Price: " + shopItemsSO[4].baseCost.ToString();
+        shopPanels[4].costTxt.text = shopItemsSO[4].baseCost.ToString();
 
     }
 
@@ -207,7 +207,7 @@ public class ShopManager : MonoBehaviour
     		GameManager.instance.decPlayerHoney(shopItemsSO[3].baseCost);
             GameManager.instance.incPlayerHives(1);
             shopItemsSO[3].baseCost = shopItemsSO[3].baseCost * 5;
-            shopPanels[3].costTxt.text = "Price: " + shopItemsSO[3].baseCost.ToString();
+            shopPanels[3].costTxt.text = shopItemsSO[3].baseCost.ToString();
             CheckPurchaseable();
             
             //Add a bee for each hive
@@ -284,13 +284,15 @@ public class ShopManager : MonoBehaviour
         if (buyBeeAmount <= 1)
             myPurchaseBtns[0].interactable = true;
         buyBeeAmount += 1;
-        buyBeeText.text = "Purchase: " + buyBeeAmount;
+        buyBeeText.text = "(" + "x" + buyBeeAmount + ")";
+        shopPanels[0].costTxt.text = (buyBeeAmount*shopItemsSO[0].baseCost).ToString();
     }
 
     public void decBeeAmount()
     {
         buyBeeAmount -= 1;
-        buyBeeText.text = "Purchase: " + buyBeeAmount;
+        buyBeeText.text = "(" + "x" + buyBeeAmount + ")";
+        shopPanels[0].costTxt.text = (buyBeeAmount * shopItemsSO[0].baseCost).ToString();
     }
 }
 
