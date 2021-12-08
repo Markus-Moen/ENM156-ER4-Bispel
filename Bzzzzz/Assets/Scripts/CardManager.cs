@@ -23,7 +23,8 @@ public class CardManager: MonoBehaviour
     private void Awake() => instance = this;
 
     private int beeCoins = 50;
-
+    private int iteratorQ = 0;
+    private int iteratorC = 0;
 
     void Start()
     {
@@ -41,9 +42,10 @@ public class CardManager: MonoBehaviour
     public void RandomizeChanceCard()
     {
         //randomizes a number to pick chancecard
-        int card = Random.Range(0, chanceCards.Length); //Add last card when it works
-
-        
+        //int card = Random.Range(0, chanceCards.Length); //Add last card when it works
+        int[] arrC = {14,3,6,5,7,8,1,2,0,11,13,12,15,4,9,10};
+        int card = arrC[iteratorC];
+        iteratorC = (iteratorC + 1) % 15;
         //for debugging purposes
         //Debug.Log("card " + card);
 
@@ -54,7 +56,11 @@ public class CardManager: MonoBehaviour
 
     public void RandomizeQuestionCard()
     {
-        int card = Random.Range(0,questionCards.Length);
+        //int card = Random.Range(0,questionCards.Length); 
+        int[] arrQ = { 0, 2, 5, 6, 3, 1, 7, 4 };
+        int card = arrQ[iteratorQ];
+        iteratorQ = (iteratorQ + 1) % 7;
+
         questionCards[card].SetActive(true);
     }
 
