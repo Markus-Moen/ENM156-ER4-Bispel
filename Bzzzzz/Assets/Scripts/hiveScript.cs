@@ -96,8 +96,8 @@ public class hiveScript : MonoBehaviour
     {
         //Moves honey to the "cellar", if the "cellar" is full, the leftovers are stored in the hive
             leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
-            //GameManager.instance.decPlayerFood((honeyAmount-leftovers)/10); //To not decrease the food when honey is full
-            GameManager.instance.decPlayerFood(honeyAmount/20);
+            GameManager.instance.decPlayerFood((honeyAmount-leftovers)/10); //To not decrease the food when honey is full
+            //GameManager.instance.decPlayerFood(honeyAmount/20);
             honeyAmount = leftovers;
 
     }
@@ -113,8 +113,8 @@ public class hiveScript : MonoBehaviour
             //Honey in normal hives
             normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));         
             leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
-            //GameManager.instance.decPlayerFood((honeyIncrease - normalHoneyIncrease-leftovers)/10);//I think this should be the correct decFood
-            GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
+            GameManager.instance.decPlayerFood((honeyIncrease - normalHoneyIncrease-leftovers)/10);//I think this should be the correct decFood
+            //GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
             honeyAmount += leftovers;
             temporaryHoney = honeyAmount + normalHoneyIncrease;
             if(temporaryHoney > maxHoney){
