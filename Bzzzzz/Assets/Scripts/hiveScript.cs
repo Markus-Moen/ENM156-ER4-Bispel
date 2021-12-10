@@ -95,11 +95,42 @@ public class hiveScript : MonoBehaviour
 
      void TaskOnClick()
     {
+        /*
         //Moves honey to the "cellar", if the "cellar" is full, the leftovers are stored in the hive
             leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
             GameManager.instance.decPlayerFood((honeyAmount-leftovers)/20); //To not decrease the food when honey is full
             //GameManager.instance.decPlayerFood(honeyAmount/20);
             honeyAmount = leftovers;
+        */
+
+
+        if(GameManager.instance.getPlayerFood() > 0){
+            // leftovers from giving getting honey
+            int honeyMoreThanMax = GameManager.instance.getMaxHoney() - GameManager.instance.getPlayerHoney() - honeyAmount;
+            if(honeyMoreThanMax >= 0){ honeyMoreThanMax = 0; }
+            int honeyToTake = honeyAmount + honeyMoreThanMax;
+            // The food that is left after exchanging honey for food
+            int foodLeft = GameManager.instance.getPlayerFood() - ((honeyToTake)/20);
+            // The food that is left, but converte to honey
+            int foodConvertedToHoney = foodLeft * 20;
+            if(foodLeft < 0){ honeyToTake += foodConvertedToHoney; }
+
+            leftovers = GameManager.instance.incPlayerHoney(honeyToTake);//(honeyIncrease - normalHoneyIncrease);
+            GameManager.instance.decPlayerFood(honeyToTake/20);//((honeyIncrease - normalHoneyIncrease-leftovers)/20);//I think this should be the correct decFood
+            //GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
+            honeyAmount -= honeyToTake;
+        }else{
+            // 10% honung
+            // 5% bin
+            // leftovers from giving getting honey
+            int honeyMoreThanMax = GameManager.instance.getMaxHoney() - GameManager.instance.getPlayerHoney() - Mathf.FloorToInt(honeyAmount*0.1f);
+            if(honeyMoreThanMax >= 0){ honeyMoreThanMax = 0; }
+            int honeyToTake = Mathf.FloorToInt(honeyAmount*0.1f) + honeyMoreThanMax;
+            leftovers = GameManager.instance.incPlayerHoney(honeyToTake);
+            honeyAmount -= honeyToTake;
+            GameManager.instance.decPlayerBees(honeyToTake/2);
+            
+        }
 
     }
     //Increasing the honey in the hive
@@ -116,11 +147,26 @@ public class hiveScript : MonoBehaviour
             normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));
             // Won't get honey from flow hive if there is no food
             if(GameManager.instance.getPlayerFood() > 0){
-                leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
-                GameManager.instance.decPlayerFood((honeyIncrease - normalHoneyIncrease-leftovers)/20);//I think this should be the correct decFood
+                // leftovers from giving getting honey
+                int honeyMoreThanMax = GameManager.instance.getMaxHoney() - GameManager.instance.getPlayerHoney() - (honeyIncrease - normalHoneyIncrease);
+                if(honeyMoreThanMax >= 0){ honeyMoreThanMax = 0; }
+                int honeyToTake = (honeyIncrease - normalHoneyIncrease) + honeyMoreThanMax;
+                // The food that is left after exchanging honey for food
+                int foodLeft = GameManager.instance.getPlayerFood() - ((honeyToTake)/20);
+                // The food that is left, but converte to honey
+                int foodConvertedToHoney = foodLeft * 20;
+                if(foodLeft < 0){ honeyToTake += foodConvertedToHoney; }
+
+                leftovers = GameManager.instance.incPlayerHoney(honeyToTake);//(honeyIncrease - normalHoneyIncrease);
+                GameManager.instance.decPlayerFood(honeyToTake/20);//((honeyIncrease - normalHoneyIncrease-leftovers)/20);//I think this should be the correct decFood
                 //GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
-                honeyAmount += leftovers;
-            }         
+                honeyAmount -= honeyToTake;
+            }
+
+            /*leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
+            GameManager.instance.decPlayerFood((honeyIncrease - normalHoneyIncrease-leftovers)/20);//I think this should be the correct decFood
+            //GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
+            honeyAmount += leftovers; */ 
            
             temporaryHoney = honeyAmount + normalHoneyIncrease;
             if(temporaryHoney > maxHoney){
