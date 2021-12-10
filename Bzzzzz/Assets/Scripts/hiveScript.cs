@@ -29,7 +29,7 @@ public class hiveScript : MonoBehaviour
     private int normalHoneyIncrease;
     private int hiveApproximation = 0;
     //Flow hive (Upgrades all hives for now...)
-    private bool ownFlowHive = false;
+   // private bool ownFlowHive = false;
 
 
     Text honeyCounter;
@@ -165,13 +165,13 @@ public class hiveScript : MonoBehaviour
     public float getTotalPercentalChange(){
         return totalPercentalChange;
     }
-
+    /*
     public void upgradeHive()
     {
         ownFlowHive = true;
     }
 
-    /*
+    
     //The delay is set based on the number of bees (more bees => quicker honey)
     //static 
     void setDelay(int numberOfBees){
