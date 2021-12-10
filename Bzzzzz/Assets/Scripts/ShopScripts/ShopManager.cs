@@ -87,7 +87,7 @@ public class ShopManager : MonoBehaviour
     //Updates whether wach button should be enabled or not. 
     public void CheckPurchaseable()
     {
-        Debug.Log(shopItemsSO[9].owned);
+        //Debug.Log(GameManager.instance.getPlayerBees() >= GameManager.instance.getMaxBees()*(GameManager.instance.getPlayerHives() + GameManager.instance.getPlayerFlowHives()));
         for (int i = 0; i < shopItemsSO.Length; i++)
         {
             if(i == 0 && GameManager.instance.getPlayerBees() >= GameManager.instance.getMaxBees()*(GameManager.instance.getPlayerHives() + GameManager.instance.getPlayerFlowHives())){//shopItemsSO[0].owned
@@ -167,8 +167,8 @@ public class ShopManager : MonoBehaviour
     {
         if (GameManager.instance.getPlayerHoney() >= shopItemsSO[0].baseCost * buyBeeAmount)
         {
-            GameManager.instance.incPlayerBees(buyBeeAmount);
-            GameManager.instance.decPlayerHoney(shopItemsSO[0].baseCost * buyBeeAmount);
+            int leftOverBees = GameManager.instance.incPlayerBees(buyBeeAmount);
+            GameManager.instance.decPlayerHoney(shopItemsSO[0].baseCost * (buyBeeAmount-leftOverBees));
             shopItemsSO[0].owned = GameManager.instance.getPlayerBees();    
             CheckPurchaseable();
         }
