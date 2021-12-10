@@ -90,6 +90,7 @@ public class hiveScript : MonoBehaviour
         flowText.text = "Honey/Flowhive: " + (honeyIncrease - normalHoneyIncrease);
         incHoney();
         honeyCounter.text = "Honey to collect: " + honeyAmount;
+        yourButton.image.fillAmount = timer/delay;
     }
 
      void TaskOnClick()
@@ -107,6 +108,7 @@ public class hiveScript : MonoBehaviour
         if(timer >= delay){
             //Reset the timer
             timer = 0;
+            yourButton.image.fillAmount = 0;
             //If the bee hive is full we return without increasing
             //If the increse in honey exceeds max honey per bee hive we set the value to max
             temporaryHoney = honeyIncrease + honeyAmount; 
