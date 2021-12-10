@@ -352,10 +352,10 @@ public class GameManager : MonoBehaviour
             numOfFood = maxFood;
         }
         // No bees die if there is food
-        /*if(numOfFood > 0){             // only stop the killing if there is food an there are no termites
-            stopKillFood();
+        if(numOfFood > 0){             // only stop the killing if there is food an there are no termites
+            //stopKillFood();
             deactivateFoodWarning();
-        }*/
+        }
         updateFoodTxt();
         return leftovers;
     }
@@ -466,7 +466,7 @@ public class GameManager : MonoBehaviour
         if(numOfFood <= 0){
             numOfFood = 0;
             updateFoodTxt();
-            //activateFoodWarning();
+            activateFoodWarning();
             //startKillFood();        // no food => bees start to die
             return false;
         }
