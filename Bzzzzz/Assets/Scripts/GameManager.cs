@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Constants - Start values
-    private const int startFood = 0;
+    private const int startFood = 50;
     private const int startBees = 100;
     private const int startHives = 1;
     private const int startHoney = 100;
     private const int startFlowers = 0;
     private const int startFlowHives = 0;
-    private const int startBeeCoins = 150;
+    private const int startBeeCoins = 0;
 
     // max values
     private const int max = 1000;
