@@ -113,11 +113,15 @@ public class hiveScript : MonoBehaviour
             //If the increse in honey exceeds max honey per bee hive we set the value to max
             temporaryHoney = honeyIncrease + honeyAmount; 
             //Honey in normal hives
-            normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));         
-            leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
-            GameManager.instance.decPlayerFood((honeyIncrease - normalHoneyIncrease-leftovers)/20);//I think this should be the correct decFood
-            //GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
-            honeyAmount += leftovers;
+            normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));
+            // Won't get honey from flow hive if there is no food
+            if(GameManager.instance.getPlayerFood() > 0){
+                leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
+                GameManager.instance.decPlayerFood((honeyIncrease - normalHoneyIncrease-leftovers)/20);//I think this should be the correct decFood
+                //GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
+                honeyAmount += leftovers;
+            }         
+           
             temporaryHoney = honeyAmount + normalHoneyIncrease;
             if(temporaryHoney > maxHoney){
                 honeyAmount = maxHoney;
