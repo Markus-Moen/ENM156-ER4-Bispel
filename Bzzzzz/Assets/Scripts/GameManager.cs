@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private const int startHoney = 100;
     private const int startFlowers = 0;
     private const int startFlowHives = 0;
-    private const int startBeeCoins = 0;
+    private const int startBeeCoins = 150;
 
     // max values
     private const int max = 1000;
@@ -352,10 +352,10 @@ public class GameManager : MonoBehaviour
             numOfFood = maxFood;
         }
         // No bees die if there is food
-        if(numOfFood > 0){             // only stop the killing if there is food an there are no termites
+        /*if(numOfFood > 0){             // only stop the killing if there is food an there are no termites
             stopKillFood();
             deactivateFoodWarning();
-        }
+        }*/
         updateFoodTxt();
         return leftovers;
     }
@@ -466,8 +466,8 @@ public class GameManager : MonoBehaviour
         if(numOfFood <= 0){
             numOfFood = 0;
             updateFoodTxt();
-            activateFoodWarning();
-            startKillFood();        // no food => bees start to die
+            //activateFoodWarning();
+            //startKillFood();        // no food => bees start to die
             return false;
         }
         updateFoodTxt();
