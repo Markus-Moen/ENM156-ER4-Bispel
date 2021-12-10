@@ -29,7 +29,7 @@ public class hiveScript : MonoBehaviour
     private int normalHoneyIncrease;
     private int hiveApproximation = 0;
     //Flow hive (Upgrades all hives for now...)
-    private bool ownFlowHive = false;
+   // private bool ownFlowHive = false;
 
 
     Text honeyCounter;
@@ -90,13 +90,14 @@ public class hiveScript : MonoBehaviour
         flowText.text = "Honey/Flowhive: " + (honeyIncrease - normalHoneyIncrease);
         incHoney();
         honeyCounter.text = "Honey to collect: " + honeyAmount;
+        yourButton.image.fillAmount = timer/delay;
     }
 
      void TaskOnClick()
     {
         //Moves honey to the "cellar", if the "cellar" is full, the leftovers are stored in the hive
             leftovers = GameManager.instance.incPlayerHoney(honeyAmount);
-            GameManager.instance.decPlayerFood((honeyAmount-leftovers)/10); //To not decrease the food when honey is full
+            GameManager.instance.decPlayerFood((honeyAmount-leftovers)/20); //To not decrease the food when honey is full
             //GameManager.instance.decPlayerFood(honeyAmount/20);
             honeyAmount = leftovers;
 
@@ -107,13 +108,14 @@ public class hiveScript : MonoBehaviour
         if(timer >= delay){
             //Reset the timer
             timer = 0;
+            yourButton.image.fillAmount = 0;
             //If the bee hive is full we return without increasing
             //If the increse in honey exceeds max honey per bee hive we set the value to max
             temporaryHoney = honeyIncrease + honeyAmount; 
             //Honey in normal hives
             normalHoneyIncrease = Mathf.RoundToInt((honeyIncrease * tmpHives/totalHives));         
             leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
-            GameManager.instance.decPlayerFood((honeyIncrease - normalHoneyIncrease-leftovers)/10);//I think this should be the correct decFood
+            GameManager.instance.decPlayerFood((honeyIncrease - normalHoneyIncrease-leftovers)/20);//I think this should be the correct decFood
             //GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
             honeyAmount += leftovers;
             temporaryHoney = honeyAmount + normalHoneyIncrease;
@@ -165,13 +167,13 @@ public class hiveScript : MonoBehaviour
     public float getTotalPercentalChange(){
         return totalPercentalChange;
     }
-
+    /*
     public void upgradeHive()
     {
         ownFlowHive = true;
     }
 
-    /*
+    
     //The delay is set based on the number of bees (more bees => quicker honey)
     //static 
     void setDelay(int numberOfBees){
