@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     // make sure there are no other instances of GameManager
     // probably not needed though, since no change of scenes
-    private void Awake(){
+    /*private void Awake(){
         if(_instance == null ){
             DontDestroyOnLoad(this.gameObject);
             _instance = this;
@@ -99,6 +99,8 @@ public class GameManager : MonoBehaviour
         }
         
     }
+    */
+    private void Awake() => _instance = this;
 
     // Start is called before the first frame update
     void Start()
@@ -642,6 +644,8 @@ public class GameManager : MonoBehaviour
     //for close button on new year warning
     //Do we want to properly pause game when warning is up?
     public void closeNewYearWarning(){
+        Debug.Log("close button");
+        newYearWarning = GameObject.Find("newYearWarning");
         newYearWarning.SetActive(false);  //remove warning card
         seasonsIsOn = true;               //start timer until next year again
         //seasonTimer = seasonDelay;        //set so new season/year start when closing
