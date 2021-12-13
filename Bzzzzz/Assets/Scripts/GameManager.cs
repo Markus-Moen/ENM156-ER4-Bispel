@@ -59,8 +59,8 @@ public class GameManager : MonoBehaviour
     private float delay = 10;   // the time (seconds) before the timer event and timer resets 
 
     private float seasonTimer = 0;      // timer for the season
-    private float seasonDelay = 3;//300;     // length of a season (/year) in seconds 5 min
-    private float firstSeasonDelay = 5;//120; //first year is 2 min for demo purpuses
+    private float seasonDelay = 300;     // length of a season (/year) in seconds 5 min
+    private float firstSeasonDelay = 120; //first year is 2 min for demo purpuses
     
     
     private GameObject newYearWarning;
