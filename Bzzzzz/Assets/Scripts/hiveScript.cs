@@ -126,7 +126,7 @@ public class hiveScript : MonoBehaviour
             int honeyMoreThanMax = GameManager.instance.getMaxHoney() - GameManager.instance.getPlayerHoney() - Mathf.FloorToInt(honeyAmount*0.1f);
             if(honeyMoreThanMax >= 0){ honeyMoreThanMax = 0; }
             int honeyToTake = Mathf.FloorToInt(honeyAmount*0.1f) + honeyMoreThanMax;
-            leftovers = GameManager.instance.incPlayerHoney(honeyToTake);
+            GameManager.instance.incPlayerHoney(honeyToTake);
             honeyAmount -= honeyToTake;
             GameManager.instance.decPlayerBees(honeyToTake/2);
             
@@ -157,10 +157,10 @@ public class hiveScript : MonoBehaviour
                 int foodConvertedToHoney = foodLeft * 20;
                 if(foodLeft < 0){ honeyToTake += foodConvertedToHoney; }
 
-                leftovers = GameManager.instance.incPlayerHoney(honeyToTake);//(honeyIncrease - normalHoneyIncrease);
+                GameManager.instance.incPlayerHoney(honeyToTake);//(honeyIncrease - normalHoneyIncrease);
                 GameManager.instance.decPlayerFood(honeyToTake/20);//((honeyIncrease - normalHoneyIncrease-leftovers)/20);//I think this should be the correct decFood
                 //GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
-                honeyAmount -= honeyToTake;
+                //honeyAmount -= honeyToTake;
             }
 
             /*leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
