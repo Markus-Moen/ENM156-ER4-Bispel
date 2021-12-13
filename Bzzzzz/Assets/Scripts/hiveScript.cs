@@ -160,7 +160,10 @@ public class hiveScript : MonoBehaviour
                 GameManager.instance.incPlayerHoney(honeyToTake);//(honeyIncrease - normalHoneyIncrease);
                 GameManager.instance.decPlayerFood(honeyToTake/20);//((honeyIncrease - normalHoneyIncrease-leftovers)/20);//I think this should be the correct decFood
                 //GameManager.instance.decPlayerFood(honeyIncrease - normalHoneyIncrease);
-                //honeyAmount -= honeyToTake;
+
+                // honeyMoreThanMax is zero if there is room left in the player's storage
+                // or gives the leftover honey (negative) if the max is reached
+                honeyAmount -= honeyMoreThanMax;
             }
 
             /*leftovers = GameManager.instance.incPlayerHoney(honeyIncrease - normalHoneyIncrease);
