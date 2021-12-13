@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         flowersText = GameObject.Find("Flowers Text").GetComponent<Text>();
         beeCoinText = GameObject.Find("Bee Coin Text").GetComponent<Text>();
         outOfFoodText = GameObject.Find("Food Warning");
+        newYearWarning = GameObject.Find("newYearWarning");
 
         // warning texts are not active at start of game
         outOfFoodText.SetActive(false);
