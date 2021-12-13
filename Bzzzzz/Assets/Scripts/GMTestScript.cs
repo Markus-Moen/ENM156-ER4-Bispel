@@ -85,6 +85,9 @@ public class GMTestScript : MonoBehaviour
     public void testincPlayerBeeCoins(int n){
             GameManager.instance.incPlayerBeeCoins(n);
     }
+    public void testCloseSeasons(){
+            GameManager.instance.closeNewYearWarning();
+    }
 
 
     

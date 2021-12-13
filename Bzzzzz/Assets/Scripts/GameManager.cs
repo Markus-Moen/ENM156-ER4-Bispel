@@ -59,20 +59,20 @@ public class GameManager : MonoBehaviour
     private float delay = 10;   // the time (seconds) before the timer event and timer resets 
 
     private float seasonTimer = 0;      // timer for the season
-    private float seasonDelay = 300;     // length of a season (/year) in seconds 5 min
-    private float firstSeasonDelay = 120; //first year is 2 min for demo purpuses
+    private float seasonDelay = 3;//300;     // length of a season (/year) in seconds 5 min
+    private float firstSeasonDelay = 5;//120; //first year is 2 min for demo purpuses
     
     
-    public GameObject newYearWarning;
+    private GameObject newYearWarning;
     private bool seasonsIsOn = true;        // true when timer counting down until next year is active
+    private float percentOfBeesFood = 0.20f;         // 1+percentOfBeesFood = amount of food eaten per bee
 
 
 
 
     // Don't think this is used anymore
     private bool deathByStarvation = false;      // true if bees start to die because no food
-    // Don't think this is used anymore
-    private float percentOfBeesFood = 0.20f;         // 1+percentOfBeesFood = amount of food eaten per bee
+    
     
     
 
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     // make sure there are no other instances of GameManager
     // probably not needed though, since no change of scenes
-    /*private void Awake(){
+    private void Awake(){
         if(_instance == null ){
             DontDestroyOnLoad(this.gameObject);
             _instance = this;
@@ -99,8 +99,8 @@ public class GameManager : MonoBehaviour
         }
         
     }
-    */
-    private void Awake() => _instance = this;
+    
+    //private void Awake() => _instance = this;
 
     // Start is called before the first frame update
     void Start()
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
 
         //for chanceCard 9, card 8 in switch statment in cardManager
         chanceCardNineTimer();
-        
+        Debug.Log(seasonsIsOn);
         
     }
 
@@ -263,6 +263,7 @@ public class GameManager : MonoBehaviour
     // counts down until next year
     // when timer reaches zero, the yearly cost and the amount of bees that die because of starvation is subtracted
     private void seasonCountDown(){
+        Debug.Log("shouldn't be here");
         if(seasonTimer > 0){
             seasonTimer -= Time.deltaTime;  // update timer (starts at highest possible time)
         }else{
@@ -645,14 +646,14 @@ public class GameManager : MonoBehaviour
     //Do we want to properly pause game when warning is up?
     public void closeNewYearWarning(){
         Debug.Log("close button");
-        newYearWarning = GameObject.Find("newYearWarning");
         newYearWarning.SetActive(false);  //remove warning card
         seasonsIsOn = true;               //start timer until next year again
-        //seasonTimer = seasonDelay;        //set so new season/year start when closing
+        seasonTimer = seasonDelay;        //set so new season/year start when closing
     }
 
     //activate warning card informing player.
     private void openNewYearWarning(){
+        Debug.Log("open");
         newYearWarning.SetActive(true);
         seasonsIsOn = false;            // Stop countdown until button is pressed
     }
