@@ -54,21 +54,25 @@ public class GameManager : MonoBehaviour
     private GameObject outOfFoodText;
 
 
+    // Timers and related
     private float timer = 0;
     private float delay = 10;   // the time (seconds) before the timer event and timer resets 
 
     private float seasonTimer = 0;      // timer for the season
     private float seasonDelay = 300;     // length of a season (/year) in seconds 5 min
     private float firstSeasonDelay = 120; //first year is 2 min for demo purpuses
-    private float percentOfBeesFood = 0.20f;         // 1+percentOfBeesFood = amount of food eaten per bee
-
+    
+    
     public GameObject newYearWarning;
+    private bool seasonsIsOn = true;        // true when timer counting down until next year is active
 
 
 
 
-    // should probably be in hiveScript
+    // Don't think this is used anymore
     private bool deathByStarvation = false;      // true if bees start to die because no food
+    // Don't think this is used anymore
+    private float percentOfBeesFood = 0.20f;         // 1+percentOfBeesFood = amount of food eaten per bee
     
     
 
@@ -85,10 +89,11 @@ public class GameManager : MonoBehaviour
 
 
     // make sure there are no other instances of GameManager
+    // probably not needed though, since no change of scenes
     private void Awake(){
         if(_instance == null ){
-            DontDestroyOnLoad(this.gameObject);                         // I'm afraid this part might create some problems
-            _instance = this;                                            // a bit tricky to test at the moment...
+            DontDestroyOnLoad(this.gameObject);
+            _instance = this;
         }else if(_instance != this && _instance != null){
             Destroy(this.gameObject);
         }
@@ -111,17 +116,14 @@ public class GameManager : MonoBehaviour
         flowersText = GameObject.Find("Flowers Text").GetComponent<Text>();
         beeCoinText = GameObject.Find("Bee Coin Text").GetComponent<Text>();
         outOfFoodText = GameObject.Find("Food Warning");
+
+        // warning texts are not active at start of game
         outOfFoodText.SetActive(false);
+        newYearWarning.SetActive(false);
+
+        int hives = numOfHives + numOfFlowHives;        // What is this doing???
 
         // Set text field texts
-        int hives = numOfHives + numOfFlowHives;
-        //foodText.text = "Food: " + numOfFood + " / " + maxFood;
-        //honeyText.text = "Honey: " + numOfHoney + " / " + maxHoney;
-        //hivesText.text = "Hives: " + hives + " (Flow: " + numOfFlowHives + ")";
-        //beesText.text = "Bees: " + numOfBees + " / " + maxBees;
-        //timerText.text = "Time till next season: " + getTime();
-        //yearlyCostText.text = "Yearly cost: "  + "\nFood: " + (int) Mathf.Floor(numOfBees*percentOfBeesFood)
-        //                        + "\nHoney: " + yearlyHoneyCost();
         updateFoodTxt();
         updateHoneyTxt();
         updateHivesTxt();
@@ -138,13 +140,102 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // start killing bees if there is no food
-        starvationDeath();
-
-        // comment out to disable seasons
-        seasonCountDown();
+        starvationDeath();                                      // start killing bees if there is no food
+        if(seasonsIsOn){ seasonCountDown(); }                   // comment out to disable seasons
 
         //for chanceCard 9, card 8 in switch statment in cardManager
+        chanceCardNineTimer();
+        
+        
+    }
+
+
+    //-----------------------------------------------------------------------------------------------//
+
+
+    // updates all text fields
+    public void reload(){
+        updateFoodTxt();
+        updateHoneyTxt();
+        updateHivesTxt();
+        updateFlowHiveTxt();
+        updateBeesTxt();
+        updateBeeCoinTxt();
+        updateTimerTxt();
+        updateYearlyCostTxt();
+        updateFlowersTxt();
+    }
+
+
+    // updating one text field
+
+    private void updateFoodTxt(){
+        foodText.text =  numOfFood + " / " + maxFood;
+    }
+    private void updateHoneyTxt(){
+        honeyText.text =  numOfHoney + " / " + maxHoney;
+    }
+    private void updateHivesTxt(){
+        int hives = numOfHives;
+        hivesText.text = hives.ToString();
+    }
+    private void updateFlowHiveTxt(){
+        int hives = numOfFlowHives;
+        flowHiveText.text = hives.ToString();
+    }
+    private void updateBeesTxt(){
+        beesText.text =  numOfBees + " / " + maxBees;
+    }
+    private void updateBeeCoinTxt(){
+        beeCoinText.text =  numOfBeeCoins + " / " + maxBeeCoins;
+    }
+    private void updateTimerTxt(){
+        timerText.text = "Time till next year: " + getTime();
+    }
+    private void updateYearlyCostTxt(){
+        yearlyCostText.text = "Yearly cost: "  + "\nFood: " + (int) Mathf.Floor(numOfBees*percentOfBeesFood)
+                                + "\nHoney: " + yearlyHoneyCost();
+    }
+    private void updateFlowersTxt(){
+        flowersText.text = numOfFlowers + " / " + maxFlowers;
+    }
+
+
+    
+
+    // loads game over scene
+    private void gameOver(){
+        SceneManager.LoadScene("GameOver");
+    }
+
+
+    // Start killing bees
+    private void startKillFood(){                                               // Don't think this is used anymore
+        deathByStarvation = true;
+    }
+
+    // stop killing bees
+    private void stopKillFood(){                                               // Don't think this is used anymore
+        deathByStarvation = false;
+    }
+
+    // updates timer for (and executes) bee death
+    // if deathByStarvation is set to true 
+    private void starvationDeath(){                                               // Don't think this is used anymore
+        if(deathByStarvation){
+            timer += Time.deltaTime;        // update timer
+            if(timer >= delay){
+                // kill a number of bees
+                changeBeePercent(beeKillingRate);
+                // reset timer
+                timer = 0;
+            }
+        }
+    }
+
+
+    // The timer code for chance card #9
+    private void chanceCardNineTimer(){
         if (CardManager.instance.getTimerActive())
         {
             Debug.Log("Timer active");
@@ -162,94 +253,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Timer done");
             }
 
-        }
-    }
-
-
-    //-----------------------------------------------------------------------------------------------//
-
-
-    // updates all text fields
-    public void reload(){
-        int hives = numOfHives + numOfFlowHives;
-        foodText.text = numOfFood + " / " + maxFood;
-        honeyText.text =  numOfHoney + " / " + maxHoney;
-        hivesText.text =   hives + " (Flow: " + numOfFlowHives + ")";
-        beesText.text =   numOfBees + " / " + maxBees;
-        flowersText.text =   numOfFlowers + " / " + maxFlowers;
-        beeCoinText.text =  numOfBeeCoins + " / " + maxBeeCoins;
-    }
-
-
-    // updating one text field
-
-    private void updateFoodTxt(){
-        foodText.text =  numOfFood + " / " + maxFood;
-    }
-    private void updateHoneyTxt(){
-        honeyText.text =  numOfHoney + " / " + maxHoney;
-    }
-    private void updateHivesTxt(){
-        int hives = numOfHives;
-        hivesText.text = hives.ToString();
-    }
-    private void updateFlowHiveTxt()
-    {
-        int hives = numOfFlowHives;
-        flowHiveText.text = hives.ToString();
-    }
-    private void updateBeesTxt(){
-        beesText.text =  numOfBees + " / " + maxBees;
-    }
-    private void updateBeeCoinTxt(){
-        beeCoinText.text =  numOfBeeCoins + " / " + maxBeeCoins;
-    }
-    private void updateTimerTxt(){
-        timerText.text = "Time till next year: " + getTime();
-    }
-    private void updateYearlyCostTxt(){
-        yearlyCostText.text = "Yearly cost: "  + "\nFood: " + (int) Mathf.Floor(numOfBees*percentOfBeesFood)
-                                + "\nHoney: " + yearlyHoneyCost();
-    }
-    private void updateFlowersTxt()
-    {
-        flowersText.text = numOfFlowers + " / " + maxFlowers;
-    }
-
-    private void activateFoodWarning(){
-        outOfFoodText.SetActive(true);
-    }
-    private void deactivateFoodWarning(){
-        outOfFoodText.SetActive(false);
-    }
-
-    // loads game over scene
-    private void gameOver(){
-        SceneManager.LoadScene("GameOver");
-    }
-
-
-    // Start killing bees
-    private void startKillFood(){
-        deathByStarvation = true;
-    }
-
-    // stop killing bees
-    private void stopKillFood(){
-        deathByStarvation = false;
-    }
-
-    // updates timer for (and executes) bee death
-    // if deathByStarvation is set to true 
-    private void starvationDeath(){
-        if(deathByStarvation){
-            timer += Time.deltaTime;        // update timer
-            if(timer >= delay){
-                // kill a number of bees
-                changeBeePercent(beeKillingRate);
-                // reset timer
-                timer = 0;
-            }
         }
     }
 
@@ -280,14 +283,14 @@ public class GameManager : MonoBehaviour
                 updateHoneyTxt();
             }
 
-            flowerScript.instance.removeFlowers(numOfFlowers);// Kill all flowers
-
-            //activate warning card informing player.
-            newYearWarning.SetActive(true);
+            flowerScript.instance.removeFlowers(numOfFlowers);// Kill all flowers at end of year
+            openNewYearWarning();
                                                                                                         
         }
         updateTimerTxt();   // update timer text field
     }
+
+
 
     // The yearly cost from beeing (get it) a beekeeper
     private int yearlyHoneyCost(){  // just a placeholder formula
@@ -298,6 +301,8 @@ public class GameManager : MonoBehaviour
         return (numOfHives + numOfFlowHives*100 + numOfFlowers*2 + maxHoney/8 + maxFood/8 + maxFlowers/2); // also factor in pestilence thingy
     }
 
+
+
     // returns string of seasonTimer set in minutes and seconds with a colon in between
     private string getTime(){
         int minutes = Mathf.FloorToInt(seasonTimer) / 60;
@@ -305,12 +310,12 @@ public class GameManager : MonoBehaviour
         string minutesString = (minutes < 10) ? "0" + minutes : "" + minutes;   // adds a zero in front of number if < 10
         string secondsString = (seconds < 10) ? "0" + seconds : "" + seconds;   // adds a zero in front of number if < 10
         
-
         return minutesString + ":" + secondsString;
     }
 
 
     //-----------------------------------------------------------------------------------------------//
+    //------------------------------------increase variables-----------------------------------------//
 
 
     // Adds n to the players stored honey
@@ -426,6 +431,7 @@ public class GameManager : MonoBehaviour
 
 
     //-----------------------------------------------------------------------------------------------//
+    //-------------------------------------Decrease variables----------------------------------------//
 
 
 
@@ -512,6 +518,12 @@ public class GameManager : MonoBehaviour
         updateYearlyCostTxt();
     }
 
+
+
+
+    //-----------------------------changing variables by a percentage---------------------------
+
+
     // multiplies numOfHoney by the argument f
     // effectively changing the amount of honey by a percentage
     public void changeHoneyPercent(float f){
@@ -567,7 +579,6 @@ public class GameManager : MonoBehaviour
         return percentOfBeesFood;
     }
 
-
     public int getMaxFood(){
         return maxFood;
     }
@@ -619,13 +630,33 @@ public class GameManager : MonoBehaviour
         updateYearlyCostTxt();
     }
 
+
+
+
     //-------------------------------------------------------------------------------
+    //----------------Activation and deactivation of warnings------------------------
+    //-------------------------------------------------------------------------------
+
 
     //for close button on new year warning
     //Do we want to properly pause game when warning is up?
-    public void closeNewYearWarning()
-    {
+    public void closeNewYearWarning(){
         newYearWarning.SetActive(false);  //remove warning card
-        seasonTimer = seasonDelay;        //set so new season/year start when closing
+        seasonsIsOn = true;               //start timer until next year again
+        //seasonTimer = seasonDelay;        //set so new season/year start when closing
+    }
+
+    //activate warning card informing player.
+    private void openNewYearWarning(){
+        newYearWarning.SetActive(true);
+        seasonsIsOn = false;            // Stop countdown until button is pressed
+    }
+
+
+    private void activateFoodWarning(){
+        outOfFoodText.SetActive(true);
+    }
+    private void deactivateFoodWarning(){
+        outOfFoodText.SetActive(false);
     }
 }
